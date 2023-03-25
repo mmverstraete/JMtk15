@@ -1,0 +1,7 @@
+name = "JMtk15"
+uuid = "6c71635d-e68b-418f-880a-c8128ca9dc0a"
+authors = ["Michel Verstraete <MMVerstraete@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.6"

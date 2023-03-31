@@ -58,8 +58,6 @@ const JMtk15_test = JMtk15_root * "/test/"
 export JMtk15_test
 const JMtk15_docs = JMtk15_root * "/docs/"
 export JMtk15_docs
-const JMtk15_docs = JMtk15_root * "/docs/"
-export JMtk15_docs
 const JMtk15_data = JMtk15_root * "/data/"
 export JMtk15_data
 

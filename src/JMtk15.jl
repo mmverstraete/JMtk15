@@ -137,6 +137,8 @@ include(JMtk15_src * "jMtkFileLGID.jl")
 export jMtkFileLGID
 include(JMtk15_src * "jMtkFileVersion.jl")
 export jMtkFileVersion
+include(JMtk15_src * "jMtkFileAttrList.jl")
+export jMtkFileAttrList
 
 # -----------------------------------------------------------------------------
 

@@ -130,7 +130,58 @@ using Test
         include(JMtk15_test * "src/jMtkFileVersion_tst_170.jl")
         fversion = jMtkFileVersion_tst_170();
         @test fversion == "F08_0023"
+# ---------------------------------------------------------- jMtkFileAttrList
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_110.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_110();
+        @test attrcnt == 28
+        @test attrlist[1:4] == ["StructMetadata.0", "Translation.number_id", "Translation.land_water_id", "Translation.dark_water_mask"]
+        @test attrlist[16:19] == ["SOM_parameters.som_orbit.gama", "SOM_parameters.som_orbit.nrev", "SOM_parameters.som_orbit.ro", "SOM_parameters.som_orbit.i"]
+        @test attrlist[25:28] == ["Origin_block.lrc.y", "Start_block", "End block", "coremetadata"]
 
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_120.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_120();
+        @test attrcnt == 30
+        @test attrlist[1:4] == ["HDFEOSVersion", "StructMetadata.0", "coremetadata", "Path_number"]
+        @test attrlist[18:21] == ["SOM_parameters.som_orbit.i", "SOM_parameters.som_orbit.P2P1", "SOM_parameters.som_orbit.lambda0", "Origin_block.ulc.x"]
+        @test attrlist[27:30] == ["Cam_mode", "Num_local_modes", "Local_mode_site_name", "Orbit_QA"]
+
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_130.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_130();
+        @test attrcnt == 31
+        @test attrlist[3:6] == ["Path_number", "AGP_version_id", "DID_version_id", "Number_blocks"]
+        @test attrlist[20:23] == ["Origin_block.ulc.x", "Origin_block.ulc.y", "Origin_block.lrc.x", "Origin_block.lrc.y"]
+        @test attrlist[28:31] == ["Local_mode_site_name", "Orbit_QA", "Camera", "coremetadata"]
+
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_140.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_140();
+        @test attrcnt == 31
+        @test attrlist[4:7] == ["AGP_version_id", "DID_version_id", "Number_blocks", "Ocean_blocks_size"]
+        @test attrlist[19:22] == ["SOM_parameters.som_orbit.lambda0", "Origin_block.ulc.x", "Origin_block.ulc.y", "Origin_block.lrc.x"]
+        @test attrlist[28:31] == ["Local_mode_site_name", "Orbit_QA", "Camera", "coremetadata"]
+
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_150.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_150();
+        @test attrcnt == 31
+        @test attrlist[6:9] == ["Number_blocks", "Ocean_blocks_size", "Ocean_blocks.count", "Ocean_blocks.numbers"]
+        @test attrlist[16:19] == ["SOM_parameters.som_orbit.ro", "SOM_parameters.som_orbit.i", "SOM_parameters.som_orbit.P2P1", "SOM_parameters.som_orbit.lambda0"]
+        @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orbit_QA", "Camera"]
+
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_160.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_160();
+        @test attrcnt == 31
+        @test attrlist[8:11] == ["Ocean_blocks.count", "Ocean_blocks.numbers", "SOM_parameters.som_ellipsoid.a", "SOM_parameters.som_ellipsoid.e2"]
+        @test attrlist[21:24] == ["Origin_block.ulc.y", "Origin_block.lrc.x", "Origin_block.lrc.y", "Start_block"]
+        @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orbit_QA", "Orbit_qa_winds"]
+
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_170.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_170();
+        @test attrcnt == 88
+        @test attrlist[1:5] == ["Path_number", "AGP_version_id", "DID_version_id", "Number_blocks", "Ocean_blocks_size"]
+        @test attrlist[41:45] == ["title", "institution", "source", "history", "references"]
+        @test attrlist[85:88] == ["config.sim.enable", "config.sim.surface_type", "config.SurfaceRetrieval.use_smoothed_aod", "config.underlight_albedo"]
+
+
+        
     end
 # =============================================================================
 

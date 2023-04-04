@@ -101,7 +101,7 @@ using Test
 
         include(JMtk15_test * "src/jMtkFileLGID_tst_160.jl")
         lgid = jMtkFileLGID_tst_160();
-        @test lgid == "MISR_AM1_TC_CLOUD_P168_O068050_F01_0001.hdf"
+        @test lgid == "MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
 
         include(JMtk15_test * "src/jMtkFileLGID_tst_170.jl")
         lgid = jMtkFileLGID_tst_170();
@@ -133,7 +133,7 @@ using Test
 
         include(JMtk15_test * "src/jMtkFileVersion_tst_160.jl")
         fversion = jMtkFileVersion_tst_160();
-        @test fversion == "F01_0001"
+        @test fversion == "F07_0012"
 
         include(JMtk15_test * "src/jMtkFileVersion_tst_170.jl")
         fversion = jMtkFileVersion_tst_170();
@@ -199,6 +199,40 @@ using Test
         @test attrlist[25] == "SOM_map_maximum_corner.y"
         @test attrlist[130] == "config.het_bias_pixel_mode"
         @test attrlist[144] == "config.GeographicExclusions.latitude.0"
+# ---------------------------------------------------------- jMtkGridAttrList
+        include(JMtk15_test * "src/jMtkGridAttrList_tst_110.jl")
+        nattrs, attrlist = jMtkGridAttrList_tst_110();
+        @test nattrs == 4
+        @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", "Block_size.size_x", "Block_size.size_y"]
+
+        include(JMtk15_test * "src/jMtkGridAttrList_tst_120.jl")
+        nattrs, attrlist = jMtkGridAttrList_tst_120();
+        @test nattrs == 5
+        @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", "Block_size.size_x", "Block_size.size_y", "SunDistanceAU"]
+
+        include(JMtk15_test * "src/jMtkGridAttrList_tst_130.jl")
+        nattrs, attrlist = jMtkGridAttrList_tst_130();
+        @test nattrs == 4
+        @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", "Block_size.size_x", "Block_size.size_y"]
+        include(JMtk15_test * "src/jMtkGridAttrList_tst_140.jl")
+        nattrs, attrlist = jMtkGridAttrList_tst_140();
+        @test nattrs == 4
+        @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", "Block_size.size_x", "Block_size.size_y"]
+
+        include(JMtk15_test * "src/jMtkGridAttrList_tst_150.jl")
+        nattrs, attrlist = jMtkGridAttrList_tst_150();
+        @test nattrs == 4
+        @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", "Block_size.size_x", "Block_size.size_y"]
+
+        include(JMtk15_test * "src/jMtkGridAttrList_tst_160.jl")
+        nattrs, attrlist = jMtkGridAttrList_tst_160();
+        @test nattrs == 4
+        @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", "Block_size.size_x", "Block_size.size_y"]
+
+        include(JMtk15_test * "src/jMtkGridAttrList_tst_170.jl")
+        nattrs, attrlist = jMtkGridAttrList_tst_170();
+        @test nattrs == 4
+        @test attrlist == ["GCTP_projection_parameters", "resolution_in_meters", "block_size_in_lines", "block_size_in_samples"]
 
     end
 # =============================================================================

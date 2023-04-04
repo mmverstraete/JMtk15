@@ -58,7 +58,7 @@ export MTKt_BlockCorners
 # Option 1: Suggested by Clang
 # const MTKT_BLOCKCORNERS_INIT = {0, 0, 0, {MTKT_GEOBLOCK_INIT}}
 # leads to compilation `ERROR: LoadError: syntax: { } vector syntax is discontinued
-# around /Users/michel/Codes/Julia/JMtk15/src/include/MisrCoordQuery_h.jl:50``
+# around /Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/src/include/MisrCoordQuery_h.jl:50`
 
 # Option 2: Replace {} by ():
 # const MTKT_BLOCKCORNERS_INIT = (0, 0, 0, (MTKT_GEOBLOCK_INIT))
@@ -98,13 +98,13 @@ export MTKt_BlockCorners
 # (block::SVector{181, MTKt_GeoBlock}) and in the initialization, as suggested by CLang:
 # const MTKT_BLOCKCORNERS_INIT = {0, 0, 0, {MTKT_GEOBLOCK_INIT}}
 # leads to compilation `ERROR: LoadError: syntax: { } vector syntax is discontinued
-# around /Users/michel/Codes/Julia/JMtk15/src/include/MisrCoordQuery_h.jl:90`, just as
+# around /Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/src/include/MisrCoordQuery_h.jl:90`, just as
 # was the case in Option 1 above.
 
 # Option 8: Initialize the SVector explicitly:
 # const MTKT_BLOCKCORNERS_INIT = {0, 0, 0, [MTKT_GEOBLOCK_INIT for i in 1:181]}
 # leads to compilation `ERROR: LoadError: syntax: { } vector syntax is discontinued
-# around /Users/michel/Codes/Julia/JMtk15/src/include/MisrCoordQuery_h.jl:96`
+# around /Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/src/include/MisrCoordQuery_h.jl:96`
 
 # Option 9: Use () instead of {}:
 # const MTKT_BLOCKCORNERS_INIT = (0, 0, 0, [MTKT_GEOBLOCK_INIT for i in 1:181])

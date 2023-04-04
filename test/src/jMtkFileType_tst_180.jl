@@ -38,7 +38,7 @@ Test Passed
 ```
 """
 function jMtkFileType_tst_180()
-    filename = JMtk15_data * "MISR_AM1_AS_AEROSOL_P168_O068050_F13_0023.nc"
+    filename = JMtk15_data * "MISR/MISR_AM1_AS_AEROSOL_P168_O068050_F13_0023.nc"
     filetype = jMtkFileType(filename)
     return filetype
 end

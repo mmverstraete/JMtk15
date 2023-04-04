@@ -69,7 +69,7 @@ using Test
             
         include(JMtk15_test * "src/jMtkFileType_tst_160.jl")
         filetype = jMtkFileType_tst_160();
-        @test filetype == "TC_CLOUD"
+        @test filetype == "TC_CLASSIFIERS"
     
         include(JMtk15_test * "src/jMtkFileType_tst_170.jl")
         filetype = jMtkFileType_tst_170();

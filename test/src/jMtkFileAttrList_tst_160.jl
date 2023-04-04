@@ -2,7 +2,7 @@
     attrcnt, attrlist = jMtkFileAttrList_tst_160()
 
 # Purpose:
-Generate the output of `jMtkFileAttrList` for testing purposes. Test 160: For a MISR `TC_CLOUD` file.
+Generate the output of `jMtkFileAttrList` for testing purposes. Test 160: For a MISR `TC_CLASSIFIERS` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,16 +16,16 @@ Generate the output of `jMtkFileAttrList` for testing purposes. Test 160: For a 
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_TC_CLOUD_P168_O068050_F01_0001.hdf'
+IDL> filename = root + 'MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf'
 IDL> status = MTK_FILEATTR_LIST(filename, attrcnt, attrlist)
 IDL> PRINT, attrcnt
-          31
+          30
 IDL> PRINT, attrlist[7:10]
 Ocean_blocks.count Ocean_blocks.numbers SOM_parameters.som_ellipsoid.a SOM_parameters.som_ellipsoid.e2
 IDL> PRINT, attrlist[20:23]
 Origin_block.ulc.y Origin_block.lrc.x Origin_block.lrc.y Start_block
 IDL> PRINT, attrlist[26:29]
-Num_local_modes Local_mode_site_name Orbit_QA Orbit_qa_winds
+Num_local_modes Local_mode_site_name Orbit_QA coremetadata
 ```
 
 # Example:
@@ -39,7 +39,7 @@ jMtkFileAttrList_tst_160
 
 julia> attrcnt, attrlist = jMtkFileAttrList_tst_160();
 
-julia> @test attrcnt == 31
+julia> @test attrcnt == 30
 Test Passed
 
 julia> @test attrlist[8:11] == ["Ocean_blocks.count", "Ocean_blocks.numbers", "SOM_parameters.som_ellipsoid.a", "SOM_parameters.som_ellipsoid.e2"]
@@ -48,12 +48,12 @@ Test Passed
 julia> @test attrlist[21:24] == ["Origin_block.ulc.y", "Origin_block.lrc.x", "Origin_block.lrc.y", "Start_block"]
 Test Passed
 
-julia> @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orbit_QA", "Orbit_qa_winds"]
+julia> @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orbit_QA", "coremetadata"]
 Test Passed
 ```
 """
 function jMtkFileAttrList_tst_160()
-    filename = JMtk15_data * "MISR/MISR_AM1_TC_CLOUD_P168_O068050_F01_0001.hdf"
+    filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
     attrcnt, attrlist = jMtkFileAttrList(filename);
     return attrcnt, attrlist
 end

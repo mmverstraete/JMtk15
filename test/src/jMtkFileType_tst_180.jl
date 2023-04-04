@@ -1,8 +1,8 @@
 """
-    ftype = jMtkFileType_tst_160()
+    ftype = jMtkFileType_tst_180()
 
 # Purpose:
-Generate the output of `jMtkFileType` for testing purposes. Test 160: For a MISR `TC_CLASSIFIERS` file.
+Generate the output of `jMtkFileType` for testing purposes. Test 180: For a MISR `AS_AEROSOL` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,10 +16,10 @@ Generate the output of `jMtkFileType` for testing purposes. Test 160: For a MISR
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf'
+IDL> filename = root + 'MISR_AM1_AS_AEROSOL_P168_O068050_F13_0023.nc'
 IDL> status = MTK_FILE_TYPE(filename, ftype)
 IDL> PRINT, ftype
-TC_CLASSIFIERS
+AS_AEROSOL
 ```
 
 # Example:
@@ -28,17 +28,17 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileType_tst_160.jl")
-jMtkFileType_tst_160
+julia> include(JMtk15_test * "src/jMtkFileType_tst_180.jl")
+jMtkFileType_tst_180
 
-julia> filetype = jMtkFileType_tst_160();
+julia> filetype = jMtkFileType_tst_180();
 
-julia> @test filetype == "TC_CLASSIFIERS"
+julia> @test filetype == "AS_AEROSOL"
 Test Passed
 ```
 """
-function jMtkFileType_tst_160()
-    filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
+function jMtkFileType_tst_180()
+    filename = JMtk15_data * "MISR_AM1_AS_AEROSOL_P168_O068050_F13_0023.nc"
     filetype = jMtkFileType(filename)
     return filetype
 end

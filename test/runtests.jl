@@ -74,6 +74,10 @@ using Test
         include(JMtk15_test * "src/jMtkFileType_tst_170.jl")
         filetype = jMtkFileType_tst_170();
         @test filetype == "AS_LAND"
+
+        include(JMtk15_test * "src/jMtkFileType_tst_180.jl")
+        filetype = jMtkFileType_tst_180();
+        @test filetype == "AS_AEROSOL"
     # ------------------------------------------------------ jMtkFileLGID
         include(JMtk15_test * "src/jMtkFileLGID_tst_110.jl")
         lgid = jMtkFileLGID_tst_110();
@@ -102,6 +106,10 @@ using Test
         include(JMtk15_test * "src/jMtkFileLGID_tst_170.jl")
         lgid = jMtkFileLGID_tst_170();
         @test lgid == "MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
+
+        include(JMtk15_test * "src/jMtkFileLGID_tst_180.jl")
+        lgid = jMtkFileLGID_tst_180();
+        @test lgid == "MISR_AM1_AS_AEROSOL_P168_O068050_F13_0023.nc"
 # ---------------------------------------------------------- jMtkFileVersion
         include(JMtk15_test * "src/jMtkFileVersion_tst_110.jl")
         fversion = jMtkFileVersion_tst_110();
@@ -130,6 +138,10 @@ using Test
         include(JMtk15_test * "src/jMtkFileVersion_tst_170.jl")
         fversion = jMtkFileVersion_tst_170();
         @test fversion == "F08_0023"
+
+        include(JMtk15_test * "src/jMtkFileVersion_tst_180.jl")
+        fversion = jMtkFileVersion_tst_180();
+        @test fversion == "F13_0023"
 # ---------------------------------------------------------- jMtkFileAttrList
         include(JMtk15_test * "src/jMtkFileAttrList_tst_110.jl")
         attrcnt, attrlist = jMtkFileAttrList_tst_110();
@@ -168,10 +180,10 @@ using Test
 
         include(JMtk15_test * "src/jMtkFileAttrList_tst_160.jl")
         attrcnt, attrlist = jMtkFileAttrList_tst_160();
-        @test attrcnt == 31
+        @test attrcnt == 30
         @test attrlist[8:11] == ["Ocean_blocks.count", "Ocean_blocks.numbers", "SOM_parameters.som_ellipsoid.a", "SOM_parameters.som_ellipsoid.e2"]
         @test attrlist[21:24] == ["Origin_block.ulc.y", "Origin_block.lrc.x", "Origin_block.lrc.y", "Start_block"]
-        @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orbit_QA", "Orbit_qa_winds"]
+        @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orbit_QA", "coremetadata"]
 
         include(JMtk15_test * "src/jMtkFileAttrList_tst_170.jl")
         attrcnt, attrlist = jMtkFileAttrList_tst_170();
@@ -180,8 +192,14 @@ using Test
         @test attrlist[41:45] == ["title", "institution", "source", "history", "references"]
         @test attrlist[85:88] == ["config.sim.enable", "config.sim.surface_type", "config.SurfaceRetrieval.use_smoothed_aod", "config.underlight_albedo"]
 
+        include(JMtk15_test * "src/jMtkFileAttrList_tst_180.jl")
+        attrcnt, attrlist = jMtkFileAttrList_tst_180();
+        @test attrcnt == 144
+        @test attrlist[1:3] == ["Path_number", "AGP_version_id", "DID_version_id"]
+        @test attrlist[25] == "SOM_map_maximum_corner.y"
+        @test attrlist[130] == "config.het_bias_pixel_mode"
+        @test attrlist[144] == "config.GeographicExclusions.latitude.0"
 
-        
     end
 # =============================================================================
 

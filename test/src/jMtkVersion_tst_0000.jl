@@ -1,5 +1,5 @@
 """
-    version = jMtkVersion_tst()
+    version = jMtkVersion_tst_0000()
 
 # Purpose:
 Generate the output of `jMtkVersion` for testing purposes.
@@ -26,16 +26,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkVersion_tst.jl")
+julia> include(JMtk15_test * "src/jMtkVersion_tst_0000.jl")
 jMtkVersion_tst
 
-julia> version = jMtkVersion_tst();
+julia> version = jMtkVersion_tst_0000();
 
 julia> @test version == "1.5.0"
 Test Passed
 ```
 """
-function jMtkVersion_tst()
+function jMtkVersion_tst_0000()
     version = jMtkVersion()
     return version
 end

@@ -1,8 +1,8 @@
 """
-    ftype = jMtkFileType_tst_140()
+    ftype = jMtkFileType_tst_0100()
 
 # Purpose:
-Generate the output of `jMtkFileType` for testing purposes. Test 140: For a MISR `GRP_ELLIPSOID_GM` file.
+Generate the output of `jMtkFileType` for testing purposes. Test 0100: For a MISR `AGP` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,10 +16,10 @@ Generate the output of `jMtkFileType` for testing purposes. Test 140: For a MISR
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_CF_F03_0024.hdf'
+IDL> filename = root + 'MISR_AM1_AGP_P168_F01_24.hdf'
 IDL> status = MTK_FILE_TYPE(filename, ftype)
 IDL> PRINT, ftype
-GRP_ELLIPSOID_GM
+AGP
 ```
 
 # Example:
@@ -28,17 +28,17 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileType_tst_140.jl")
-jMtkFileType_tst_140
+julia> include(JMtk15_test * "src/jMtkFileType_tst_0100.jl")
+jMtkFileType_tst_0100
 
-julia> filetype = jMtkFileType_tst_140();
+julia> filetype = jMtkFileType_tst_0100();
 
-julia> @test filetype == "GRP_ELLIPSOID_GM"
+julia> @test filetype == "AGP"
 Test Passed
 ```
 """
-function jMtkFileType_tst_140()
-    filename = JMtk15_data * "MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_CF_F03_0024.hdf"
+function jMtkFileType_tst_0100()
+    filename = JMtk15_data * "MISR/MISR_AM1_AGP_P168_F01_24.hdf"
     filetype = jMtkFileType(filename)
     return filetype
 end

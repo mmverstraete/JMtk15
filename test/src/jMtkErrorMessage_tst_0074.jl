@@ -1,8 +1,8 @@
 """
-    errmsg = jMtkErrorMessage_tst_00()
+    errmsg = jMtkErrorMessage_tst_0074()
 
 # Purpose:
-Generate the output of `jMtkErrorMessage` for testing purposes. Test 00: status = 0.
+Generate the output of `jMtkErrorMessage` for testing purposes. Test 0074: status = 74.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,8 +16,8 @@ Generate the output of `jMtkErrorMessage` for testing purposes. Test 00: status 
 
 # Verification:
 ```idl
-IDL> PRINT, MTK_ERROR_MESSAGE(0)
-SUCCESS
+IDL> PRINT, MTK_ERROR_MESSAGE(74)
+INVALID ERROR CODE
 ```
 
 # Example:
@@ -26,16 +26,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkErrorMessage_tst_00.jl")
-jMtkErrorMessage_tst_00
+julia> include(JMtk15_test * "src/jMtkErrorMessage_tst_0074.jl")
+jMtkErrorMessage_tst_0074
 
-julia> errmsg = jMtkErrorMessage_tst_00();
+julia> errmsg = jMtkErrorMessage_tst_0074();
 
-julia> @test errmsg == "SUCCESS"
+julia> @test errmsg == "INVALID ERROR CODE"
 Test Passed
 ```
 """
-function jMtkErrorMessage_tst_00()
-    status = 0
+function jMtkErrorMessage_tst_0074()
+    status = 74
     return jMtkErrorMessage(status)
 end

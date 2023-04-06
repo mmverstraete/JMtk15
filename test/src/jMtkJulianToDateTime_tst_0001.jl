@@ -1,8 +1,8 @@
 """
-    datetime = jMtkJulianToDateTime_tst_2()
+    datetime = jMtkJulianToDateTime_tst_0001()
 
 # Purpose:
-Generate the output of `jMtkJulianToDateTime` for testing purposes. Test 2: Additional case.
+Generate the output of `jMtkJulianToDateTime` for testing purposes. Test 0001: Inverse of Test 1 of `jMtkDateTimeToJulian_tst_1`.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,9 +16,9 @@ Generate the output of `jMtkJulianToDateTime` for testing purposes. Test 2: Addi
 
 # Verification:
 ```idl
-IDL> status = MTK_JULIAN_TO_DATETIME(2459744.0106250001d, datetime)
-IDL> datetime
-2022-06-13T12:15:18Z
+IDL> status = MTK_JULIAN_TO_DATETIME(2453728.27313d, datetime)
+IDL> PRINT, datetime
+2005-12-23T18:33:18Z
 ```
 
 # Example:
@@ -27,17 +27,17 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkJulianToDateTime_tst_2.jl")
-jMtkJulianToDateTime_tst_2
+julia> include(JMtk15_test * "src/jMtkJulianToDateTime_tst_0001.jl")
+jMtkJulianToDateTime_tst_0001
 
-julia> datetime = jMtkJulianToDateTime_tst_2();
+julia> datetime = jMtkJulianToDateTime_tst_0001();
 
-julia> @test datetime == "2022-06-13T12:15:18Z"
+julia> @test datetime == "2002-05-02T02:00:00Z"
 Test Passed
 ```
 """
-function jMtkJulianToDateTime_tst_2()
-    juldate = 2459744.0106250001
+function jMtkJulianToDateTime_tst_0001()
+    juldate = 2452396.58333
     datetime = jMtkJulianToDateTime(juldate)
     return datetime
 end

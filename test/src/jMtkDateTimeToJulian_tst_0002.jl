@@ -1,8 +1,8 @@
 """
-    juldate = jMtkDateTimeToJulian_tst_2()
+    juldate = jMtkDateTimeToJulian_tst_0002()
 
 # Purpose:
-Generate the output of `jMtkDateTimeToJulian` for testing purposes. Test 2: `datetime` without final `Z`.
+Generate the output of `jMtkDateTimeToJulian` for testing purposes. Test 0002: `datetime` without final `Z`.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -27,16 +27,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_2.jl")
-jMtkDateTimeToJulian_tst_1
+julia> include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_0002.jl")
+jMtkDateTimeToJulian_tst_0002
 
-julia> juldate = jMtkDateTimeToJulian_tst_2();
+julia> juldate = jMtkDateTimeToJulian_tst_0002();
 
 julia> @test (juldate - 2452396.58333) < 0.0001
 Test Passed
 ```
 """
-function jMtkDateTimeToJulian_tst_2()
+function jMtkDateTimeToJulian_tst_0002()
     datetime = "2002-05-02T02:00:00"
     juldate = jMtkDateTimeToJulian(datetime)
     return juldate

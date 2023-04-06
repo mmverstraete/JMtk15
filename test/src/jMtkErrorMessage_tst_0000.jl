@@ -1,8 +1,8 @@
 """
-    errmsg = jMtkErrorMessage_tst_10()
+    errmsg = jMtkErrorMessage_tst_0000()
 
 # Purpose:
-Generate the output of `jMtkErrorMessage` for testing purposes. Test 10: status = 10.
+Generate the output of `jMtkErrorMessage` for testing purposes. Test 0000: status = 0.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,8 +16,8 @@ Generate the output of `jMtkErrorMessage` for testing purposes. Test 10: status 
 
 # Verification:
 ```idl
-IDL> PRINT, MTK_ERROR_MESSAGE(10)
-MALLOC FAILED
+IDL> PRINT, MTK_ERROR_MESSAGE(0)
+SUCCESS
 ```
 
 # Example:
@@ -26,16 +26,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkErrorMessage_tst_10.jl")
-jMtkErrorMessage_tst_10
+julia> include(JMtk15_test * "src/jMtkErrorMessage_tst_0000.jl")
+jMtkErrorMessage_tst_0000
 
-julia> errmsg = jMtkErrorMessage_tst_10();
+julia> errmsg = jMtkErrorMessage_tst_0000();
 
-julia> @test errmsg == "MALLOC FAILED"
+julia> @test errmsg == "SUCCESS"
 Test Passed
 ```
 """
-function jMtkErrorMessage_tst_10()
-    status = 10
+function jMtkErrorMessage_tst_0000()
+    status = 0
     return jMtkErrorMessage(status)
 end

@@ -1,8 +1,8 @@
 """
-    ftype = jMtkFileType_tst_170()
+    ftype = jMtkFileType_tst_1500()
 
 # Purpose:
-Generate the output of `jMtkFileType` for testing purposes. Test 170: For a MISR `AS_LAND` file.
+Generate the output of `jMtkFileType` for testing purposes. Test 1500: For a MISR `GRP_RCCM_GM` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,10 +16,10 @@ Generate the output of `jMtkFileType` for testing purposes. Test 170: For a MISR
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc'
+IDL> filename = root + 'MISR_AM1_GRP_RCCM_GM_P168_O068050_AF_F04_0025.hdf'
 IDL> status = MTK_FILE_TYPE(filename, ftype)
 IDL> PRINT, ftype
-AS_LAND
+GRP_RCCM
 ```
 
 # Example:
@@ -28,17 +28,17 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileType_tst_170.jl")
-jMtkFileType_tst_170
+julia> include(JMtk15_test * "src/jMtkFileType_tst_1500.jl")
+jMtkFileType_tst_1500
 
-julia> filetype = jMtkFileType_tst_170();
+julia> filetype = jMtkFileType_tst_1500();
 
-julia> @test filetype == "AS_LAND"
+julia> @test filetype == "GRP_RCCM"
 Test Passed
 ```
 """
-function jMtkFileType_tst_170()
-    filename = JMtk15_data * "MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
+function jMtkFileType_tst_1500()
+    filename = JMtk15_data * "MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_AF_F04_0025.hdf"
     filetype = jMtkFileType(filename)
     return filetype
 end

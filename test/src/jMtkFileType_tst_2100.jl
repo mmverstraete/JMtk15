@@ -1,8 +1,8 @@
 """
-    ftype = jMtkFileType_tst_160()
+    ftype = jMtkFileType_tst_2100()
 
 # Purpose:
-Generate the output of `jMtkFileType` for testing purposes. Test 160: For a MISR `TC_CLASSIFIERS` file.
+Generate the output of `jMtkFileType` for testing purposes. Test 2100: For a MISR `TC_CLASSIFIERS` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileType_tst_160.jl")
-jMtkFileType_tst_160
+julia> include(JMtk15_test * "src/jMtkFileType_tst_2100.jl")
+jMtkFileType_tst_2100
 
-julia> filetype = jMtkFileType_tst_160();
+julia> filetype = jMtkFileType_tst_2100();
 
 julia> @test filetype == "TC_CLASSIFIERS"
 Test Passed
 ```
 """
-function jMtkFileType_tst_160()
+function jMtkFileType_tst_2100()
     filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
     filetype = jMtkFileType(filename)
     return filetype

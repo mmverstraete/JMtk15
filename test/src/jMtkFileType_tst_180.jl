@@ -1,8 +1,8 @@
 """
-    ftype = jMtkFileType_tst_180()
+    ftype = jMtkFileType_tst_2400()
 
 # Purpose:
-Generate the output of `jMtkFileType` for testing purposes. Test 180: For a MISR `AS_AEROSOL` file.
+Generate the output of `jMtkFileType` for testing purposes. Test 2400: For a MISR `AS_AEROSOL` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileType_tst_180.jl")
-jMtkFileType_tst_180
+julia> include(JMtk15_test * "src/jMtkFileType_tst_2400.jl")
+jMtkFileType_tst_2400
 
-julia> filetype = jMtkFileType_tst_180();
+julia> filetype = jMtkFileType_tst_2400();
 
 julia> @test filetype == "AS_AEROSOL"
 Test Passed
 ```
 """
-function jMtkFileType_tst_180()
+function jMtkFileType_tst_2400()
     filename = JMtk15_data * "MISR/MISR_AM1_AS_AEROSOL_P168_O068050_F13_0023.nc"
     filetype = jMtkFileType(filename)
     return filetype

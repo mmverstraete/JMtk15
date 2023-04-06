@@ -1,8 +1,8 @@
 """
-    errmsg = jMtkErrorMessage_tst_18()
+    errmsg = jMtkErrorMessage_tst_0018()
 
 # Purpose:
-Generate the output of `jMtkErrorMessage` for testing purposes. Test 18: status = 18.
+Generate the output of `jMtkErrorMessage` for testing purposes. Test 0018: status = 18.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -26,16 +26,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkErrorMessage_tst_18.jl")
-jMtkErrorMessage_tst_18
+julia> include(JMtk15_test * "src/jMtkErrorMessage_tst_0018.jl")
+jMtkErrorMessage_tst_0018
 
-julia> errmsg = jMtkErrorMessage_tst_18();
+julia> errmsg = jMtkErrorMessage_tst_0018();
 
 julia> @test errmsg == "MISR FORWARD PROJECTION FAILED"
 Test Passed
 ```
 """
-function jMtkErrorMessage_tst_18()
+function jMtkErrorMessage_tst_0018()
     status = 18
     return jMtkErrorMessage(status)
 end

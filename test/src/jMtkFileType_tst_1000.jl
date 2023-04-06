@@ -1,8 +1,8 @@
 """
-    ftype = jMtkFileType_tst_110()
+    ftype = jMtkFileType_tst_1000()
 
 # Purpose:
-Generate the output of `jMtkFileType` for testing purposes. Test 110: For a MISR `AGP` file.
+Generate the output of `jMtkFileType` for testing purposes. Test 1000: For a MISR `GP_GMP` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,10 +16,10 @@ Generate the output of `jMtkFileType` for testing purposes. Test 110: For a MISR
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_AGP_P168_F01_24.hdf'
+IDL> filename = root + 'MISR_AM1_GP_GMP_P168_O068050_F03_0013.hdf'
 IDL> status = MTK_FILE_TYPE(filename, ftype)
 IDL> PRINT, ftype
-AGP
+GP_GMP
 ```
 
 # Example:
@@ -28,17 +28,17 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileType_tst_110.jl")
-jMtkFileType_tst_110
+julia> include(JMtk15_test * "src/jMtkFileType_tst_1000.jl")
+jMtkFileType_tst_1000
 
-julia> filetype = jMtkFileType_tst_110();
+julia> filetype = jMtkFileType_tst_1000();
 
-julia> @test filetype == "AGP"
+julia> @test filetype == "GP_GMP"
 Test Passed
 ```
 """
-function jMtkFileType_tst_110()
-    filename = JMtk15_data * "MISR/MISR_AM1_AGP_P168_F01_24.hdf"
+function jMtkFileType_tst_1000()
+    filename = JMtk15_data * "MISR/MISR_AM1_GP_GMP_P168_O068050_F03_0013.hdf"
     filetype = jMtkFileType(filename)
     return filetype
 end

@@ -5,79 +5,79 @@ using Test
 @testset "JMtk15.jl" begin
     @testset "Util" begin
 # ---------------------------------------------------------- jMtkVersion
-        include(JMtk15_test * "src/jMtkVersion_tst.jl")
-        @test jMtkVersion_tst() == "1.5.0"
+        include(JMtk15_test * "src/jMtkVersion_tst_0000.jl")
+        @test jMtkVersion_tst_0000() == "1.5.0"
 # ---------------------------------------------------------- jMtkErrorMessage
-        include(JMtk15_test * "src/jMtkErrorMessage_tst_00.jl")
-        errmsg = jMtkErrorMessage_tst_00();
+        include(JMtk15_test * "src/jMtkErrorMessage_tst_0000.jl")
+        errmsg = jMtkErrorMessage_tst_0000();
         @test errmsg == "SUCCESS"
 
-        include(JMtk15_test * "src/jMtkErrorMessage_tst_10.jl")
-        errmsg = jMtkErrorMessage_tst_10();
+        include(JMtk15_test * "src/jMtkErrorMessage_tst_0010.jl")
+        errmsg = jMtkErrorMessage_tst_0010();
         @test errmsg == "MALLOC FAILED"
 
-        include(JMtk15_test * "src/jMtkErrorMessage_tst_18.jl")
-        errmsg = jMtkErrorMessage_tst_18();
+        include(JMtk15_test * "src/jMtkErrorMessage_tst_0018.jl")
+        errmsg = jMtkErrorMessage_tst_0018();
         @test errmsg == "MISR FORWARD PROJECTION FAILED"
 
-        include(JMtk15_test * "src/jMtkErrorMessage_tst_74.jl")
-        errmsg = jMtkErrorMessage_tst_74();
+        include(JMtk15_test * "src/jMtkErrorMessage_tst_0074.jl")
+        errmsg = jMtkErrorMessage_tst_0074();
         @test errmsg == "INVALID ERROR CODE"
         # -------------------------------------------------- jMtkDateTimeToJulian
-        include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_1.jl")
-        juldate = jMtkDateTimeToJulian_tst_1();
+        include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_0001.jl")
+        juldate = jMtkDateTimeToJulian_tst_0001();
         @test (juldate - 2452396.58333) < 0.0001
 
-        include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_2.jl")
-        juldate = jMtkDateTimeToJulian_tst_2();
+        include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_0002.jl")
+        juldate = jMtkDateTimeToJulian_tst_0002();
         @test (juldate - 2452396.58333) < 0.0001
 
-        include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_3.jl")
-        juldate = jMtkDateTimeToJulian_tst_3();
+        include(JMtk15_test * "src/jMtkDateTimeToJulian_tst_0003.jl")
+        juldate = jMtkDateTimeToJulian_tst_0003();
         @test (juldate - 2453728.27312) < 0.0001
 # ---------------------------------------------------------- jMtkJulianToDateTime
-        include(JMtk15_test * "src/jMtkJulianToDateTime_tst_1.jl")
-        datetime = jMtkJulianToDateTime_tst_1();
+        include(JMtk15_test * "src/jMtkJulianToDateTime_tst_0001.jl")
+        datetime = jMtkJulianToDateTime_tst_0001();
         @test datetime == "2002-05-02T02:00:00Z"
 
-        include(JMtk15_test * "src/jMtkJulianToDateTime_tst_2.jl")
-        datetime = jMtkJulianToDateTime_tst_2();
+        include(JMtk15_test * "src/jMtkJulianToDateTime_tst_0002.jl")
+        datetime = jMtkJulianToDateTime_tst_0002();
         @test datetime == "2022-06-13T12:15:18Z"
     end
 # ==========================================================================================
     @testset "FileQuery" begin
 # ---------------------------------------------------------- jMtkFileType
-        include(JMtk15_test * "src/jMtkFileType_tst_110.jl")
-        filetype = jMtkFileType_tst_110();
+        include(JMtk15_test * "src/jMtkFileType_tst_0100.jl")
+        filetype = jMtkFileType_tst_0100();
         @test filetype == "AGP"
-    
-        include(JMtk15_test * "src/jMtkFileType_tst_120.jl")
-        filetype = jMtkFileType_tst_120();
-        @test filetype == "GP_GMP"
-    
-        include(JMtk15_test * "src/jMtkFileType_tst_130.jl")
-        filetype = jMtkFileType_tst_130();
-        @test filetype == "GRP_RCCM"
-    
-        include(JMtk15_test * "src/jMtkFileType_tst_140.jl")
-        filetype = jMtkFileType_tst_140();
-        @test filetype == "GRP_ELLIPSOID_GM"
-    
-        include(JMtk15_test * "src/jMtkFileType_tst_150.jl")
-        filetype = jMtkFileType_tst_150();
-        @test filetype == "GRP_TERRAIN_GM"
-            
-        include(JMtk15_test * "src/jMtkFileType_tst_160.jl")
-        filetype = jMtkFileType_tst_160();
-        @test filetype == "TC_CLASSIFIERS"
-    
-        include(JMtk15_test * "src/jMtkFileType_tst_170.jl")
-        filetype = jMtkFileType_tst_170();
-        @test filetype == "AS_LAND"
 
-        include(JMtk15_test * "src/jMtkFileType_tst_180.jl")
-        filetype = jMtkFileType_tst_180();
+        include(JMtk15_test * "src/jMtkFileType_tst_1000.jl")
+        filetype = jMtkFileType_tst_1000();
+        @test filetype == "GP_GMP"
+
+        include(JMtk15_test * "src/jMtkFileType_tst_1100.jl")
+        filetype = jMtkFileType_tst_1100();
+        @test filetype == "GRP_ELLIPSOID_GM"
+
+        include(JMtk15_test * "src/jMtkFileType_tst_1300.jl")
+        filetype = jMtkFileType_tst_1300();
+        @test filetype == "GRP_TERRAIN_GM"
+
+        include(JMtk15_test * "src/jMtkFileType_tst_1500.jl")
+        filetype = jMtkFileType_tst_1500();
+        @test filetype == "GRP_RCCM"
+
+        include(JMtk15_test * "src/jMtkFileType_tst_2100.jl")
+        filetype = jMtkFileType_tst_2100();
+        @test filetype == "TC_CLASSIFIERS"
+
+        include(JMtk15_test * "src/jMtkFileType_tst_2400.jl")
+        filetype = jMtkFileType_tst_2400();
         @test filetype == "AS_AEROSOL"
+
+        include(JMtk15_test * "src/jMtkFileType_tst_2500.jl")
+        filetype = jMtkFileType_tst_2500();
+        @test filetype == "AS_LAND"
     # ------------------------------------------------------ jMtkFileLGID
         include(JMtk15_test * "src/jMtkFileLGID_tst_110.jl")
         lgid = jMtkFileLGID_tst_110();
@@ -233,6 +233,41 @@ using Test
         nattrs, attrlist = jMtkGridAttrList_tst_170();
         @test nattrs == 4
         @test attrlist == ["GCTP_projection_parameters", "resolution_in_meters", "block_size_in_lines", "block_size_in_samples"]
+# ---------------------------------------------------------- jMtkFieldAttrList
+        include(JMtk15_test * "src/jMtkFieldAttrList_tst_110.jl")
+        nattrs, attrlist = jMtkFieldAttrList_tst_110();
+        @test nattrs == 0
+        @test attrlist == String[]
+
+        include(JMtk15_test * "src/jMtkFieldAttrList_tst_120.jl")
+        nattrs, attrlist = jMtkFieldAttrList_tst_120();
+        @test nattrs == 1
+        @test attrlist == ["_FillValue"]
+
+        include(JMtk15_test * "src/jMtkFieldAttrList_tst_130.jl")
+        nattrs, attrlist = jMtkFieldAttrList_tst_130();
+        @test nattrs == 1
+        @test attrlist == ["_FillValue"]
+
+        include(JMtk15_test * "src/jMtkFieldAttrList_tst_140.jl")
+        nattrs, attrlist = jMtkFieldAttrList_tst_140();
+        @test nattrs == 1
+        @test attrlist == ["_FillValue"]
+
+        include(JMtk15_test * "src/jMtkFieldAttrList_tst_150.jl")
+        nattrs, attrlist = jMtkFieldAttrList_tst_150();
+        @test nattrs == 1
+        @test attrlist == ["_FillValue"]
+
+        include(JMtk15_test * "src/jMtkFieldAttrList_tst_160.jl")
+        nattrs, attrlist = jMtkFieldAttrList_tst_160();
+        @test nattrs == 1
+        @test attrlist == ["_FillValue"]
+
+        include(JMtk15_test * "src/jMtkFieldAttrList_tst_170.jl")
+        nattrs, attrlist = jMtkFieldAttrList_tst_170();
+        @test nattrs == 5
+        @test attrlist == ["_FillValue", "coordinates", "units", "standard_name", "long_name"]
 
     end
 # =============================================================================

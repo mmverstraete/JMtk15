@@ -141,6 +141,8 @@ include(JMtk15_src * "jMtkFileAttrList.jl")
 export jMtkFileAttrList
 include(JMtk15_src * "jMtkGridAttrList.jl")
 export jMtkGridAttrList
+include(JMtk15_src * "jMtkFieldAttrList.jl")
+export jMtkFieldAttrList
 
 # -----------------------------------------------------------------------------
 

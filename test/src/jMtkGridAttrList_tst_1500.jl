@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkGridAttrList_tst_160()
+    nattrs, attrlist = jMtkGridAttrList_tst_1500()
 
 # Purpose:
-Generate the output of `jMtkGridAttrList` for testing purposes. Test 160: For a MISR `TC_CLASSIFIERS` file.
+Generate the output of `jMtkGridAttrList` for testing purposes. Test 1500: For a MISR `GRP_RCCM_GM` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -12,17 +12,17 @@ Generate the output of `jMtkGridAttrList` for testing purposes. Test 160: For a 
 
 # Versioning:
 * Mtk C Library: Version 1.5.
-* Julia wrapper: Version 0.1.0 (2023-02-05).
+* Julia wrapper: Version 0.1.0 (2023-02-15).
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf'
-IDL> gridname = 'ASCMParams_1.1_km'
+IDL> filename = root + 'MISR_AM1_GRP_RCCM_GM_P168_O068050_AA_F04_0025.hdf'
+IDL> gridname = 'RCCM'
 IDL> status = MTK_GRIDATTR_LIST(filename, gridname, attrcnt, attrlist)
 IDL> PRINT, attrcnt
            4
 IDL> PRINT, attrlist
-Block_size.resolution_x Block_size.resolution_y Block_size.size_x Block_size.size_y MISRReferenceCamera MISRCameras
+Block_size.resolution_x Block_size.resolution_y Block_size.size_x Block_size.size_y
 ```
 
 # Example:
@@ -31,10 +31,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_160.jl")
-jMtkGridAttrList_tst_160
+julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_1500.jl")
+jMtkGridAttrList_tst_1500
 
-julia> nattrs, attrlist = jMtkGridAttrList_tst_160();
+julia> nattrs, attrlist = jMtkGridAttrList_tst_1500();
 
 julia> @test nattrs == 4
 Test Passed
@@ -43,9 +43,9 @@ julia> @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", 
 Test Passed
 ```
 """
-function jMtkGridAttrList_tst_160()
-    filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
-    gridname = "ASCMParams_1.1_km"
+function jMtkGridAttrList_tst_1500()
+    filename = JMtk15_data * "MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_AA_F04_0025.hdf"
+    gridname = "RCCM"
     nattrs, attrlist = jMtkGridAttrList(filename, gridname)
     return nattrs, attrlist
 end

@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkGridAttrList_tst_170()
+    nattrs, attrlist = jMtkGridAttrList_tst_2500()
 
 # Purpose:
-Generate the output of `jMtkGridAttrList` for testing purposes. Test 170: For a MISR `AS_LAND` file.
+Generate the output of `jMtkGridAttrList` for testing purposes. Test 2500: For a MISR `AS_LAND` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -31,10 +31,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_170.jl")
-jMtkGridAttrList_tst_170
+julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_2500.jl")
+jMtkGridAttrList_tst_2500
 
-julia> nattrs, attrlist = jMtkGridAttrList_tst_170();
+julia> nattrs, attrlist = jMtkGridAttrList_tst_2500();
 
 julia> @test nattrs == 4
 Test Passed
@@ -43,7 +43,7 @@ julia> @test attrlist == ["GCTP_projection_parameters", "resolution_in_meters", 
 Test Passed
 ```
 """
-function jMtkGridAttrList_tst_170()
+function jMtkGridAttrList_tst_2500()
     filename = JMtk15_data * "MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
     gridname = "4.4_KM_PRODUCTS"
     nattrs, attrlist = jMtkGridAttrList(filename, gridname)

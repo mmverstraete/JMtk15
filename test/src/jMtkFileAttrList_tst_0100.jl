@@ -1,8 +1,8 @@
 """
-    attrcnt, attrlist = jMtkFileAttrList_tst_110()
+    attrcnt, attrlist = jMtkFileAttrList_tst_0100()
 
 # Purpose:
-Generate the output of `jMtkFileAttrList` for testing purposes. Test 110: For a MISR `AGP` file.
+Generate the output of `jMtkFileAttrList` for testing purposes. Test 0100: For a MISR `AGP` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -34,10 +34,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileAttrList_tst_110.jl")
-jMtkFileAttrList_tst_110
+julia> include(JMtk15_test * "src/jMtkFileAttrList_tst_0100.jl")
+jMtkFileAttrList_tst_0100
 
-julia> attrcnt, attrlist = jMtkFileAttrList_tst_110();
+julia> attrcnt, attrlist = jMtkFileAttrList_tst_0100();
 
 julia> @test attrcnt == 28
 Test Passed
@@ -52,7 +52,7 @@ julia> @test attrlist[25:28] == ["Origin_block.lrc.y", "Start_block", "End block
 Test Passed
 ```
 """
-function jMtkFileAttrList_tst_110()
+function jMtkFileAttrList_tst_0100()
     filename = JMtk15_data * "MISR/MISR_AM1_AGP_P168_F01_24.hdf"
     attrcnt, attrlist = jMtkFileAttrList(filename);
     return attrcnt, attrlist

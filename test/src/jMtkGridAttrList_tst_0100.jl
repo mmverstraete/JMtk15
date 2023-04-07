@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkGridAttrList_tst_150()
+    nattrs, attrlist = jMtkGridAttrList_tst_0100()
 
 # Purpose:
-Generate the output of `jMtkGridAttrList` for testing purposes. Test 150: For a MISR `GRP_TERRAIN_GM` file.
+Generate the output of `jMtkGridAttrList` for testing purposes. Test 0100: For a MISR `AGP` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,8 +16,8 @@ Generate the output of `jMtkGridAttrList` for testing purposes. Test 150: For a 
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_GRP_TERRAIN_GM_P168_O068050_BA_F03_0024.hdf'
-IDL> gridname = 'GeometricParameters'
+IDL> filename = root + 'MISR_AM1_AGP_P168_F01_24.hdf'
+IDL> gridname = 'Standard'
 IDL> status = MTK_GRIDATTR_LIST(filename, gridname, attrcnt, attrlist)
 IDL> PRINT, attrcnt
            4
@@ -31,10 +31,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_150.jl")
-jMtkGridAttrList_tst_150
+julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_0100.jl")
+jMtkGridAttrList_tst_0100
 
-julia> nattrs, attrlist = jMtkGridAttrList_tst_150();
+julia> nattrs, attrlist = jMtkGridAttrList_tst_0100();
 
 julia> @test nattrs == 4
 Test Passed
@@ -43,9 +43,9 @@ julia> @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", 
 Test Passed
 ```
 """
-function jMtkGridAttrList_tst_150()
-    filename = JMtk15_data * "MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_BA_F03_0024.hdf"
-    gridname = "GeometricParameters"
+function jMtkGridAttrList_tst_0100()
+    filename = JMtk15_data * "MISR/MISR_AM1_AGP_P168_F01_24.hdf"
+    gridname = "Standard"
     nattrs, attrlist = jMtkGridAttrList(filename, gridname)
     return nattrs, attrlist
 end

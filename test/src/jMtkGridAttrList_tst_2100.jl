@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkGridAttrList_tst_140()
+    nattrs, attrlist = jMtkGridAttrList_tst_2100()
 
 # Purpose:
-Generate the output of `jMtkGridAttrList` for testing purposes. Test 140: For a MISR `GRP_ELLIPSOID_GM` file.
+Generate the output of `jMtkGridAttrList` for testing purposes. Test 2100: For a MISR `TC_CLASSIFIERS` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -12,17 +12,17 @@ Generate the output of `jMtkGridAttrList` for testing purposes. Test 140: For a 
 
 # Versioning:
 * Mtk C Library: Version 1.5.
-* Julia wrapper: Version 0.1.0 (2023-02-15).
+* Julia wrapper: Version 0.1.0 (2023-02-05).
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DF_F03_0024.hdf'
-IDL> gridname = 'BRF Conversion Factors'
+IDL> filename = root + 'MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf'
+IDL> gridname = 'ASCMParams_1.1_km'
 IDL> status = MTK_GRIDATTR_LIST(filename, gridname, attrcnt, attrlist)
 IDL> PRINT, attrcnt
            4
 IDL> PRINT, attrlist
-Block_size.resolution_x Block_size.resolution_y Block_size.size_x Block_size.size_y
+Block_size.resolution_x Block_size.resolution_y Block_size.size_x Block_size.size_y MISRReferenceCamera MISRCameras
 ```
 
 # Example:
@@ -31,10 +31,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_140.jl")
-jMtkGridAttrList_tst_140
+julia> include(JMtk15_test * "src/jMtkGridAttrList_tst_2100.jl")
+jMtkGridAttrList_tst_2100
 
-julia> nattrs, attrlist = jMtkGridAttrList_tst_140();
+julia> nattrs, attrlist = jMtkGridAttrList_tst_2100();
 
 julia> @test nattrs == 4
 Test Passed
@@ -43,9 +43,9 @@ julia> @test attrlist == ["Block_size.resolution_x", "Block_size.resolution_y", 
 Test Passed
 ```
 """
-function jMtkGridAttrList_tst_140()
-    filename = JMtk15_data * "MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DF_F03_0024.hdf"
-    gridname = "BRF Conversion Factors"
+function jMtkGridAttrList_tst_2100()
+    filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
+    gridname = "ASCMParams_1.1_km"
     nattrs, attrlist = jMtkGridAttrList(filename, gridname)
     return nattrs, attrlist
 end

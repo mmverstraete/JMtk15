@@ -1,8 +1,8 @@
 """
-    attrcnt, attrlist = jMtkFileAttrList_tst_150()
+    attrcnt, attrlist = jMtkFileAttrList_tst_1300()
 
 # Purpose:
-Generate the output of `jMtkFileAttrList` for testing purposes. Test 150: For a MISR `GRP_TERRAIN_GM` file.
+Generate the output of `jMtkFileAttrList` for testing purposes. Test 1300: For a MISR `GRP_TERRAIN_GM` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -34,10 +34,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileAttrList_tst_150.jl")
-jMtkFileAttrList_tst_150
+julia> include(JMtk15_test * "src/jMtkFileAttrList_tst_1300.jl")
+jMtkFileAttrList_tst_1300
 
-julia> attrcnt, attrlist = jMtkFileAttrList_tst_150();
+julia> attrcnt, attrlist = jMtkFileAttrList_tst_1300();
 
 julia> @test attrcnt == 31
 Test Passed
@@ -52,7 +52,7 @@ julia> @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orb
 Test Passed
 ```
 """
-function jMtkFileAttrList_tst_150()
+function jMtkFileAttrList_tst_1300()
     filename = JMtk15_data * "MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AA_F03_0024.hdf"
     attrcnt, attrlist = jMtkFileAttrList(filename);
     return attrcnt, attrlist

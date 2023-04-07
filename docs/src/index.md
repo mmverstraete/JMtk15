@@ -73,4 +73,6 @@ jMtkFileToGridList
 jMtkFileGridToFieldList
 jMtkFileGridToNativeFieldList
 jMtkFileGridFieldToDimList
+jMtkFileGridFieldCheck
+jMtkFileGridFieldToDataType
 ```

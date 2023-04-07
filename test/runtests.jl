@@ -526,6 +526,62 @@ using Test
         # @test ndims == 2
         # @test dimnames == ["Band_Dim", "Camera_Dim"]
         # @test dimsizes == [4, 9]
+# ---------------------------------------------------------- jMtkFileGridFieldCheck
+        include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_0100.jl")
+        status = jMtkFileGridFieldCheck_tst_0100();
+        @test status == "SUCCESS"
+
+        include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_1000.jl")
+        status = jMtkFileGridFieldCheck_tst_1000();
+        @test status == "SUCCESS"
+
+        include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_1100.jl")
+        status = jMtkFileGridFieldCheck_tst_1100();
+        @test status == "SUCCESS"
+
+        include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_1300.jl")
+        status = jMtkFileGridFieldCheck_tst_1300();
+        @test status == "SUCCESS"
+
+        include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_1500.jl")
+        status = jMtkFileGridFieldCheck_tst_1500();
+        @test status == "SUCCESS"
+
+        include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_2300.jl")
+        status = jMtkFileGridFieldCheck_tst_2300();
+        @test status == "SUCCESS"
+
+        include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_2500.jl")
+        status = jMtkFileGridFieldCheck_tst_2500();
+        @test status == "SUCCESS"
+# ---------------------------------------------------------- jMtkFileGridFieldToDataType
+        include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_0100.jl")
+        datatype = jMtkFileGridFieldToDataType_tst_0100();
+        @test datatype == Int16
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_1000.jl")
+        datatype = jMtkFileGridFieldToDataType_tst_1000();
+        @test datatype == Float64
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_1100.jl")
+        datatype = jMtkFileGridFieldToDataType_tst_1100();
+        @test datatype == UInt16
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_1300.jl")
+        datatype = jMtkFileGridFieldToDataType_tst_1300();
+        @test datatype == Float32
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_1500.jl")
+        datatype = jMtkFileGridFieldToDataType_tst_1500();
+        @test datatype == UInt8
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_2300.jl")
+        datatype = jMtkFileGridFieldToDataType_tst_2300();
+        @test datatype == Float32
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_2500.jl")
+        datatype = jMtkFileGridFieldToDataType_tst_2500();
+        @test datatype == Float32
 
 
 

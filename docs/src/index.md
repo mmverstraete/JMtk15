@@ -71,4 +71,6 @@ jMtkFileToOrbit
 jMtkFileToBlockRange
 jMtkFileToGridList
 jMtkFileGridToFieldList
+jMtkFileGridToNativeFieldList
+jMtkFileGridFieldToDimList
 ```

@@ -443,6 +443,89 @@ using Test
         @test fieldlist[10:12] == ["Latitude", "Longitude", "Hemispherical_Directional_Reflectance_Factor"]
         @test fieldlist[20:22] == ["Leaf_Area_Index_Best_Estimate", "Leaf_Area_Index_Best_Estimate_QA", "Fractional_Absorbed_Photosynthetically_Active_Radiation_Best_Estimate"]
         @test fieldlist[34:35] == ["AUXILIARY/Mean_Leaf_Area_Index_Test_2", "AUXILIARY/Leaf_Area_Index_Merit_Function_Test_2"]
+# ---------------------------------------------------------- jMtkFileGridToNativeFieldList
+        include(JMtk15_test * "src/jMtkFileGridToNativeFieldList_tst_0100.jl")
+        nfields, fieldlist = jMtkFileGridToNativeFieldList_tst_0100();
+        @test nfields == 2
+        @test fieldlist == ["RegAveSceneElev", "StdDevRegSceneElev"]
+
+        include(JMtk15_test * "src/jMtkFileGridToNativeFieldList_tst_1000.jl")
+        nfields, fieldlist = jMtkFileGridToNativeFieldList_tst_1000();
+        @test nfields == 38
+        @test fieldlist[2:6] == ["SolarZenith", "DfAzimuth", "DfZenith", "DfScatter", "DfGlitter"]
+        @test fieldlist[12:16] == ["BfZenith", "BfScatter", "BfGlitter", "AfAzimuth", "AfZenith"]
+        @test fieldlist[32:36] == ["CaZenith", "CaScatter", "CaGlitter", "DaAzimuth", "DaZenith"]
+
+        include(JMtk15_test * "src/jMtkFileGridToNativeFieldList_tst_1100.jl")
+        nfields, fieldlist = jMtkFileGridToNativeFieldList_tst_1100();
+        @test nfields == 1
+        @test fieldlist == ["Red Radiance/RDQI"]
+
+        include(JMtk15_test * "src/jMtkFileGridToNativeFieldList_tst_1300.jl")
+        nfields, fieldlist = jMtkFileGridToNativeFieldList_tst_1300();
+        @test nfields == 4
+        @test fieldlist == ["BlueConversionFactor", "GreenConversionFactor", "RedConversionFactor", "NIRConversionFactor"]
+
+        include(JMtk15_test * "src/jMtkFileGridToNativeFieldList_tst_1500.jl")
+        nfields, fieldlist = jMtkFileGridToNativeFieldList_tst_1500();
+        @test nfields == 7
+        @test fieldlist == ["Cloud", "Glitter", "Quality", "Dust_test", "First Observable", "Second Observable", "Dust Observable"]
+
+        include(JMtk15_test * "src/jMtkFileGridToNativeFieldList_tst_2300.jl")
+        nfields, fieldlist = jMtkFileGridToNativeFieldList_tst_2300();
+        @test nfields == 5
+        @test fieldlist == ["CloudTopHeightOfMotion", "CloudMotionNorthward", "CloudMotionEastward", "MotionDerivedCloudMask", "MotionQualityIndicator"]
+
+        include(JMtk15_test * "src/jMtkFileGridToNativeFieldList_tst_2500.jl")
+        nfields, fieldlist = jMtkFileGridToNativeFieldList_tst_2500();
+        @test nfields == 24
+        @test fieldlist[1:4] == ["X_Dim", "Y_Dim", "Block_Number", "Block_Start_X_Index"]
+        @test fieldlist[10:13] == ["Latitude", "Longitude", "Elevation", "Normalized_Black_Surface_Irradiance"]
+        @test fieldlist[21:24] == ["GEOMETRY/View_Zenith_Angle", "GEOMETRY/View_Azimuth_Angle", "GEOMETRY/Scattering_Angle", "GEOMETRY/Glint_Angle"]
+# ---------------------------------------------------------- jMtkFileGridFieldToDimList
+        include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_0100.jl")
+        ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_0100();
+        @test ndims == 0
+        @test dimnames == String[]
+        @test dimsizes == Int32[]
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_1000.jl")
+        ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1000();
+        @test ndims == 0
+        @test dimnames == String[]
+        @test dimsizes == Int32[]
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_1100.jl")
+        ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1100();
+        @test ndims == 0
+        @test dimnames == String[]
+        @test dimsizes == Int32[]
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_1300.jl")
+        ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1300();
+        @test ndims == 0
+        @test dimnames == String[]
+        @test dimsizes == Int32[]
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_1500.jl")
+        ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1500();
+        @test ndims == 0
+        @test dimnames == String[]
+        @test dimsizes == Int32[]
+
+        include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_2300.jl")
+        ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2300();
+        @test ndims == 0
+        @test dimnames == String[]
+        @test dimsizes == Int32[]
+
+        # The following test causes Julia to crash with the following error message:
+        # julia(19310,0x2047052c0) malloc: *** error for object 0x6000030cb990: pointer being freed was not allocated
+        # include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_2500.jl")
+        # ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2500();
+        # @test ndims == 2
+        # @test dimnames == ["Band_Dim", "Camera_Dim"]
+        # @test dimsizes == [4, 9]
 
 
 

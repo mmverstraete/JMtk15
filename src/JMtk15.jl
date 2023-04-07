@@ -153,6 +153,10 @@ include(JMtk15_src * "jMtkFileToGridList.jl")
 export jMtkFileToGridList
 include(JMtk15_src * "jMtkFileGridToFieldList.jl")
 export jMtkFileGridToFieldList
+include(JMtk15_src * "jMtkFileGridToNativeFieldList.jl")
+export jMtkFileGridToNativeFieldList
+include(JMtk15_src * "jMtkFileGridFieldToDimList.jl")
+export jMtkFileGridFieldToDimList
 
 # -----------------------------------------------------------------------------
 

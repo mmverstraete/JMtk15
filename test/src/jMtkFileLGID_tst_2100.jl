@@ -1,8 +1,8 @@
 """
-    lgid = jMtkFileLGID_tst_160()
+    lgid = jMtkFileLGID_tst_2100()
 
 # Purpose:
-Generate the output of `jMtkFileLGID` for testing purposes. Test 160: For a MISR `TC_CLASSIFIERS` file.
+Generate the output of `jMtkFileLGID` for testing purposes. Test 2100: For a MISR `TC_CLASSIFIERS` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileLGID_tst_160.jl")
-jMtkFileLGID_tst_160
+julia> include(JMtk15_test * "src/jMtkFileLGID_tst_2100.jl")
+jMtkFileLGID_tst_2100
 
-julia> lgid = jMtkFileLGID_tst_160();
+julia> lgid = jMtkFileLGID_tst_2100();
 
 julia> @test lgid == "MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
 Test Passed
 ```
 """
-function jMtkFileLGID_tst_160()
+function jMtkFileLGID_tst_2100()
     filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
     lgid = jMtkFileLGID(filename)
     return lgid

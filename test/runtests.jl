@@ -71,6 +71,10 @@ using Test
         filetype = jMtkFileType_tst_2100();
         @test filetype == "TC_CLASSIFIERS"
 
+        include(JMtk15_test * "src/jMtkFileType_tst_2300.jl")
+        filetype = jMtkFileType_tst_2300();
+        @test filetype == "TC_CLOUD"
+
         include(JMtk15_test * "src/jMtkFileType_tst_2400.jl")
         filetype = jMtkFileType_tst_2400();
         @test filetype == "AS_AEROSOL"
@@ -79,37 +83,41 @@ using Test
         filetype = jMtkFileType_tst_2500();
         @test filetype == "AS_LAND"
     # ------------------------------------------------------ jMtkFileLGID
-        include(JMtk15_test * "src/jMtkFileLGID_tst_110.jl")
-        lgid = jMtkFileLGID_tst_110();
+        include(JMtk15_test * "src/jMtkFileLGID_tst_0100.jl")
+        lgid = jMtkFileLGID_tst_0100();
         @test lgid == "MISR_AM1_AGP_P168_F01_24.hdf"
 
-        include(JMtk15_test * "src/jMtkFileLGID_tst_120.jl")
-        lgid = jMtkFileLGID_tst_120();
+        include(JMtk15_test * "src/jMtkFileLGID_tst_1000.jl")
+        lgid = jMtkFileLGID_tst_1000();
         @test lgid == "MISR_AM1_GP_GMP_P168_O068050_F03_0013.hdf"
 
-        include(JMtk15_test * "src/jMtkFileLGID_tst_130.jl")
-        lgid = jMtkFileLGID_tst_130();
-        @test lgid == "MISR_AM1_GRP_RCCM_GM_P168_O068050_AA_F04_0025.hdf"
-
-        include(JMtk15_test * "src/jMtkFileLGID_tst_140.jl")
-        lgid = jMtkFileLGID_tst_140();
+        include(JMtk15_test * "src/jMtkFileLGID_tst_1100.jl")
+        lgid = jMtkFileLGID_tst_1100();
         @test lgid == "MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DF_F03_0024.hdf"
 
-        include(JMtk15_test * "src/jMtkFileLGID_tst_150.jl")
-        lgid = jMtkFileLGID_tst_150();
+        include(JMtk15_test * "src/jMtkFileLGID_tst_1300.jl")
+        lgid = jMtkFileLGID_tst_1300();
         @test lgid == "MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf"
 
-        include(JMtk15_test * "src/jMtkFileLGID_tst_160.jl")
-        lgid = jMtkFileLGID_tst_160();
+        include(JMtk15_test * "src/jMtkFileLGID_tst_1500.jl")
+        lgid = jMtkFileLGID_tst_1500();
+        @test lgid == "MISR_AM1_GRP_RCCM_GM_P168_O068050_AA_F04_0025.hdf"
+
+        include(JMtk15_test * "src/jMtkFileLGID_tst_2100.jl")
+        lgid = jMtkFileLGID_tst_2100();
         @test lgid == "MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
 
-        include(JMtk15_test * "src/jMtkFileLGID_tst_170.jl")
-        lgid = jMtkFileLGID_tst_170();
-        @test lgid == "MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
+        include(JMtk15_test * "src/jMtkFileLGID_tst_2300.jl")
+        lgid = jMtkFileLGID_tst_2300();
+        @test lgid == "MISR_AM1_TC_CLOUD_P168_O068050_F07_0012.hdf"
 
-        include(JMtk15_test * "src/jMtkFileLGID_tst_180.jl")
-        lgid = jMtkFileLGID_tst_180();
+        include(JMtk15_test * "src/jMtkFileLGID_tst_2400.jl")
+        lgid = jMtkFileLGID_tst_2400();
         @test lgid == "MISR_AM1_AS_AEROSOL_P168_O068050_F13_0023.nc"
+
+        include(JMtk15_test * "src/jMtkFileLGID_tst_2500.jl")
+        lgid = jMtkFileLGID_tst_2500();
+        @test lgid == "MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
 # ---------------------------------------------------------- jMtkFileVersion
         include(JMtk15_test * "src/jMtkFileVersion_tst_110.jl")
         fversion = jMtkFileVersion_tst_110();

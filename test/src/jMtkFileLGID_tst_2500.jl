@@ -1,8 +1,8 @@
 """
-    lgid = jMtkFileLGID_tst_150()
+    lgid = jMtkFileLGID_tst_2500()
 
 # Purpose:
-Generate the output of `jMtkFileLGID` for testing purposes. Test 150: For a MISR `GRP_TERRAIN_GM` file.
+Generate the output of `jMtkFileLGID` for testing purposes. Test 2500: For a MISR `AS_LAND` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,10 +16,10 @@ Generate the output of `jMtkFileLGID` for testing purposes. Test 150: For a MISR
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf'
+IDL> filename = root + 'MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc'
 IDL> status = MTK_FILE_LGID(filename, lgid)
 IDL> PRINT, lgid
-MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf
+MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc
 ```
 
 # Example:
@@ -28,17 +28,17 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileLGID_tst_150.jl")
-jMtkFileLGID_tst_150
+julia> include(JMtk15_test * "src/jMtkFileLGID_tst_2500.jl")
+jMtkFileLGID_tst_2500
 
-julia> lgid = jMtkFileLGID_tst_150();
+julia> lgid = jMtkFileLGID_tst_2500();
 
-julia> @test lgid == "MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf"
+julia> @test lgid == "MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
 Test Passed
 ```
 """
-function jMtkFileLGID_tst_150()
-    filename = JMtk15_data * "MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf"
+function jMtkFileLGID_tst_2500()
+    filename = JMtk15_data * "MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
     lgid = jMtkFileLGID(filename)
     return lgid
 end

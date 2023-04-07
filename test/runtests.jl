@@ -368,6 +368,81 @@ using Test
         include(JMtk15_test * "src/jMtkFileToBlockRange_tst_2500.jl")
         start_block, end_block = jMtkFileToBlockRange_tst_2500();
         @test (start_block, end_block) == (29, 154)
+# ---------------------------------------------------------- jMtkFileToGridList
+        include(JMtk15_test * "src/jMtkFileToGridList_tst_0100.jl")
+        ngrids, gridlist = jMtkFileToGridList_tst_0100();
+        @test ngrids == 2
+        @test gridlist == ["Standard", "Regional"]
+
+        include(JMtk15_test * "src/jMtkFileToGridList_tst_1000.jl")
+        ngrids, gridlist = jMtkFileToGridList_tst_1000();
+        @test ngrids == 1
+        @test gridlist == ["GeometricParameters"]
+
+        include(JMtk15_test * "src/jMtkFileToGridList_tst_1100.jl")
+        ngrids, gridlist = jMtkFileToGridList_tst_1100();
+        @test ngrids == 6
+        @test gridlist == ["BlueBand", "GreenBand", "RedBand", "NIRBand", "BRF Conversion Factors", "GeometricParameters"]
+
+        include(JMtk15_test * "src/jMtkFileToGridList_tst_1300.jl")
+        ngrids, gridlist = jMtkFileToGridList_tst_1300();
+        @test ngrids == 6
+        @test gridlist == ["BlueBand", "GreenBand", "RedBand", "NIRBand", "BRF Conversion Factors", "GeometricParameters"]
+
+        include(JMtk15_test * "src/jMtkFileToGridList_tst_1500.jl")
+        ngrids, gridlist = jMtkFileToGridList_tst_1500();
+        @test ngrids == 1
+        @test gridlist == ["RCCM"]
+
+        include(JMtk15_test * "src/jMtkFileToGridList_tst_2300.jl")
+        ngrids, gridlist = jMtkFileToGridList_tst_2300();
+        @test ngrids == 3
+        @test gridlist == ["Motion_17.6_km", "Stereo_WithoutWindCorrection_1.1_km", "Stereo_1.1_km"]
+
+        include(JMtk15_test * "src/jMtkFileToGridList_tst_2500.jl")
+        ngrids, gridlist = jMtkFileToGridList_tst_2500();
+        @test ngrids == 2
+        @test gridlist == ["4.4_KM_PRODUCTS", "1.1_KM_PRODUCTS"]
+# ---------------------------------------------------------- jMtkFileGridToFieldList
+        include(JMtk15_test * "src/jMtkFileGridToFieldList_tst_0100.jl")
+        nfields, fieldlist = jMtkFileGridToFieldList_tst_0100();
+        @test nfields == 9
+        @test fieldlist == ["AveSceneElev", "StdDevSceneElev", "StdDevSceneElevRelSlp", "PtElev", "GeoLatitude", "GeoLongitude", "SurfaceFeatureID", "AveSurfNormAzAng", "AveSurfNormZenAng"]
+
+        include(JMtk15_test * "src/jMtkFileGridToFieldList_tst_1000.jl")
+        nfields, fieldlist = jMtkFileGridToFieldList_tst_1000();
+        @test nfields == 38
+        @test fieldlist[1:5] == ["SolarAzimuth", "SolarZenith", "DfAzimuth", "DfZenith", "DfScatter"]
+        @test fieldlist[11:15] == ["BfAzimuth", "BfZenith", "BfScatter", "BfGlitter", "AfAzimuth"]
+        @test fieldlist[34:38] == ["CaGlitter", "DaAzimuth", "DaZenith", "DaScatter", "DaGlitter"]
+
+        include(JMtk15_test * "src/jMtkFileGridToFieldList_tst_1100.jl")
+        nfields, fieldlist = jMtkFileGridToFieldList_tst_1100();
+        @test nfields == 4
+        @test fieldlist == ["BlueConversionFactor", "GreenConversionFactor", "RedConversionFactor", "NIRConversionFactor"]
+
+        include(JMtk15_test * "src/jMtkFileGridToFieldList_tst_1300.jl")
+        nfields, fieldlist = jMtkFileGridToFieldList_tst_1300();
+        @test nfields == 2
+        @test fieldlist == ["SolarAzimuth", "SolarZenith"]
+
+        include(JMtk15_test * "src/jMtkFileGridToFieldList_tst_1500.jl")
+        nfields, fieldlist = jMtkFileGridToFieldList_tst_1500();
+        @test nfields == 7
+        @test fieldlist == ["Cloud", "Glitter", "Quality", "Dust_test", "First Observable", "Second Observable", "Dust Observable"]
+
+        include(JMtk15_test * "src/jMtkFileGridToFieldList_tst_2300.jl")
+        nfields, fieldlist = jMtkFileGridToFieldList_tst_2300();
+        @test nfields == 7
+        @test fieldlist == ["CloudTopHeight", "CloudMotionCrossTrack", "Raw CloudMotionCrossTrack", "CloudMotionCrossTrackHeading", "Raw CloudMotionCrossTrackHeading", "StereoDerivedCloudMask", "StereoQualityIndicator"]
+
+        include(JMtk15_test * "src/jMtkFileGridToFieldList_tst_2500.jl")
+        nfields, fieldlist = jMtkFileGridToFieldList_tst_2500();
+        @test nfields == 39
+        @test fieldlist[1:5] == ["X_Dim", "Y_Dim", "Block_Number", "Block_Start_X_Index", "Block_Start_Y_Index"]
+        @test fieldlist[10:12] == ["Latitude", "Longitude", "Hemispherical_Directional_Reflectance_Factor"]
+        @test fieldlist[20:22] == ["Leaf_Area_Index_Best_Estimate", "Leaf_Area_Index_Best_Estimate_QA", "Fractional_Absorbed_Photosynthetically_Active_Radiation_Best_Estimate"]
+        @test fieldlist[34:35] == ["AUXILIARY/Mean_Leaf_Area_Index_Test_2", "AUXILIARY/Leaf_Area_Index_Merit_Function_Test_2"]
 
 
 

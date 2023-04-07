@@ -67,4 +67,8 @@ jMtkFileAttrList
 jMtkGridAttrList
 jMtkFieldAttrList
 jMtkFileToPath
+jMtkFileToOrbit
+jMtkFileToBlockRange
+jMtkFileToGridList
+jMtkFileGridToFieldList
 ```

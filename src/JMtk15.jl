@@ -149,6 +149,10 @@ include(JMtk15_src * "jMtkFileToOrbit.jl")
 export jMtkFileToOrbit
 include(JMtk15_src * "jMtkFileToBlockRange.jl")
 export jMtkFileToBlockRange
+include(JMtk15_src * "jMtkFileToGridList.jl")
+export jMtkFileToGridList
+include(JMtk15_src * "jMtkFileGridToFieldList.jl")
+export jMtkFileGridToFieldList
 
 # -----------------------------------------------------------------------------
 

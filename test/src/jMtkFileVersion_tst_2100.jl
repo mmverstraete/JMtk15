@@ -1,8 +1,8 @@
 """
-    fversion = jMtkFileVersion_tst_160()
+    fversion = jMtkFileVersion_tst_2100()
 
 # Purpose:
-Generate the output of `jMtkFileVersion` for testing purposes. Test 160: For a MISR `TC_CLASSIFIERS` file.
+Generate the output of `jMtkFileVersion` for testing purposes. Test 2100: For a MISR `TC_CLASSIFIERS` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileVersion_tst_160.jl")
-jMtkFileVersion_tst_160
+julia> include(JMtk15_test * "src/jMtkFileVersion_tst_2100.jl")
+jMtkFileVersion_tst_2100
 
-julia> fversion = jMtkFileVersion_tst_160();
+julia> fversion = jMtkFileVersion_tst_2100();
 
 julia> @test fversion == "F07_0012"
 Test Passed
 ```
 """
-function jMtkFileVersion_tst_160()
+function jMtkFileVersion_tst_2100()
     filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
     fversion = jMtkFileVersion(filename)
     return fversion

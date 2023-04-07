@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkFieldAttrList_tst_170()
+    nattrs, attrlist = jMtkFieldAttrList_tst_2500()
 
 # Purpose:
-Generate the output of `jMtkFieldAttrList` for testing purposes. Test 170: For a MISR `AS_LAND` file.
+Generate the output of `jMtkFieldAttrList` for testing purposes. Test 2500: For a MISR `AS_LAND` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -35,10 +35,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_170.jl")
-jMtkFieldAttrList_tst_170
+julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_2500.jl")
+jMtkFieldAttrList_tst_2500
 
-julia> nattrs, attrlist = jMtkFieldAttrList_tst_170();
+julia> nattrs, attrlist = jMtkFieldAttrList_tst_2500();
 
 julia> @test nattrs == 5
 Test Passed
@@ -47,7 +47,7 @@ julia> @test attrlist == ["_FillValue", "coordinates", "units", "standard_name",
 Test Passed
 ```
 """
-function jMtkFieldAttrList_tst_170()
+function jMtkFieldAttrList_tst_2500()
     filename = JMtk15_data * "MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
     fieldname = "Leaf_Area_Index_Best_Estimate"
     nattrs, attrlist = jMtkFieldAttrList(filename, fieldname);

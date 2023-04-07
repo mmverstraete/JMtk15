@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkFieldAttrList_tst_110()
+    nattrs, attrlist = jMtkFieldAttrList_tst_1500()
 
 # Purpose:
-Generate the output of `jMtkFieldAttrList` for testing purposes. Test 110: For a MISR `AGP` file.
+Generate the output of `jMtkFieldAttrList` for testing purposes. Test 1500: For a MISR `GRP_RCCM_GM` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -16,16 +16,13 @@ Generate the output of `jMtkFieldAttrList` for testing purposes. Test 110: For a
 
 # Verification:
 ```idl
-IDL> filename = root + 'MISR_AM1_AGP_P168_F01_24.hdf'
-IDL> fieldname = 'AveSceneElev'
+IDL> filename = root + 'MISR_AM1_GRP_RCCM_GM_P168_O068050_CA_F04_0025.hdf'
+IDL> fieldname = 'Cloud'
 IDL> status = MTK_FIELDATTR_LIST(filename, fieldname, attrcnt, attrlist)
-IDL> status
-           0
 IDL> attrcnt
-           0
+           1
 IDL> attrlist
-% Attempt to call undefined procedure: 'ATTRLIST'.
-% Execution halted at: MAIN
+_FillValue
 ```
 
 # Example:
@@ -34,21 +31,21 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_110.jl")
-jMtkFieldAttrList_tst_110
+julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_1500.jl")
+jMtkFieldAttrList_tst_1500
 
-julia> nattrs, attrlist = jMtkFieldAttrList_tst_110();
+julia> nattrs, attrlist = jMtkFieldAttrList_tst_1500();
 
-julia> @test nattrs == 0
+julia> @test nattrs == 1
 Test Passed
 
-julia> @test attrlist == String[]
+julia> @test attrlist == ["_FillValue"]
 Test Passed
 ```
 """
-function jMtkFieldAttrList_tst_110()
-    filename = JMtk15_data * "MISR/MISR_AM1_AGP_P168_F01_24.hdf"
-    fieldname = "AveSceneElev"
+function jMtkFieldAttrList_tst_1500()
+    filename = JMtk15_data * "MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_CA_F04_0025.hdf"
+    fieldname = "Cloud"
     nattrs, attrlist = jMtkFieldAttrList(filename, fieldname);
     return nattrs, attrlist
 end

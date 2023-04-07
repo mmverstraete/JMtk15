@@ -1,8 +1,8 @@
 """
-    fversion = jMtkFileVersion_tst_130()
+    fversion = jMtkFileVersion_tst_1500()
 
 # Purpose:
-Generate the output of `jMtkFileVersion` for testing purposes. Test 130: For a MISR `GRP_RCCM_GM` file.
+Generate the output of `jMtkFileVersion` for testing purposes. Test 1500: For a MISR `GRP_RCCM_GM` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileVersion_tst_130.jl")
-jMtkFileVersion_tst_130
+julia> include(JMtk15_test * "src/jMtkFileVersion_tst_1500.jl")
+jMtkFileVersion_tst_1500
 
-julia> fversion = jMtkFileVersion_tst_130();
+julia> fversion = jMtkFileVersion_tst_1500();
 
 julia> @test fversion == "F04_0025"
 Test Passed
 ```
 """
-function jMtkFileVersion_tst_130()
+function jMtkFileVersion_tst_1500()
     filename = JMtk15_data * "MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_AF_F04_0025.hdf"
     fversion = jMtkFileVersion(filename)
     return fversion

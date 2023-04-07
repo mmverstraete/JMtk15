@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkFieldAttrList_tst_120()
+    nattrs, attrlist = jMtkFieldAttrList_tst_1000()
 
 # Purpose:
-Generate the output of `jMtkFieldAttrList` for testing purposes. Test 120: For a MISR `GP_GMP` file.
+Generate the output of `jMtkFieldAttrList` for testing purposes. Test 1000: For a MISR `GP_GMP` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -31,10 +31,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_120.jl")
-jMtkFieldAttrList_tst_120
+julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_1000.jl")
+jMtkFieldAttrList_tst_1000
 
-julia> nattrs, attrlist = jMtkFieldAttrList_tst_120();
+julia> nattrs, attrlist = jMtkFieldAttrList_tst_1000();
 
 julia> @test nattrs == 1
 Test Passed
@@ -43,7 +43,7 @@ julia> @test attrlist == ["_FillValue"]
 Test Passed
 ```
 """
-function jMtkFieldAttrList_tst_120()
+function jMtkFieldAttrList_tst_1000()
     filename = JMtk15_data * "MISR/MISR_AM1_GP_GMP_P168_O068050_F03_0013.hdf"
     fieldname = "BfZenith"
     nattrs, attrlist = jMtkFieldAttrList(filename, fieldname);

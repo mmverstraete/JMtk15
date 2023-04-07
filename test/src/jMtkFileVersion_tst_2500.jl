@@ -1,8 +1,8 @@
 """
-    fversion = jMtkFileVersion_tst_170()
+    fversion = jMtkFileVersion_tst_2500()
 
 # Purpose:
-Generate the output of `jMtkFileVersion` for testing purposes. Test 170: For a MISR `AS_LAND` file.
+Generate the output of `jMtkFileVersion` for testing purposes. Test 2500: For a MISR `AS_LAND` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileVersion_tst_170.jl")
-jMtkFileVersion_tst_170
+julia> include(JMtk15_test * "src/jMtkFileVersion_tst_2500.jl")
+jMtkFileVersion_tst_2500
 
-julia> fversion = jMtkFileVersion_tst_170();
+julia> fversion = jMtkFileVersion_tst_2500();
 
 julia> @test fversion == "F08_0023"
 Test Passed
 ```
 """
-function jMtkFileVersion_tst_170()
+function jMtkFileVersion_tst_2500()
     filename = JMtk15_data * "MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
     fversion = jMtkFileVersion(filename)
     return fversion

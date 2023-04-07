@@ -1,8 +1,8 @@
 """
-    fversion = jMtkFileVersion_tst_120()
+    fversion = jMtkFileVersion_tst_1000()
 
 # Purpose:
-Generate the output of `jMtkFileVersion` for testing purposes. Test 120: For a MISR `GP_GMP` file.
+Generate the output of `jMtkFileVersion` for testing purposes. Test 1000: For a MISR `GP_GMP` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileVersion_tst_120.jl")
-jMtkFileVersion_tst_120
+julia> include(JMtk15_test * "src/jMtkFileVersion_tst_1000.jl")
+jMtkFileVersion_tst_1000
 
-julia> fversion = jMtkFileVersion_tst_120();
+julia> fversion = jMtkFileVersion_tst_1000();
 
 julia> @test fversion == "F03_0013"
 Test Passed
 ```
 """
-function jMtkFileVersion_tst_120()
+function jMtkFileVersion_tst_1000()
     filename = JMtk15_data * "MISR/MISR_AM1_GP_GMP_P168_O068050_F03_0013.hdf"
     fversion = jMtkFileVersion(filename)
     return fversion

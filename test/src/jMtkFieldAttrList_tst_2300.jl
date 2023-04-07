@@ -1,8 +1,8 @@
 """
-    nattrs, attrlist = jMtkFieldAttrList_tst_160()
+    nattrs, attrlist = jMtkFieldAttrList_tst_2300()
 
 # Purpose:
-Generate the output of `jMtkFieldAttrList` for testing purposes. Test 160: For a MISR `TC_CLOUD` file.
+Generate the output of `jMtkFieldAttrList` for testing purposes. Test 2300: For a MISR `TC_CLOUD` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -31,10 +31,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_160.jl")
-jMtkFieldAttrList_tst_160
+julia> include(JMtk15_test * "src/jMtkFieldAttrList_tst_2300.jl")
+jMtkFieldAttrList_tst_2300
 
-julia> nattrs, attrlist = jMtkFieldAttrList_tst_160();
+julia> nattrs, attrlist = jMtkFieldAttrList_tst_2300();
 
 julia> nattrs
 1
@@ -44,7 +44,7 @@ julia> attrlist
  "_FillValue"
 ```
 """
-function jMtkFieldAttrList_tst_160()
+function jMtkFieldAttrList_tst_2300()
     filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
     fieldname = "CombinedFractionCloudHC"
     nattrs, attrlist = jMtkFieldAttrList(filename, fieldname);

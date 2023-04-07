@@ -1,8 +1,8 @@
 """
-    fversion = jMtkFileVersion_tst_140()
+    fversion = jMtkFileVersion_tst_1100()
 
 # Purpose:
-Generate the output of `jMtkFileVersion` for testing purposes. Test 140: For a MISR `GRP_ELLIPSOID_GM` file.
+Generate the output of `jMtkFileVersion` for testing purposes. Test 1100: For a MISR `GRP_ELLIPSOID_GM` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -28,16 +28,16 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileVersion_tst_140.jl")
-jMtkFileVersion_tst_140
+julia> include(JMtk15_test * "src/jMtkFileVersion_tst_1100.jl")
+jMtkFileVersion_tst_1100
 
-julia> fversion = jMtkFileVersion_tst_140();
+julia> fversion = jMtkFileVersion_tst_1100();
 
 julia> @test fversion == "F03_0024"
 Test Passed
 ```
 """
-function jMtkFileVersion_tst_140()
+function jMtkFileVersion_tst_1100()
     filename = JMtk15_data * "MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DA_F03_0024.hdf"
     fversion = jMtkFileVersion(filename)
     return fversion

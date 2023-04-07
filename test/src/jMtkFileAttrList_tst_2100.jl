@@ -1,8 +1,8 @@
 """
-    attrcnt, attrlist = jMtkFileAttrList_tst_160()
+    attrcnt, attrlist = jMtkFileAttrList_tst_2100()
 
 # Purpose:
-Generate the output of `jMtkFileAttrList` for testing purposes. Test 160: For a MISR `TC_CLASSIFIERS` file.
+Generate the output of `jMtkFileAttrList` for testing purposes. Test 2100: For a MISR `TC_CLASSIFIERS` file.
 
 # Licensing:
 * Mtk C Library: Copyright © 2005 California Institute of Technology,
@@ -34,10 +34,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileAttrList_tst_160.jl")
-jMtkFileAttrList_tst_160
+julia> include(JMtk15_test * "src/jMtkFileAttrList_tst_2100.jl")
+jMtkFileAttrList_tst_2100
 
-julia> attrcnt, attrlist = jMtkFileAttrList_tst_160();
+julia> attrcnt, attrlist = jMtkFileAttrList_tst_2100();
 
 julia> @test attrcnt == 30
 Test Passed
@@ -52,7 +52,7 @@ julia> @test attrlist[27:30] == ["Num_local_modes", "Local_mode_site_name", "Orb
 Test Passed
 ```
 """
-function jMtkFileAttrList_tst_160()
+function jMtkFileAttrList_tst_2100()
     filename = JMtk15_data * "MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf"
     attrcnt, attrlist = jMtkFileAttrList(filename);
     return attrcnt, attrlist

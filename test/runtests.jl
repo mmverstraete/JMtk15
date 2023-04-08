@@ -679,6 +679,100 @@ using Test
             "ADDITIONALATTRIBUTESCONTAINER", "ADDITIONALATTRIBUTENAME"]
         @test paramlist[36:38] == ["ADDITIONALATTRIBUTESCONTAINER",
             "ADDITIONALATTRIBUTENAME", "PARAMETERVALUE"]
+# ---------------------------------------------------------- jMtkMakeFilename
+# Note: This function does not generate the correct file extension for NetCDF files.
+
+        include(JMtk15_test * "src/jMtkMakeFilename_tst_0100.jl")
+        filename = jMtkMakeFilename_tst_0100();
+        @test filename == "../Mtk_testdata/in/MISR_AM1_AGP_P168_F01_24.hdf"
+
+        include(JMtk15_test * "src/jMtkMakeFilename_tst_1000.jl")
+        filename = jMtkMakeFilename_tst_1000();
+        @test filename == "../Mtk_testdata/in/MISR_AM1_GP_GMP_P168_O068050_F03_0013.hdf"
+
+        include(JMtk15_test * "src/jMtkMakeFilename_tst_1100.jl")
+        filename = jMtkMakeFilename_tst_1100();
+        @test filename == "../Mtk_testdata/in/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_AN_F03_0024.hdf"
+
+        include(JMtk15_test * "src/jMtkMakeFilename_tst_1300.jl")
+        filename = jMtkMakeFilename_tst_1300();
+        @test filename == "../Mtk_testdata/in/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CA_F03_0024.hdf"
+
+        include(JMtk15_test * "src/jMtkMakeFilename_tst_1500.jl")
+        filename = jMtkMakeFilename_tst_1500();
+        @test filename == "../Mtk_testdata/in/MISR_AM1_GRP_RCCM_GM_P168_O068050_AA_F04_0025.hdf"
+
+        include(JMtk15_test * "src/jMtkMakeFilename_tst_2300.jl")
+        filename = jMtkMakeFilename_tst_2300();
+        @test filename == "../Mtk_testdata/in/MISR_AM1_TC_CLOUD_P168_O068050_F01_0001.hdf"
+
+#         include(JMtk15_test * "src/jMtkMakeFilename_tst_2500.jl")
+#         filename = jMtkMakeFilename_tst_2500();
+#        @test filename == "../Mtk_testdata/in/MISR_AM1_AS_LAND_P168_O068050_F08_0023.hdf"
+# ---------------------------------------------------------- jMtkFindFileList
+# Note: This function does not currently work to locate `AGP` files because the C code always expects an orbit number, which is absent from the filename of AGP files.
+
+        # include(JMtk15_test * "src/jMtkFindFileList_tst_0100.jl")
+        # filecnt, filenames = jMtkFindFileList_tst_0100();
+        # @test filecnt == 1
+
+        include(JMtk15_test * "src/jMtkFindFileList_tst_1000.jl")
+        filecnt, filenames = jMtkFindFileList_tst_1000();
+        @test filecnt == 1
+        @test filenames == ["/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GP_GMP_P168_O068050_F03_0013.hdf"]
+
+        include(JMtk15_test * "src/jMtkFindFileList_tst_1100.jl")
+        filecnt, filenames = jMtkFindFileList_tst_1100();
+        @test filecnt == 9
+        @test filenames == [
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_BF_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_BA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_AA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_AF_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_AN_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DF_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_CA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_CF_F03_0024.hdf"]
+
+        include(JMtk15_test * "src/jMtkFindFileList_tst_1300.jl")
+        filecnt, filenames = jMtkFindFileList_tst_1300();
+        @test filecnt == 9
+        @test filenames == [
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AN_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DF_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AF_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_BA_F03_0024.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_BF_F03_0024.hdf"]
+
+        include(JMtk15_test * "src/jMtkFindFileList_tst_1500.jl")
+        filecnt, filenames = jMtkFindFileList_tst_1500();
+        @test filecnt == 9
+        @test filenames == [
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_AN_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_CF_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_CA_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_DF_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_DA_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_AF_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_AA_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_BA_F04_0025.hdf",
+    "/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_BF_F04_0025.hdf"]
+
+        include(JMtk15_test * "src/jMtkFindFileList_tst_2300.jl")
+        filecnt, filenames = jMtkFindFileList_tst_2300();
+        @test filecnt == 1
+        @test filenames == ["/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_TC_CLOUD_P168_O068050_F01_0001.hdf"]
+
+# Note: This function does not currently work to locate `AS_LAND` files because the C code always assumes the file extension is `.hdf`, instead of `.nc` for NetCDF files.
+
+        # include(JMtk15_test * "src/jMtkFindFileList_tst_2500.jl")
+        # filecnt, filenames = jMtkFindFileList_tst_2500();
+        # @test filecnt == 0
 
 
 

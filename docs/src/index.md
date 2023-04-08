@@ -77,4 +77,7 @@ jMtkFileGridFieldCheck
 jMtkFileGridFieldToDataType
 jMtkFileGridToResolution
 jMtkFileCoreMetaDataQuery
+jMtkMakeFilename
+jMtkFindFileList
+
 ```

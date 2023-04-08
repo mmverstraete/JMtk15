@@ -165,6 +165,10 @@ include(JMtk15_src * "jMtkFileGridToResolution.jl")
 export jMtkFileGridToResolution
 include(JMtk15_src * "jMtkFileCoreMetaDataQuery.jl")
 export jMtkFileCoreMetaDataQuery
+include(JMtk15_src * "jMtkMakeFilename.jl")
+export jMtkMakeFilename
+include(JMtk15_src * "jMtkFindFileList.jl")
+export jMtkFindFileList
 
 # -----------------------------------------------------------------------------
 

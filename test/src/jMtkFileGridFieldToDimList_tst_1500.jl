@@ -1,5 +1,5 @@
 """
-    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_1500()
+    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1500()
 
 # Purpose:
 Generate the output of `jMtkFileGridFieldToDimList` for testing purposes. Test 1500: For a MISR `GRP_RCCM_GM` file.
@@ -30,10 +30,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_test_1500.jl")
-jMtkFileGridFieldToDimList_test_1500
+julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_1500.jl")
+jMtkFileGridFieldToDimList_tst_1500
 
-julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_1500();
+julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1500();
 
 julia> @test ndims == 0
 Test Passed
@@ -45,7 +45,7 @@ julia> @test dimsizes == Int32[]
 Test Passed
 ```
 """
-function jMtkFileGridFieldToDimList_test_1500()
+function jMtkFileGridFieldToDimList_tst_1500()
     filename = JMtk15_data * "MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_BA_F04_0025.hdf"
     gridname = "RCCM"
     fieldname = "Dust_test"

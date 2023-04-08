@@ -582,6 +582,103 @@ using Test
         include(JMtk15_test * "src/jMtkFileGridFieldToDataType_tst_2500.jl")
         datatype = jMtkFileGridFieldToDataType_tst_2500();
         @test datatype == Float32
+# ---------------------------------------------------------- jMtkFileGridToResolution
+        include(JMtk15_test * "src/jMtkFileGridToResolution_tst_0100.jl")
+        resolution = jMtkFileGridToResolution_tst_0100();
+        @test resolution == 1100
+
+        include(JMtk15_test * "src/jMtkFileGridToResolution_tst_1000.jl")
+        resolution = jMtkFileGridToResolution_tst_1000();
+        @test resolution == 17600
+
+        include(JMtk15_test * "src/jMtkFileGridToResolution_tst_1100.jl")
+        resolution = jMtkFileGridToResolution_tst_1100();
+        @test resolution == 275
+
+        include(JMtk15_test * "src/jMtkFileGridToResolution_tst_1300.jl")
+        resolution = jMtkFileGridToResolution_tst_1300();
+        @test resolution == 17600
+
+        include(JMtk15_test * "src/jMtkFileGridToResolution_tst_1500.jl")
+        resolution = jMtkFileGridToResolution_tst_1500();
+        @test resolution == 1100
+
+        include(JMtk15_test * "src/jMtkFileGridToResolution_tst_2300.jl")
+        resolution = jMtkFileGridToResolution_tst_2300();
+        @test resolution == 1100
+
+        include(JMtk15_test * "src/jMtkFileGridToResolution_tst_2500.jl")
+        resolution = jMtkFileGridToResolution_tst_2500();
+        @test resolution == 4400
+# ---------------------------------------------------------- jMtkFileCoreMetaDataQuery
+# Note: This function crashes when applied to MISR GP_GMP data files!
+
+        include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_0100.jl")
+        nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_0100();
+        @test nparams == 24
+        @test paramlist[1:5] == ["LOCALGRANULEID", "PRODUCTIONDATETIME",
+            "LOCALVERSIONID", "PGEVERSION", "VERSIONID"]
+        @test paramlist[10:14] == ["GRINGPOINTSEQUENCENO", "EXCLUSIONGRINGFLAG",
+            "RANGEENDINGDATE", "RANGEENDINGTIME", "RANGEBEGINNINGDATE"]
+        @test paramlist[20:24] == ["ADDITIONALATTRIBUTENAME", "PARAMETERVALUE",
+            "ADDITIONALATTRIBUTESCONTAINER", "ADDITIONALATTRIBUTENAME", "PARAMETERVALUE"]
+
+        # include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_1000.jl")
+        # nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_1000();
+
+        include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_1100.jl")
+        nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_1100();
+        @test nparams == 43
+        @test paramlist[4:8] == ["PGEVERSION", "MEASUREDPARAMETERCONTAINER",
+            "AUTOMATICQUALITYFLAGEXPLANATION", "AUTOMATICQUALITYFLAG", "QAPERCENTMISSINGDATA"]
+        @test paramlist[14:18] == ["EQUATORCROSSINGLONGITUDE", "VERSIONID", "SHORTNAME",
+            "INPUTPOINTER", "GPOLYGONCONTAINER"]
+        @test paramlist[37:40] == ["ADDITIONALATTRIBUTENAME", "PARAMETERVALUE",
+            "ASSOCIATEDPLATFORMINSTRUMENTSENSORCONTAINER", "ASSOCIATEDSENSORSHORTNAME"]
+
+        include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_1300.jl")
+        nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_1300();
+        @test nparams == 43
+        @test paramlist[8:12] == ["QAPERCENTMISSINGDATA", "PARAMETERNAME",
+            "ORBITCALCULATEDSPATIALDOMAINCONTAINER", "EQUATORCROSSINGDATE",
+            "EQUATORCROSSINGTIME"]
+        @test paramlist[18:22] == ["GPOLYGONCONTAINER", "GRINGPOINTLONGITUDE",
+            "GRINGPOINTLATITUDE", "GRINGPOINTSEQUENCENO", "EXCLUSIONGRINGFLAG"]
+        @test paramlist[33:37] == ["ADDITIONALATTRIBUTESCONTAINER",
+            "ADDITIONALATTRIBUTENAME", "PARAMETERVALUE", "ADDITIONALATTRIBUTESCONTAINER",
+            "ADDITIONALATTRIBUTENAME"]
+
+        include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_1500.jl")
+        nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_1500();
+        @test nparams == 43
+        @test paramlist[1:4] == ["LOCALGRANULEID", "PRODUCTIONDATETIME",
+            "LOCALVERSIONID", "PGEVERSION"]
+        @test paramlist[10:14] == ["ORBITCALCULATEDSPATIALDOMAINCONTAINER",
+            "EQUATORCROSSINGDATE", "EQUATORCROSSINGTIME", "ORBITNUMBER",
+            "EQUATORCROSSINGLONGITUDE"]
+        @test paramlist[40:43] == ["ASSOCIATEDSENSORSHORTNAME",
+            "ASSOCIATEDPLATFORMSHORTNAME", "OPERATIONMODE",
+            "ASSOCIATEDINSTRUMENTSHORTNAME"]
+
+        include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_2300.jl")
+        nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_2300();
+        @test nparams == 38
+        @test paramlist[1:5] == ["LOCALGRANULEID", "PRODUCTIONDATETIME",
+            "LOCALVERSIONID", "PGEVERSION", "MEASUREDPARAMETERCONTAINER"]
+        @test paramlist[12:16] == ["EQUATORCROSSINGLONGITUDE", "EQUATORCROSSINGTIME",
+            "EQUATORCROSSINGDATE", "SHORTNAME", "VERSIONID"]
+        @test paramlist[25:28] == ["RANGEBEGINNINGDATE", "RANGEENDINGDATE",
+            "ADDITIONALATTRIBUTESCONTAINER", "ADDITIONALATTRIBUTENAME"]
+
+        include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_2500.jl")
+        nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_2500();
+        @test nparams == 38
+        @test paramlist[3:7] == ["LOCALVERSIONID", "PGEVERSION",
+            "MEASUREDPARAMETERCONTAINER", "PARAMETERNAME", "AUTOMATICQUALITYFLAG"]
+        @test paramlist[25:28] == ["RANGEBEGINNINGDATE", "RANGEENDINGDATE",
+            "ADDITIONALATTRIBUTESCONTAINER", "ADDITIONALATTRIBUTENAME"]
+        @test paramlist[36:38] == ["ADDITIONALATTRIBUTESCONTAINER",
+            "ADDITIONALATTRIBUTENAME", "PARAMETERVALUE"]
 
 
 
@@ -590,7 +687,7 @@ using Test
 
 
 
-end
+    end
 # =============================================================================
 
 

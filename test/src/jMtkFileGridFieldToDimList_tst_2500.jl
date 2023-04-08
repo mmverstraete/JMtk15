@@ -1,5 +1,5 @@
 """
-    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_2500()
+    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2500()
 
 # Purpose:
 Generate the output of `jMtkFileGridFieldToDimList` for testing purposes. Test 2500: For a MISR `AS_LAND` file.
@@ -34,10 +34,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_test_2500.jl")
-jMtkFileGridFieldToDimList_test_2500
+julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_2500.jl")
+jMtkFileGridFieldToDimList_tst_2500
 
-julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_2500();
+julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2500();
 
 julia> @test ndims == 2
 Test Passed
@@ -49,7 +49,7 @@ julia> @test dimsizes == [4, 9]
 Test Passed
 ```
 """
-function jMtkFileGridFieldToDimList_test_2500()
+function jMtkFileGridFieldToDimList_tst_2500()
     filename = JMtk15_data * "MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc"
     gridname = "1.1_KM_PRODUCTS"
     fieldname = "Bidirectional_Reflectance_Factor"

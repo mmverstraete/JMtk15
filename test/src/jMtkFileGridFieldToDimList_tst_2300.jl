@@ -1,5 +1,5 @@
 """
-    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_2300()
+    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2300()
 
 # Purpose:
 Generate the output of `jMtkFileGridFieldToDimList` for testing purposes. Test 2300: For a MISR `TC_CLOUD` file.
@@ -30,10 +30,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_test_2300.jl")
-jMtkFileGridFieldToDimList_test_2300
+julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_2300.jl")
+jMtkFileGridFieldToDimList_tst_2300
 
-julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_2300();
+julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2300();
 
 julia> @test ndims == 0
 Test Passed
@@ -45,7 +45,7 @@ julia> @test dimsizes == Int32[]
 Test Passed
 ```
 """
-function jMtkFileGridFieldToDimList_test_2300()
+function jMtkFileGridFieldToDimList_tst_2300()
     filename = JMtk15_data * "MISR/MISR_AM1_TC_CLOUD_P168_O068050_F01_0001.hdf"
     gridname = "Stereo_1.1_km"
     fieldname = "CloudTopHeight"

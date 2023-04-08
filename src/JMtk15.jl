@@ -161,6 +161,10 @@ include(JMtk15_src * "jMtkFileGridFieldCheck.jl")
 export jMtkFileGridFieldCheck
 include(JMtk15_src * "jMtkFileGridFieldToDataType.jl")
 export jMtkFileGridFieldToDataType
+include(JMtk15_src * "jMtkFileGridToResolution.jl")
+export jMtkFileGridToResolution
+include(JMtk15_src * "jMtkFileCoreMetaDataQuery.jl")
+export jMtkFileCoreMetaDataQuery
 
 # -----------------------------------------------------------------------------
 

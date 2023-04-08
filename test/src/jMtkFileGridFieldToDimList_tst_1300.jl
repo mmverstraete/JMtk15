@@ -1,5 +1,5 @@
 """
-    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_1300()
+    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1300()
 
 # Purpose:
 Generate the output of `jMtkFileGridFieldToDimList` for testing purposes. Test 1300: For a MISR `GRP_TERRAIN_GM` file.
@@ -30,10 +30,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_test_1300.jl")
-jMtkFileGridFieldToDimList_test_1300
+julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_1300.jl")
+jMtkFileGridFieldToDimList_tst_1300
 
-julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_1300();
+julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_1300();
 
 julia> @test ndims == 0
 Test Passed
@@ -45,7 +45,7 @@ julia> @test dimsizes == Int32[]
 Test Passed
 ```
 """
-function jMtkFileGridFieldToDimList_test_1300()
+function jMtkFileGridFieldToDimList_tst_1300()
     filename = JMtk15_data * "MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AF_F03_0024.hdf"
     gridname = "BRF Conversion Factors"
     fieldname = "GreenConversionFactor"

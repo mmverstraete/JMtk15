@@ -75,4 +75,6 @@ jMtkFileGridToNativeFieldList
 jMtkFileGridFieldToDimList
 jMtkFileGridFieldCheck
 jMtkFileGridFieldToDataType
+jMtkFileGridToResolution
+jMtkFileCoreMetaDataQuery
 ```

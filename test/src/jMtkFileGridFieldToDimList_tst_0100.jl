@@ -1,5 +1,5 @@
 """
-    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_0100()
+    ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_0100()
 
 # Purpose:
 Generate the output of `jMtkFileGridFieldToDimList` for testing purposes. Test 0100: For a MISR `AGP` file.
@@ -30,10 +30,10 @@ julia> using JMtk15
 
 julia> using Test
 
-julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_test_0100.jl")
-jMtkFileGridFieldToDimList_test_0100
+julia> include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_0100.jl")
+jMtkFileGridFieldToDimList_tst_0100
 
-julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_test_0100();
+julia> ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_0100();
 
 julia> @test ndims == 0
 Test Passed
@@ -45,7 +45,7 @@ julia> @test dimsizes == Int32[]
 Test Passed
 ```
 """
-function jMtkFileGridFieldToDimList_test_0100()
+function jMtkFileGridFieldToDimList_tst_0100()
     filename = JMtk15_data * "MISR/MISR_AM1_AGP_P168_F01_24.hdf"
     gridname = "Standard"
     fieldname = "GeoLatitude"

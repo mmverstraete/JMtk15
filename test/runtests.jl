@@ -1134,60 +1134,61 @@ using Test
         somx, somy = jMtkLSToSomXY_tst_2500();
         @test (somx, somy) == (2.287912e7, -358600.0)
 # ---------------------------------------------------------- jMtkLatLonToLS
-#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_110.jl")
-#         line, sample = jMtkLatLonToLS_tst_110();
-#         @test (line, sample) == (2.6562471f0, 7.3437467f0)
+        include(JMtk15_test * "src/jMtkLatLonToLS_tst_0100.jl")
+        line, sample = jMtkLatLonToLS_tst_0100();
+        @test (line, sample) == (2.6562471f0, 7.3437467f0)
 
-#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_120.jl")
-#         line, sample = jMtkLatLonToLS_tst_120();
-#         @test (line, sample) == (2.6562471f0, 7.3437467f0)
+        include(JMtk15_test * "src/jMtkLatLonToLS_tst_1000.jl")
+        line, sample = jMtkLatLonToLS_tst_1000();
+        @test (line, sample) == (2.6562471f0, 7.3437467f0)
 
-#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_130.jl")
-#         line, sample = jMtkLatLonToLS_tst_130();
-#         @test (line, sample) == (49.999954f0, 124.99995f0)
+        include(JMtk15_test * "src/jMtkLatLonToLS_tst_1100.jl")
+        line, sample = jMtkLatLonToLS_tst_1100();
+        @test (line, sample) == (201.49982f0, 501.4998f0)
 
-#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_140.jl")
-#         line, sample = jMtkLatLonToLS_tst_140();
-#         @test (line, sample) == (201.49982f0, 501.4998f0)
+        include(JMtk15_test * "src/jMtkLatLonToLS_tst_1300.jl")
+        line, sample = jMtkLatLonToLS_tst_1300();
+        @test (line, sample) == (49.999954f0, 124.99995f0)
 
-#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_150.jl")
-#         line, sample = jMtkLatLonToLS_tst_150();
-#         @test (line, sample) == (49.999954f0, 124.99995f0)
+        include(JMtk15_test * "src/jMtkLatLonToLS_tst_1500.jl")
+        line, sample = jMtkLatLonToLS_tst_1500();
+        @test (line, sample) == (49.999954f0, 124.99995f0)
 
-#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_160.jl")
-#         line, sample = jMtkLatLonToLS_tst_160();
-#         @test (line, sample) == (49.999954f0, 124.99995f0)
+        include(JMtk15_test * "src/jMtkLatLonToLS_tst_2300.jl")
+        line, sample = jMtkLatLonToLS_tst_2300();
+        @test (line, sample) == (49.999954f0, 124.99995f0)
 
-#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_170.jl")
-#         line, sample = jMtkLatLonToLS_tst_170();
-#         @test (line, sample) == (49.999954f0, 124.99995f0)
-# # ---------------------------------------------------------- jMtkSomXYToLS
-#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_110.jl")
-#         line, sample = jMtkSomXYToLS_tst_110();
-#         @test (line, sample) == (6.1f0, 12.5f0)
+        include(JMtk15_test * "src/jMtkLatLonToLS_tst_2500.jl")
+        line, sample = jMtkLatLonToLS_tst_2500();
+        @test (line, sample) == (49.999954f0, 124.99995f0)
+# ---------------------------------------------------------- jMtkSomXYToLS
+        include(JMtk15_test * "src/jMtkSomXYToLS_tst_0100.jl")
+        line, sample = jMtkSomXYToLS_tst_0100();
+        @test (line, sample) == (6.1f0, 12.5f0)
 
-#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_120.jl")
-#         line, sample = jMtkSomXYToLS_tst_120();
-#         @test (line, sample) == (1.8f0, 27.8f0)
+        include(JMtk15_test * "src/jMtkSomXYToLS_tst_1000.jl")
+        line, sample = jMtkSomXYToLS_tst_1000();
+        @test (line, sample) == (1.8f0, 27.8f0)
 
-#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_130.jl")
-#         line, sample = jMtkSomXYToLS_tst_130();
-#         @test (line, sample) == (54.3f0, 127.8f0)
+        include(JMtk15_test * "src/jMtkSomXYToLS_tst_1100.jl")
+        line, sample = jMtkSomXYToLS_tst_1100();
+        @test (line, sample) == (97.5f0, 345.6f0)
 
-#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_140.jl")
-#         line, sample = jMtkSomXYToLS_tst_140();
-#         @test (line, sample) == (97.5f0, 345.6f0)
+        include(JMtk15_test * "src/jMtkSomXYToLS_tst_1300.jl")
+        line, sample = jMtkSomXYToLS_tst_1300();
+        @test (line, sample) == (52.7f0, 325.2f0)
 
-#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_150.jl")
-#         line, sample = jMtkSomXYToLS_tst_150();
-#         @test (line, sample) == (52.7f0, 325.2f0)
+        include(JMtk15_test * "src/jMtkSomXYToLS_tst_1500.jl")
+        line, sample = jMtkSomXYToLS_tst_1500();
+        @test (line, sample) == (54.3f0, 127.8f0)
 
-#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_160.jl")
-#         line, sample = jMtkSomXYToLS_tst_160();
-#         @test (line, sample) == (112.3f0, 215.6f0)
-#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_170.jl")
-#         line, sample = jMtkSomXYToLS_tst_170();
-#         @test (line, sample) == (64.2f0, 250.0f0)
+        include(JMtk15_test * "src/jMtkSomXYToLS_tst_2300.jl")
+        line, sample = jMtkSomXYToLS_tst_2300();
+        @test (line, sample) == (112.3f0, 215.6f0)
+
+        include(JMtk15_test * "src/jMtkSomXYToLS_tst_2500.jl")
+        line, sample = jMtkSomXYToLS_tst_2500();
+        @test (line, sample) == (64.2f0, 250.0f0)
 # ---------------------------------------------------------- jMtkCreateLatLon
 #     # include(JMtk15_test * "src/jMtkCreateLatLon_tst_x.jl")
     end

@@ -154,7 +154,33 @@ using Test
         include(JMtk15_test * "src/jMtkFileVersion_tst_2500.jl")
         fversion = jMtkFileVersion_tst_2500();
         @test fversion == "F08_0023"
-# ---------------------------------------------------------- jMtkFileAttrList
+# ---------------------------------------------------------- jMtkFillValueGet
+# Note: MISR AGP files provide globally valid data, and thus do not feature fill data.
+
+#         include(JMtk15_test * "src/jMtkFillValueGet_tst_2.jl")
+#         fillval = jMtkFillValueGet_tst_2();
+#         @test fillval == -555.0
+
+#         include(JMtk15_test * "src/jMtkFillValueGet_tst_3.jl")
+#         fillval = jMtkFillValueGet_tst_3();
+#         @test fillval == 255
+
+#         include(JMtk15_test * "src/jMtkFillValueGet_tst_4.jl")
+#         fillval = jMtkFillValueGet_tst_4();
+#         @test fillval == 65515
+
+#         include(JMtk15_test * "src/jMtkFillValueGet_tst_5.jl")
+#         fillval = jMtkFillValueGet_tst_5();
+#         @test fillval == -555.0
+
+#         include(JMtk15_test * "src/jMtkFillValueGet_tst_6.jl")
+#         fillval = jMtkFillValueGet_tst_6();
+#         @test fillval == -9999.0
+
+#         include(JMtk15_test * "src/jMtkFillValueGet_tst_7.jl")
+#         fillval = jMtkFillValueGet_tst_7();
+#         @test fillval == 65533
+        # ---------------------------------------------------------- jMtkFileAttrList
         include(JMtk15_test * "src/jMtkFileAttrList_tst_0100.jl")
         attrcnt, attrlist = jMtkFileAttrList_tst_0100();
         @test attrcnt == 28
@@ -211,7 +237,35 @@ using Test
         @test attrlist[1:5] == ["Path_number", "AGP_version_id", "DID_version_id", "Number_blocks", "Ocean_blocks_size"]
         @test attrlist[41:45] == ["title", "institution", "source", "history", "references"]
         @test attrlist[85:88] == ["config.sim.enable", "config.sim.surface_type", "config.SurfaceRetrieval.use_smoothed_aod", "config.underlight_albedo"]
-# ---------------------------------------------------------- jMtkGridAttrList
+# ---------------------------------------------------------- jMtkFileAttrGet
+#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_1.jl")
+#         attrval = jMtkFileAttrGet_tst_1();
+#         @test attrval == 2
+
+#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_2.jl")
+#         attrval = jMtkFileAttrGet_tst_2();
+#         @test attrval == 19
+
+#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_3.jl")
+#         attrval = jMtkFileAttrGet_tst_3();
+#         @test attrval == 6378137.0
+
+#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_4.jl")
+#         attrval = jMtkFileAttrGet_tst_4();
+#         @test attrval == 4
+
+#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_5.jl")
+#         attrval = jMtkFileAttrGet_tst_5();
+#         @test attrval == 527450.0
+
+#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_6.jl")
+#         attrval = jMtkFileAttrGet_tst_6();
+#         @test attrval == 1.7157253262878522
+
+#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_7.jl")
+#         attrval = jMtkFileAttrGet_tst_7();
+#         @test attrval == 37.4519193181101
+        # ---------------------------------------------------------- jMtkGridAttrList
         include(JMtk15_test * "src/jMtkGridAttrList_tst_0100.jl")
         nattrs, attrlist = jMtkGridAttrList_tst_0100();
         @test nattrs == 4
@@ -251,7 +305,35 @@ using Test
         nattrs, attrlist = jMtkGridAttrList_tst_2500();
         @test nattrs == 4
         @test attrlist == ["GCTP_projection_parameters", "resolution_in_meters", "block_size_in_lines", "block_size_in_samples"]
-# ---------------------------------------------------------- jMtkFieldAttrList
+# ---------------------------------------------------------- jMtkGridAttrGet
+#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_1.jl")
+#         attrval = jMtkGridAttrGet_tst_1();
+#         @test attrval == 1100
+
+#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_2.jl")
+#         attrval = jMtkGridAttrGet_tst_2();
+#         @test attrval == 1.0004615223771693
+
+#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_3.jl")
+#         attrval = jMtkGridAttrGet_tst_3();
+#         @test attrval == 512
+
+#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_4.jl")
+#         attrval = jMtkGridAttrGet_tst_4();
+#         @test attrval == 275
+
+#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_5.jl")
+#         attrval = jMtkGridAttrGet_tst_5();
+#         @test attrval == 128
+
+#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_6.jl")
+#         attrval = jMtkGridAttrGet_tst_6();
+#         @test attrval == 1100
+
+#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_7.jl")
+#         attrval = jMtkGridAttrGet_tst_7();
+#         @test attrval == 1100
+        # ---------------------------------------------------------- jMtkFieldAttrList
         include(JMtk15_test * "src/jMtkFieldAttrList_tst_0100.jl")
         nattrs, attrlist = jMtkFieldAttrList_tst_0100();
         @test nattrs == 0
@@ -286,7 +368,34 @@ using Test
         nattrs, attrlist = jMtkFieldAttrList_tst_2500();
         @test nattrs == 5
         @test attrlist == ["_FillValue", "coordinates", "units", "standard_name", "long_name"]
-# ---------------------------------------------------------- jMtkFileToPath
+# ---------------------------------------------------------- jMtkFieldAttrGet
+#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_2.jl")
+#         attrval = jMtkFieldAttrGet_tst_2();
+#         @test attrval == -555.0
+
+#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_3.jl")
+#         attrval = jMtkFieldAttrGet_tst_3();
+#         @test attrval == 255
+
+#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_4.jl")
+#         attrval = jMtkFieldAttrGet_tst_4();
+#         @test attrval == -555.0
+
+#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_5.jl")
+#         attrval = jMtkFieldAttrGet_tst_5();
+#         @test attrval == 65515
+
+#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_6.jl")
+#         attrval = jMtkFieldAttrGet_tst_6();
+#         @test attrval == -9999.0
+
+#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_7.jl")
+#         attrval = jMtkFieldAttrGet_tst_7();
+#         @test attrval == 0.007936508f0
+#         include(JMtk15_test * "src/jMtkFileToOrbit_tst_110.jl")
+#         orbit = jMtkFileToOrbit_tst_110();
+#         @test orbit == 68050
+        # ---------------------------------------------------------- jMtkFileToPath
         include(JMtk15_test * "src/jMtkFileToPath_tst_0100.jl")
         path = jMtkFileToPath_tst_0100();
         @test path == 168
@@ -679,6 +788,11 @@ using Test
             "ADDITIONALATTRIBUTESCONTAINER", "ADDITIONALATTRIBUTENAME"]
         @test paramlist[36:38] == ["ADDITIONALATTRIBUTESCONTAINER",
             "ADDITIONALATTRIBUTENAME", "PARAMETERVALUE"]
+# ---------------------------------------------------------- jMtkFileCoreMetaDataGet
+# Note: This function does not currently work at all.
+
+    #     # include(JMtk15_test * "src/jMtkFileCoreMetaDataGet_tst_1.jl")
+    #     # include(JMtk15_test * "src/jMtkFileCoreMetaDataGet_tst_5.jl")
 # ---------------------------------------------------------- jMtkMakeFilename
 # Note: This function does not generate the correct file extension for NetCDF files.
 
@@ -840,17 +954,628 @@ using Test
 # Note: This function does not work with NetCDF files.
 #         include(JMtk15_test * "src/jMtkFileBlockMetaFieldList_tst_2500.jl")
 #         nfields, fieldlist = jMtkFileBlockMetaFieldList_tst_2500();
+# ---------------------------------------------------------- jMtkFileBlockMetaFieldRead
+#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_1.jl")
+#         buffer = jMtkFileBlockMetaFieldRead_tst_1();
 
+#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_2.jl")
+#         buffer = jMtkFileBlockMetaFieldRead_tst_2();
 
+#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_3.jl")
+#         buffer = jMtkFileBlockMetaFieldRead_tst_3();
 
+#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_4.jl")
+#         buffer = jMtkFileBlockMetaFieldRead_tst_4();
 
-
-
-
-
+#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_5.jl")
+#         buffer = jMtkFileBlockMetaFieldRead_tst_5();
+# ---------------------------------------------------------- jMtkTimeMetaRead
+#         include(JMtk15_test * "src/jMtkTimeMetaRead_tst_4.jl")
+#         timedata = jMtkTimeMetaRead_tst_4();
     end
-# =============================================================================
+# ==========================================================================================
+    @testset "UnitConv" begin
+# ---------------------------------------------------------- jMtkDdToDegMinSec
+        include(JMtk15_test * "src/jMtkDdToDegMinSec_tst_1.jl")
+        degrees, minutes, seconds = jMtkDdToDegMinSec_tst_1();
+        @test (degrees, minutes, seconds) == (65, 30, 0.0)
+# ---------------------------------------------------------- jMtkDdToDms
+        include(JMtk15_test * "src/jMtkDdToDms_tst_1.jl")
+        packed_dms = jMtkDdToDms_tst_1();
+        @test packed_dms == 6.503e7
+# ---------------------------------------------------------- jMtkDdToRad
+        include(JMtk15_test * "src/jMtkDdToRad_tst_1.jl")
+        radians = jMtkDdToRad_tst_1();
+        @test radians == 1.1431906600562858
+# ---------------------------------------------------------- jMtkDegMinSecToDd
+        include(JMtk15_test * "src/jMtkDegMinSecToDd_tst_1.jl")
+        decdeg = jMtkDegMinSecToDd_tst_1();
+        @test decdeg == 65.55000027777777
+# ---------------------------------------------------------- jMtkDegMinSecToDms
+        include(JMtk15_test * "src/jMtkDegMinSecToDms_tst_1.jl")
+        packed_dms = jMtkDegMinSecToDms_tst_1();
+        @test packed_dms == 6.5033000001e7
+# ---------------------------------------------------------- jMtkDegMinSecToRad
+        include(JMtk15_test * "src/jMtkDegMinSecToRad_tst_1.jl")
+        radians = jMtkDegMinSecToRad_tst_1();
+        @test radians == 1.1440633295304197
+# ---------------------------------------------------------- jMtkDmsToDd
+        include(JMtk15_test * "src/jMtkDmsToDd_tst_1.jl")
+        decdeg = jMtkDmsToDd_tst_1();
+        @test decdeg == 65.5500027777772
+# ---------------------------------------------------------- jMtkDmsToDegMinSec
+        include(JMtk15_test * "src/jMtkDmsToDegMinSec_tst_1.jl")
+        degrees, minutes, seconds = jMtkDmsToDegMinSec_tst_1();
+        @test (degrees, minutes, seconds) == (65, 33, 11.100000001490116)
+# ---------------------------------------------------------- jMtkDmsToRad
+        include(JMtk15_test * "src/jMtkDmsToRad_tst_1.jl")
+        radians = jMtkDmsToRad_tst_1();
+        @test radians == 1.144063373163641
+# ---------------------------------------------------------- jMtkRadToDd
+        include(JMtk15_test * "src/jMtkRadToDd_tst_1.jl")
+        decdeg = jMtkRadToDd_tst_1();
+        @test decdeg == 65.55000431538731
+# ---------------------------------------------------------- jMtkRadToDegMinSec
+        include(JMtk15_test * "src/jMtkRadToDegMinSec_tst_1.jl")
+        degrees, minutes, seconds = jMtkRadToDegMinSec_tst_1();
+        @test (degrees, minutes, seconds) == (65, 33, 0.0010968595743179321)
+# ---------------------------------------------------------- jMtkRadToDms
+        include(JMtk15_test * "src/jMtkRadToDms_tst_1.jl")
+        packed_dms = jMtkRadToDms_tst_1();
+        @test packed_dms == 6.503205999903421e7
+    end
+# ==========================================================================================
+    @testset "CoordQuery" begin
+# ---------------------------------------------------------- jMtkBlsToLatLon
+        include(JMtk15_test * "src/jMtkBlsToLatLon_tst_1.jl")
+        latitude, longitude = jMtkBlsToLatLon_tst_1();
+        @test (latitude, longitude) == (55.16137325083296, 16.435317837222424)
+# ---------------------------------------------------------- jMtkBlsToSomXY
+        include(JMtk15_test * "src/jMtkBlsToSomXY_tst_1.jl")
+        somx, somy = jMtkBlsToSomXY_tst_1();
+        @test (somx, somy) == (1.7145919996643066e7, 222089.9932861328)
+# ---------------------------------------------------------- jMtkLatLonToBls
+        include(JMtk15_test * "src/jMtkLatLonToBls_tst_1.jl")
+        block, line, sample = jMtkLatLonToBls_tst_1();
+        @test (block, line, sample) == (45, 19.521484f0, 207.88611f0)
+# ---------------------------------------------------------- jMtkSomXYToBls
+        include(JMtk15_test * "src/jMtkSomXYToBls_tst_1.jl")
+        block, line, sample = jMtkSomXYToBls_tst_1();
+        @test (block, line, sample) == (69, 100.200195f0, 89.899994f0)
+# ---------------------------------------------------------- jMtkLatLonToSomXY
+        include(JMtk15_test * "src/jMtkLatLonToSomXY_tst_1.jl")
+        somx, somy = jMtkLatLonToSomXY_tst_1();
+        @test (somx, somy) == (1.3677973731411265e7, 686274.716033836)
+# ---------------------------------------------------------- jMtkSomXYToLatLon
+        include(JMtk15_test * "src/jMtkSomXYToLatLon_tst_1.jl")
+        latitude, longitude = jMtkSomXYToLatLon_tst_1();
+        @test (latitude, longitude) == (26.737612422281604, -54.149627910796426)
+# ---------------------------------------------------------- jMtkPathToProjParam
+        include(JMtk15_test * "src/jMtkPathToProjParam_tst_1.jl")
+        proj_params = jMtkPathToProjParam_tst_1();
+        @test proj_params.path == 160
+        @test proj_params.projcode == 22
+        @test proj_params.zonecode == -1
+        @test proj_params.spherecode == 12
+        @test proj_params.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.1705401692154506e8]
+        @test proj_params.ulc == [7.46075e6, 1.09065e6]
+        @test proj_params.lrc == [7.60155e6, 527450.0]
+        @test proj_params.reloffset[2] == 64.0
+# ---------------------------------------------------------- jMtkPathBlockRangeToBlockCorners
+        include(JMtk15_test * "src/jMtkPathBlockRangeToBlockCorners_tst_1.jl")
+        block_corners = jMtkPathBlockRangeToBlockCorners_tst_1();
+        @test block_corners.path == 37
+        @test (block_corners.start_block, block_corners.end_block) == (50, 50)
+        @test block_corners.block[51].ulc == MTKt_GeoCoord(51.50172788126263, -110.34181235426887)
+        @test block_corners.block[51].urc == MTKt_GeoCoord(50.55921476448539, -102.45622291180113)
+        @test block_corners.block[51].ctr == MTKt_GeoCoord(50.47619474545069, -106.54373076847435)
+        @test block_corners.block[51].lrc == MTKt_GeoCoord(49.33239267609881, -102.91557271102047)
+        @test block_corners.block[51].llc == MTKt_GeoCoord(50.25072514075242, -110.60484537214862)
+# ---------------------------------------------------------- jMtkPixelTime
 
+#     # include(JMtk15_test * "src/jMtkPixelTime_tst_1.jl")
+    end
+# ==========================================================================================
+    @testset "MapQuery" begin
+# ---------------------------------------------------------- jMtkLSToLatLon
+        include(JMtk15_test * "src/jMtkLSToLatLon_tst_0100.jl")
+        latitude, longitude = jMtkLSToLatLon_tst_0100();
+        @test (latitude, longitude) == (-24.216289492769953, 30.63597054987332)
 
+        include(JMtk15_test * "src/jMtkLSToLatLon_tst_1000.jl")
+        latitude, longitude = jMtkLSToLatLon_tst_1000();
+        @test (latitude, longitude) == (-24.763422014332374, 32.17378749123402)
 
+        include(JMtk15_test * "src/jMtkLSToLatLon_tst_1100.jl")
+        latitude, longitude = jMtkLSToLatLon_tst_1100();
+        @test (latitude, longitude) == (-25.808810030321773, 32.082301626959335)
+
+        include(JMtk15_test * "src/jMtkLSToLatLon_tst_1300.jl")
+        latitude, longitude = jMtkLSToLatLon_tst_1300();
+        @test (latitude, longitude) == (-27.006268920147406, 30.77788841016984)
+
+        include(JMtk15_test * "src/jMtkLSToLatLon_tst_1500.jl")
+        latitude, longitude = jMtkLSToLatLon_tst_1500();
+        @test (latitude, longitude) == (-24.491393852709678, 32.515787119559384)
+
+        include(JMtk15_test * "src/jMtkLSToLatLon_tst_2300.jl")
+        latitude, longitude = jMtkLSToLatLon_tst_2300();
+        @test (latitude, longitude) == (-21.872392767809703, 32.70617471105444)
+
+        include(JMtk15_test * "src/jMtkLSToLatLon_tst_2500.jl")
+        latitude, longitude = jMtkLSToLatLon_tst_2500();
+        @test (latitude, longitude) == (-21.872392767809703, 32.70617471105444)
+# ---------------------------------------------------------- jMtkLSToSomXY
+        include(JMtk15_test * "src/jMtkLSToSomXY_tst_0100.jl")
+        somx, somy = jMtkLSToSomXY_tst_0100();
+        @test (somx, somy) == (2.292411e7, -405350.0)
+
+        include(JMtk15_test * "src/jMtkLSToSomXY_tst_1000.jl")
+        somx, somy = jMtkLSToSomXY_tst_1000();
+        @test (somx, somy) == (2.298923e7, -153670.0)
+
+        include(JMtk15_test * "src/jMtkLSToSomXY_tst_1100.jl")
+        somx, somy = jMtkLSToSomXY_tst_1100();
+        @test (somx, somy) == (2.263415e7, -218240.0)
+
+        include(JMtk15_test * "src/jMtkLSToSomXY_tst_1300.jl")
+        somx, somy = jMtkLSToSomXY_tst_1300();
+        @test (somx, somy) == (2.272567e7, -258280.0)
+
+        include(JMtk15_test * "src/jMtkLSToSomXY_tst_1500.jl")
+        somx, somy = jMtkLSToSomXY_tst_1500();
+        @test (somx, somy) == (2.314983e7, -528220.0)
+
+        include(JMtk15_test * "src/jMtkLSToSomXY_tst_2300.jl")
+        somx, somy = jMtkLSToSomXY_tst_2300();
+        @test (somx, somy) == (2.222803e7, -308440.0)
+
+        include(JMtk15_test * "src/jMtkLSToSomXY_tst_2500.jl")
+        somx, somy = jMtkLSToSomXY_tst_2500();
+        @test (somx, somy) == (2.287912e7, -358600.0)
+# ---------------------------------------------------------- jMtkLatLonToLS
+#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_110.jl")
+#         line, sample = jMtkLatLonToLS_tst_110();
+#         @test (line, sample) == (2.6562471f0, 7.3437467f0)
+
+#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_120.jl")
+#         line, sample = jMtkLatLonToLS_tst_120();
+#         @test (line, sample) == (2.6562471f0, 7.3437467f0)
+
+#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_130.jl")
+#         line, sample = jMtkLatLonToLS_tst_130();
+#         @test (line, sample) == (49.999954f0, 124.99995f0)
+
+#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_140.jl")
+#         line, sample = jMtkLatLonToLS_tst_140();
+#         @test (line, sample) == (201.49982f0, 501.4998f0)
+
+#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_150.jl")
+#         line, sample = jMtkLatLonToLS_tst_150();
+#         @test (line, sample) == (49.999954f0, 124.99995f0)
+
+#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_160.jl")
+#         line, sample = jMtkLatLonToLS_tst_160();
+#         @test (line, sample) == (49.999954f0, 124.99995f0)
+
+#         include(JMtk15_test * "src/jMtkLatLonToLS_tst_170.jl")
+#         line, sample = jMtkLatLonToLS_tst_170();
+#         @test (line, sample) == (49.999954f0, 124.99995f0)
+# # ---------------------------------------------------------- jMtkSomXYToLS
+#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_110.jl")
+#         line, sample = jMtkSomXYToLS_tst_110();
+#         @test (line, sample) == (6.1f0, 12.5f0)
+
+#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_120.jl")
+#         line, sample = jMtkSomXYToLS_tst_120();
+#         @test (line, sample) == (1.8f0, 27.8f0)
+
+#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_130.jl")
+#         line, sample = jMtkSomXYToLS_tst_130();
+#         @test (line, sample) == (54.3f0, 127.8f0)
+
+#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_140.jl")
+#         line, sample = jMtkSomXYToLS_tst_140();
+#         @test (line, sample) == (97.5f0, 345.6f0)
+
+#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_150.jl")
+#         line, sample = jMtkSomXYToLS_tst_150();
+#         @test (line, sample) == (52.7f0, 325.2f0)
+
+#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_160.jl")
+#         line, sample = jMtkSomXYToLS_tst_160();
+#         @test (line, sample) == (112.3f0, 215.6f0)
+#         include(JMtk15_test * "src/jMtkSomXYToLS_tst_170.jl")
+#         line, sample = jMtkSomXYToLS_tst_170();
+#         @test (line, sample) == (64.2f0, 250.0f0)
+# ---------------------------------------------------------- jMtkCreateLatLon
+#     # include(JMtk15_test * "src/jMtkCreateLatLon_tst_x.jl")
+    end
+# ==========================================================================================
+#     @testset "OrbitPath" begin
+# # ---------------------------------------------------------- jMtkLatLonToPathList
+#         include(JMtk15_test * "src/jMtkLatLonToPathList_tst_1.jl")
+#         path_cnt, path_list = jMtkLatLonToPathList_tst_1();
+#         @test path_cnt == 17
+#         @test path_list == [7, 8, 9, 10, 11, 12, 13, 14, 146, 147, 148, 149, 150, 151, 152, 153, 154]
+# # ---------------------------------------------------------- jMtkLatLonToPathList
+#         include(JMtk15_test * "src/jMtkRegionToPathList_tst_1.jl")
+#         path_cnt, path_list = jMtkRegionToPathList_tst_1();
+#         @test path_cnt == 5
+#         @test path_list == [41, 42, 43, 44, 45]
+# # ---------------------------------------------------------- jMtkRegionPathToBlockRange
+#         include(JMtk15_test * "src/jMtkRegionPathToBlockRange_tst_1.jl")
+#         start_block, end_block = jMtkRegionPathToBlockRange_tst_1();
+#         @test (start_block, end_block) == (32, 40)
+# # ---------------------------------------------------------- jMtkOrbitToPath
+#         include(JMtk15_test * "src/jMtkOrbitToPath_tst_1.jl")
+#         path = jMtkOrbitToPath_tst_1();
+#         @test path == 37
+# # ---------------------------------------------------------- jMtkTimeToOrbitPath
+# #        include(JMtk15_test * "src/jMtkOrbitToPath_tst_1.jl")
+# #        path = jMtkOrbitToPath_tst_1();
+# #        @test path == 37
+# # ---------------------------------------------------------- jMtkTimeRangeToOrbitList
+#         include(JMtk15_test * "src/jMtkTimeRangeToOrbitList_tst_1.jl")
+#         orbit_cnt, orbit_list = jMtkTimeRangeToOrbitList_tst_1();
+#         @test orbit_cnt == 2
+#         @test orbit_list == [27271, 27272]
+# # ---------------------------------------------------------- jMtkPathTimeRangeToOrbitList
+# # ---------------------------------------------------------- jMtkOrbitToTimeRange
+# include(JMtk15_test * "src/jMtkOrbitToTimeRange_tst_1.jl")
+#         start_time, end_time = jMtkOrbitToTimeRange_tst_1();
+#         @test (start_time, end_time) == ("2006-01-24T19:56:53Z", "2006-01-24T21:35:46Z")
+#     end
+# # ==========================================================================================
+#     @testset "SetRegion" begin
+# # ---------------------------------------------------------- jMtkSetRegionByPathBlockRange
+#         include(JMtk15_test * "src/jMtkSetRegionByPathBlockRange_tst_1.jl")
+#         region = jMtkSetRegionByPathBlockRange_tst_1();
+#         @test region == MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(67.28628518822661, -95.22204196033839)), MTKt_Extent(633462.5, 307862.5))
+#         @test region.geo == MTKt_GeoCenter(MTKt_GeoCoord(67.28628518822661, -95.22204196033839))
+#         @test region.geo.ctr == MTKt_GeoCoord(67.28628518822661, -95.22204196033839)
+#         @test region.geo.ctr.lat == 67.28628518822661
+#         @test region.geo.ctr.lon == -95.22204196033839
+#         @test region.hextent == MTKt_Extent(633462.5, 307862.5)
+#         @test region.hextent.xlat == 633462.5
+#         @test region.hextent.ylon == 307862.5
+# # ---------------------------------------------------------- jMtkSetRegionByUlcLrc
+#         include(JMtk15_test * "src/jMtkSetRegionByUlcLrc_tst_1.jl")
+#         region = jMtkSetRegionByUlcLrc_tst_1();
+#         @test region == MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0)), MTKt_Extent(111319.54315, 111319.54315))
+#         @test region.geo == MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0))
+#         @test region.geo.ctr == MTKt_GeoCoord(66.0, -89.0)
+#         @test region.geo.ctr.lat == 66.0
+#         @test region.geo.ctr.lon == -89.0
+#         @test region.hextent == MTKt_Extent(111319.54315, 111319.54315)
+#         @test region.hextent.xlat == 111319.54315
+#         @test region.hextent.ylon == 111319.54315
+# # ---------------------------------------------------------- jMtkSetRegionByLatLonExtent
+#         include(JMtk15_test * "src/jMtkSetRegionByLatLonExtent_tst_1.jl")
+#         region = jMtkSetRegionByLatLonExtent_tst_1();
+#         @test region == MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0)), MTKt_Extent(55500.0, 55500.0))
+#         @test region.geo == MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0))
+#         @test region.geo.ctr == MTKt_GeoCoord(66.0, -89.0)
+#         @test region.geo.ctr.lat == 66.0
+#         @test region.geo.ctr.lon == -89.0
+#         @test region.hextent == MTKt_Extent(55500.0, 55500.0)
+#         @test region.hextent.xlat == 55500.0
+#         @test region.hextent.ylon == 55500.0
+# # ---------------------------------------------------------- jMtkSetRegionByPathSomUlcLrc
+#         include(JMtk15_test * "src/jMtkSetRegionByPathSomUlcLrc_tst_1.jl")
+#         region = jMtkSetRegionByPathSomUlcLrc_tst_1();
+#         @test region == MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(35.38461751504492, -102.05138161671469)), MTKt_Extent(600137.5, 1287.5))
+#         @test region.geo == MTKt_GeoCenter(MTKt_GeoCoord(35.38461751504492, -102.05138161671469))
+#         @test region.geo.ctr == MTKt_GeoCoord(35.38461751504492, -102.05138161671469)
+#         @test region.geo.ctr.lat == 35.38461751504492
+#         @test region.geo.ctr.lon == -102.05138161671469
+#         @test region.hextent == MTKt_Extent(600137.5, 1287.5)
+#         @test region.hextent.xlat == 600137.5
+#         @test region.hextent.ylon == 1287.5
+# # ---------------------------------------------------------- jMtkSnapToGrid
+#         include(JMtk15_test * "src/jMtkSnapToGrid_tst_1.jl")
+#         mapinfo = jMtkSnapToGrid_tst_1();
+#         @test mapinfo.path == 37
+#         @test mapinfo.start_block == 36
+#         @test mapinfo.end_block == 37
+#         @test mapinfo.resolution == 275
+#         @test mapinfo.nline == 704
+#         @test mapinfo.nsample == 512
+#         @test mapinfo.som.ulc == MTKt_SomCoord(1.23888875e7, 1.0555875e6)
+#         @test mapinfo.som.ctr.x == 1.248555e7
+#         @test mapinfo.som.lrc.y == 1.1961125e6
+#         @test mapinfo.geo.ulc.lat == 67.03179518448705
+#         @test mapinfo.geo.urc.lon == -86.6996155055143
+#         @test mapinfo.pp.ulc[1] == 7.46075e6
+#         @test mapinfo.pp.lrc[2] == 527450.0
+#     end
+# ==========================================================================================
+#     @testset "ReadData" begin
+# # ---------------------------------------------------------- jMtkReadData
+# include(JMtk15_test * "src/jMtkReadData_tst_110.jl")
+#         databuf, mapinfo = jMtkReadData_tst_110();
+#         @test Int.(transpose(databuf[461:466, 67:71])) == [ 1  1  1  1  1  1
+#         1  1  1  2  2  2
+#         1  1  2  2  3  2
+#         2  2  3  3  2  3
+#         3  3  3  3  2  2]
+#         @test mapinfo.resfactor == 4
+#         @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+#         @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0))
+#         @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.28085e7, -633600.0)
+#         @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.287835e7, -352550.0)
+#         @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.29482e7, -71500.0)
+#         @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-23.58709279748763, 29.353665543180618), MTKt_GeoCoord(-24.0676258508188, 34.84437551586123), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.323930208545036, 34.740509109113106), MTKt_GeoCoord(-24.838877358123973, 29.195643744542547))
+#         @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-23.58709279748763, 29.353665543180618)
+#         @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-24.0676258508188, 34.84437551586123)
+#         @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-24.479478582488763, 32.028724322255464)
+#         @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-25.323930208545036, 34.740509109113106)
+#         @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-24.838877358123973, 29.195643744542547)
+#         @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+#         @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+#         @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+#         @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+#         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+#         @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+
+#         include(JMtk15_test * "src/jMtkReadData_tst_120.jl")
+#         databuf, mapinfo = jMtkReadData_tst_120();
+#         @test transpose(databuf[16:19, 4:5]) ==
+#             [31.3949458411467 31.283454456643128 31.172319983604712 31.061547430619207;
+#             31.49954269576102 31.38843722293199 31.27768970248382 31.16730618391117]
+#         @test mapinfo.resfactor == 64
+#         @test (mapinfo.nline, mapinfo.nsample) == (8, 32)
+#         @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.295755e7, -642950.0), MTKt_SomCoord(2.301915e7, -370150.0), MTKt_SomCoord(2.308075e7, -97350.0))
+#         @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.295755e7, -642950.0)
+#         @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.301915e7, -370150.0)
+#         @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.308075e7, -97350.0)
+#         @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-24.912833295792158, 29.09305892265543), MTKt_GeoCoord(-25.390243230498008, 34.47763492777933), MTKt_GeoCoord(-25.72932186715566, 31.72061762407402), MTKt_GeoCoord(-26.497900285059888, 34.383017256768206), MTKt_GeoCoord(-26.0162837384446, 28.948916592857373))
+#         @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-24.912833295792158, 29.09305892265543)
+#         @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-25.390243230498008, 34.47763492777933)
+#         @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-25.72932186715566, 31.72061762407402)
+#         @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-26.497900285059888, 34.383017256768206)
+#         @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-26.0162837384446, 28.948916592857373)
+#         @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+#         @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+#         @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+#         @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+#         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 8, 32)
+#         @test mapinfo.pp.reloffset[1:4] == [0.0, 1.0, 0.0, 1.0]
+
+#         include(JMtk15_test * "src/jMtkReadData_tst_130.jl")
+#         databuf, mapinfo = jMtkReadData_tst_130();
+#         @test Int.(transpose(databuf[388:392, 22:27])) == [4  2  3  4  4
+#        4  4  3  4  4
+#        4  4  2  4  2
+#        4  3  1  4  4
+#        4  2  1  4  4
+#        4  2  2  4  4]
+#        @test mapinfo.resfactor == 4
+#        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+#        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.30901e7, -668800.0), MTKt_SomCoord(2.315995e7, -387750.0), MTKt_SomCoord(2.32298e7, -106700.0))
+#        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.30901e7, -668800.0)
+#        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.315995e7, -387750.0)
+#        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.32298e7, -106700.0)
+#        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-26.0721209058142, 28.681521176903196), MTKt_GeoCoord(-26.575431877271235, 34.28232743548915), MTKt_GeoCoord(-26.978298006176956, 31.40606162364945), MTKt_GeoCoord(-27.83108760787897, 34.173044569161036), MTKt_GeoCoord(-27.3224387040438, 28.51053243188757))
+#        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-26.0721209058142, 28.681521176903196)
+#        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-26.575431877271235, 34.28232743548915)
+#        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-26.978298006176956, 31.40606162364945)
+#        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-27.83108760787897, 34.173044569161036)
+#        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-27.3224387040438, 28.51053243188757)
+#        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+#        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+#        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+#        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+#        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+#        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+
+#        include(JMtk15_test * "src/jMtkReadData_tst_140.jl")
+#        databuf, mapinfo = jMtkReadData_tst_140();
+#        @test Int.(transpose(databuf[252:256, 5:10])) == [9968  10720  10488   9420   7828
+#        9936  10816  11192  11000  10764
+#        9212   9552   9996  10176  10448
+#        8664   8668   8588   8364   9104
+#        8568   8576   8324   8212   8116
+#        8928   8972   8728   8732   8688]
+#        @test mapinfo.resfactor == 4
+#        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+#        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.25269e7, -598400.0), MTKt_SomCoord(2.259675e7, -317350.0), MTKt_SomCoord(2.26666e7, -36300.0))
+#        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.25269e7, -598400.0)
+#        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.259675e7, -317350.0)
+#        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.26666e7, -36300.0)
+#        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-21.097325373532644, 29.99582427938279), MTKt_GeoCoord(-21.55799831374879, 35.39028205545153), MTKt_GeoCoord(-21.97741330429874, 32.627475397777744), MTKt_GeoCoord(-22.814872931137558, 35.29073891830416), MTKt_GeoCoord(-22.350387571641914, 29.84908666726994))
+#        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-21.097325373532644, 29.99582427938279)
+#        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-21.55799831374879, 35.39028205545153)
+#        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-21.97741330429874, 32.627475397777744)
+#        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-22.814872931137558, 35.29073891830416)
+#        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-22.350387571641914, 29.84908666726994)
+#        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+#        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+#        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+#        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+#        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+#        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+
+#        include(JMtk15_test * "src/jMtkReadData_tst_150.jl")
+#        databuf, mapinfo = jMtkReadData_tst_150();
+#        @test Int.(transpose(databuf[1011:1015, 201:205])) == [4656  4704  4372  4512  4744
+#        4236  4256  4436  4480  4472
+#        4468  4624  4200  3764  3764
+#        4792  4736  4208  3720  3624
+#        4948  4808  4380  4140  4152]
+#        @test mapinfo.resfactor == 1
+#        @test (mapinfo.nline, mapinfo.nsample) == (512, 2048)
+#        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.26672875e7, -616412.5), MTKt_SomCoord(2.273755e7, -334950.0), MTKt_SomCoord(2.28078125e7, -53487.5))
+#        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.26672875e7, -616412.5)
+#        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.273755e7, -334950.0)
+#        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.28078125e7, -53487.5)
+#        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-22.338655196971448, 29.67470803381622), MTKt_GeoCoord(-22.809586710229873, 35.123460533247695), MTKt_GeoCoord(-23.22882451114302, 32.33086052347723), MTKt_GeoCoord(-24.07360545797157, 35.02132140431515), MTKt_GeoCoord(-23.59848983222742, 29.521588205306525))
+#        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-22.338655196971448, 29.67470803381622)
+#        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-22.809586710229873, 35.123460533247695)
+#        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-23.22882451114302, 32.33086052347723)
+#        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-24.07360545797157, 35.02132140431515)
+#        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-23.59848983222742, 29.521588205306525)
+#        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+#        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+#        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+#        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+#        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 512, 2048)
+#        @test mapinfo.pp.reloffset[1:4] == [0.0, 64.0, 0.0, 64.0]
+
+#        include(JMtk15_test * "src/jMtkReadData_tst_160.jl")
+#        databuf, mapinfo = jMtkReadData_tst_160();
+#        @test Int.(transpose(databuf[244:248, 61:66])) == [277  524  286  292  284
+#        281  536  303  299   33
+#          4  551  298  314   -4
+#        284  305  299  285  290
+#        283  292  527  565  291
+#        546  550  539  557  561]
+#        @test mapinfo.resfactor == 4
+#        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+#        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.23861e7, -580800.0), MTKt_SomCoord(2.245595e7, -299750.0), MTKt_SomCoord(2.25258e7, -18700.0))
+#        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.23861e7, -580800.0)
+#        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.245595e7, -299750.0)
+#        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.25258e7, -18700.0)
+#        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-19.85083825300675, 30.30688322418754), MTKt_GeoCoord(-20.302597970112007, 35.65809597736565), MTKt_GeoCoord(-20.725296200820143, 32.91899135913688), MTKt_GeoCoord(-21.559729345920385, 35.56034690307178), MTKt_GeoCoord(-21.104475164861434, 30.165228506422512))
+#        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-19.85083825300675, 30.30688322418754)
+#        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-20.302597970112007, 35.65809597736565)
+#        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-20.725296200820143, 32.91899135913688)
+#        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-21.559729345920385, 35.56034690307178)
+#        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-21.104475164861434, 30.165228506422512)
+#        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+#        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+#        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+#        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+#        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+#        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+
+#        include(JMtk15_test * "src/jMtkReadData_tst_170.jl")
+#        databuf, mapinfo = jMtkReadData_tst_170();
+#        idl_res = [0.100000     -9999.00     0.850000     -9999.00     -9999.00
+#             0.100000     0.811538     -9999.00     -9999.00     -9999.00
+#             0.100000     0.100000     0.961111     0.350000     0.950000
+#             0.100000     0.645455     0.350000     0.350000     0.350000
+#             0.350000     0.350000     0.350000     0.350000     0.350000];
+#         jul_res = transpose(databuf[251:255, 65:68]);
+#         @test isapprox(idl_res, jul_res, atol = 0.001)
+#         @test mapinfo.resfactor == 4
+#         @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+#         @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.23861e7, -580800.0), MTKt_SomCoord(2.245595e7, -299750.0), MTKt_SomCoord(2.25258e7, -18700.0))
+#         @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.23861e7, -580800.0)
+#         @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.245595e7, -299750.0)
+#         @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.25258e7, -18700.0)
+#         @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-19.85083825300675, 30.30688322418754), MTKt_GeoCoord(-20.302597970112007, 35.65809597736565), MTKt_GeoCoord(-20.725296200820143, 32.91899135913688), MTKt_GeoCoord(-21.559729345920385, 35.56034690307178), MTKt_GeoCoord(-21.104475164861434, 30.165228506422512))
+#         @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-19.85083825300675, 30.30688322418754)
+#         @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-20.302597970112007, 35.65809597736565)
+#         @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-20.725296200820143, 32.91899135913688)
+#         @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-21.559729345920385, 35.56034690307178)
+#         @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-21.104475164861434, 30.165228506422512)
+#         @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+#         @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+#         @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+#         @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+#         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+#         @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+# # ---------------------------------------------------------- jMtkReadBlock
+#         include(JMtk15_test * "src/jMtkReadBlock_tst_110.jl")
+#         data = jMtkReadBlock_tst_110();
+#         @test typeof(data) == Matrix{UInt8}
+#         @test size(data) == (512, 128)
+#         idl_res = UInt8.([1   1   2   2
+#             2   2   2   2
+#             2   3   2   2
+#             3   2   2   1
+#             2   2   1   1
+#             1   1   1   1
+#             1   1   1   1]);
+#         jul_res = transpose(data[471:474, 65:71]);
+#         @test idl_res == jul_res
+
+#         include(JMtk15_test * "src/jMtkReadBlock_tst_120.jl")
+#         data = jMtkReadBlock_tst_120();
+#         @test typeof(data) == Matrix{Float64}
+#         @test size(data) == (32, 8)
+#         idl_res = Float64.([230.08959       229.82531       229.55951       229.29219
+#             229.89184       229.62716       229.36099       229.09329
+#             229.69559       229.43054       229.16399       228.89594
+#             229.50085       229.23543       228.96852       228.70011
+#             229.30761       229.04182       228.77456       228.50581
+#             229.11584       228.84970       228.58210       228.31302
+#             228.92556       228.65907       228.39113       228.12173
+#             228.73674       228.46992       228.20165       227.93194]);
+#         jul_res = transpose(data[21:24, 1:8]);
+#         @test isapprox(idl_res, jul_res, atol = 0.001)
+
+#         include(JMtk15_test * "src/jMtkReadBlock_tst_130.jl")
+#         data = jMtkReadBlock_tst_130();
+#         @test typeof(data) == Matrix{UInt8}
+#         @test size(data) == (512, 128)
+#         idl_res = UInt8.([4   2   4   2   3
+#             4   3   4   2   2
+#             4   4   4   2   2
+#             4   3   3   2   4
+#             4   3   3   3   4
+#             4   3   3   0   4
+#             4   4   3   4   0
+#             4   0   3   4   4]);
+#         jul_res = transpose(data[187:191, 27:34]);
+#         @test idl_res == jul_res
+
+#         include(JMtk15_test * "src/jMtkReadBlock_tst_140.jl")
+#         data = jMtkReadBlock_tst_140();
+#         @test typeof(data) == Matrix{UInt16}
+#         @test size(data) == (512, 128)
+#         idl_res = UInt16.([3576    3504    3416    3432
+#             3552    3604    3532    3424
+#             3528    3580    3576    3592
+#             3648    3612    3504    3556
+#             3708    3672    3612    3612
+#             3748    3652    3560    3592]);
+#         jul_res = transpose(data[291:294, 51:56]);
+#         @test idl_res == jul_res
+
+#         include(JMtk15_test * "src/jMtkReadBlock_tst_150.jl")
+#         data = jMtkReadBlock_tst_150();
+#         @test typeof(data) == Matrix{UInt16}
+#         @test size(data) == (2048, 512)
+#         idl_res = UInt16.([3176    2900    2872    3176
+#             3112    2864    2908    3120
+#             2908    2856    2916    2988
+#             2964    2852    2964    2964
+#             2972    2924    3092    3004
+#             2976    2992    3192    3180
+#             3004    2936    3168    3596]);
+#         jul_res = transpose(data[1261:1264, 214:220]);
+#         @test idl_res == jul_res
+
+#         include(JMtk15_test * "src/jMtkReadBlock_tst_160.jl")
+#         data = jMtkReadBlock_tst_160();
+#         @test typeof(data) == Matrix{Int8}
+#         @test size(data) == (512, 128)
+#         idl_res = Int8.([0   1   1   1   4
+#             1   4   0   4   4
+#             4   4   4   4   4
+#             3   3   4   0   4
+#             4   4   4   0   0
+#             1   1   4   2   1
+#             1   1   1   1   1]);
+#         jul_res = transpose(data[296:300, 91:97]);
+#         @test idl_res == jul_res
+
+#         include(JMtk15_test * "src/jMtkReadBlock_tst_170.jl")
+#         data = jMtkReadBlock_tst_170();
+#         @test typeof(data) == Matrix{Float32}
+#         @test size(data) == (512, 128)
+#         idl_res = Float32.([1.16250     0.850000     0.850000
+#             1.10000      1.26667     0.850000
+#             1.10000      1.35000     0.850000
+#             1.10000     0.600000     0.850000
+#             1.25000      1.15000      1.20000
+#             0.850000      1.18333      1.10000
+#             1.35000     0.850000      1.10000
+#             -9999.00     -9999.00     0.850000]);
+#         jul_res = transpose(data[251:253, 61:68]);
+#         @test isapprox(idl_res, jul_res, atol = 0.001)
+# ----------------------------------------------------------
+#    end
 end

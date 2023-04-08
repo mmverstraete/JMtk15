@@ -169,6 +169,10 @@ include(JMtk15_src * "jMtkMakeFilename.jl")
 export jMtkMakeFilename
 include(JMtk15_src * "jMtkFindFileList.jl")
 export jMtkFindFileList
+include(JMtk15_src * "jMtkFileBlockMetaList.jl")
+export jMtkFileBlockMetaList
+include(JMtk15_src * "jMtkFileBlockMetaFieldList.jl")
+export jMtkFileBlockMetaFieldList
 
 # -----------------------------------------------------------------------------
 

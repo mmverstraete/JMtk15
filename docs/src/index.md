@@ -79,5 +79,6 @@ jMtkFileGridToResolution
 jMtkFileCoreMetaDataQuery
 jMtkMakeFilename
 jMtkFindFileList
-
+jMtkFileBlockMetaList
+jMtkFileBlockMetaFieldList
 ```

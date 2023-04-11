@@ -19,7 +19,7 @@ Provide Julia wrapper functions to the NASA JPL
 * This module allows one to use some of the C functions defined in the MISR Toolkit (Mtk) as if they were Julia functions. Please read the README.md file and the documentation for this package to determine which functions are available and how they can be used.
 * The MISR Toolkit (Mtk) itself must be installed on your computer before this JMtk15 package can be used. In particular, the location of the shared library `libMisrToolkit.so` in the file system must be specified as part of the configuration of this package.
 * MISR data must be available on your computer, and their physical location must be specified as part of the configuration of this package.
-* This module must be imported before using any of the wrapper functions because it loads essential definitions and defines the location of resources (source files, test functions, documentation, data).
+* This module must be imported before using any of the wrapper functions because it loads essential definitions and sets the location of resources (source files, test functions, documentation, data).
 
 # Example:
 ```julia
@@ -39,17 +39,16 @@ using StringViews
 export StringView
 
 # Package configuration:
+
 # Please update the following two assignment statements to match the current configuration.
 # 1. Set the location of the Mtk shared library:
 
 mtklib = "/Applications/Mtk-1.5.0/lib/libMisrToolkit.so.1.5.0"
 export mtklib
 
-# 2. Set the location of the MISR data files:
-# const JMtk15_data = "/Users/michel/MISR_HR/Input/Sample_168/"
-# export JMtk15_data
+# 2. Set the location of the MISR source and data files for this JMtk15 package. In principle, only the data subdirectory may need to be updated, if your data are located elsewhere than at the standard location identified below:
 
-# Define root directories for the project JMtk15:
+# Define root directories for the project :
 const JMtk15_root = dirname(@__DIR__)
 export JMtk15_root
 const JMtk15_src = JMtk15_root * "/src/"
@@ -137,8 +136,8 @@ include(JMtk15_src * "jMtkFileLGID.jl")
 export jMtkFileLGID
 include(JMtk15_src * "jMtkFileVersion.jl")
 export jMtkFileVersion
-# include(JMtk15_src * "jMtkFillValueGet.jl")
-# export jMtkFillValueGet
+include(JMtk15_src * "jMtkFillValueGet.jl")
+export jMtkFillValueGet
 include(JMtk15_src * "jMtkFileAttrList.jl")
 export jMtkFileAttrList
 # include(JMtk15_src * "jMtkFileAttrGet.jl")

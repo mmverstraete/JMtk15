@@ -140,12 +140,12 @@ include(JMtk15_src * "jMtkFillValueGet.jl")
 export jMtkFillValueGet
 include(JMtk15_src * "jMtkFileAttrList.jl")
 export jMtkFileAttrList
-# include(JMtk15_src * "jMtkFileAttrGet.jl")
-# export jMtkFileAttrGet
+include(JMtk15_src * "jMtkFileAttrGet.jl")
+export jMtkFileAttrGet
 include(JMtk15_src * "jMtkGridAttrList.jl")
 export jMtkGridAttrList
-# include(JMtk15_src * "jMtkGridAttrGet.jl")
-# export jMtkGridAttrGet
+include(JMtk15_src * "jMtkGridAttrGet.jl")
+export jMtkGridAttrGet
 include(JMtk15_src * "jMtkFieldAttrList.jl")
 export jMtkFieldAttrList
 # # include(JMtk15_src * "jMtkFieldAttrGet.jl")

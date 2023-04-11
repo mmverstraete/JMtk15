@@ -238,33 +238,33 @@ using Test
         @test attrlist[41:45] == ["title", "institution", "source", "history", "references"]
         @test attrlist[85:88] == ["config.sim.enable", "config.sim.surface_type", "config.SurfaceRetrieval.use_smoothed_aod", "config.underlight_albedo"]
 # ---------------------------------------------------------- jMtkFileAttrGet
-#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_1.jl")
-#         attrval = jMtkFileAttrGet_tst_1();
-#         @test attrval == 2
+        include(JMtk15_test * "src/jMtkFileAttrGet_tst_0100.jl")
+        attrval = jMtkFileAttrGet_tst_0100();
+        @test attrval == 2
 
-#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_2.jl")
-#         attrval = jMtkFileAttrGet_tst_2();
-#         @test attrval == 19
+        include(JMtk15_test * "src/jMtkFileAttrGet_tst_1000.jl")
+        attrval = jMtkFileAttrGet_tst_1000();
+        @test attrval == 19
 
-#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_3.jl")
-#         attrval = jMtkFileAttrGet_tst_3();
-#         @test attrval == 6378137.0
+        include(JMtk15_test * "src/jMtkFileAttrGet_tst_1100.jl")
+        attrval = jMtkFileAttrGet_tst_1100();
+        @test attrval == 4
 
-#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_4.jl")
-#         attrval = jMtkFileAttrGet_tst_4();
-#         @test attrval == 4
+        include(JMtk15_test * "src/jMtkFileAttrGet_tst_1300.jl")
+        attrval = jMtkFileAttrGet_tst_1300();
+        @test attrval == 527450.0
 
-#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_5.jl")
-#         attrval = jMtkFileAttrGet_tst_5();
-#         @test attrval == 527450.0
+        include(JMtk15_test * "src/jMtkFileAttrGet_tst_1500.jl")
+        attrval = jMtkFileAttrGet_tst_1500();
+        @test attrval == 6378137.0
 
-#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_6.jl")
-#         attrval = jMtkFileAttrGet_tst_6();
-#         @test attrval == 1.7157253262878522
+        include(JMtk15_test * "src/jMtkFileAttrGet_tst_2300.jl")
+        attrval = jMtkFileAttrGet_tst_2300();
+        @test attrval == 1.7157253262878522
 
-#         include(JMtk15_test * "src/jMtkFileAttrGet_tst_7.jl")
-#         attrval = jMtkFileAttrGet_tst_7();
-#         @test attrval == 37.4519193181101
+        include(JMtk15_test * "src/jMtkFileAttrGet_tst_2500.jl")
+        attrval = jMtkFileAttrGet_tst_2500();
+        @test attrval == 37.4519193181101
         # ---------------------------------------------------------- jMtkGridAttrList
         include(JMtk15_test * "src/jMtkGridAttrList_tst_0100.jl")
         nattrs, attrlist = jMtkGridAttrList_tst_0100();
@@ -306,33 +306,33 @@ using Test
         @test nattrs == 4
         @test attrlist == ["GCTP_projection_parameters", "resolution_in_meters", "block_size_in_lines", "block_size_in_samples"]
 # ---------------------------------------------------------- jMtkGridAttrGet
-#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_1.jl")
-#         attrval = jMtkGridAttrGet_tst_1();
-#         @test attrval == 1100
+        include(JMtk15_test * "src/jMtkGridAttrGet_tst_0100.jl")
+        attrval = jMtkGridAttrGet_tst_0100();
+        @test attrval == 1100
 
-#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_2.jl")
-#         attrval = jMtkGridAttrGet_tst_2();
-#         @test attrval == 1.0004615223771693
+        include(JMtk15_test * "src/jMtkGridAttrGet_tst_1000.jl")
+        attrval = jMtkGridAttrGet_tst_1000();
+        @test attrval == 1.0004615223771693
 
-#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_3.jl")
-#         attrval = jMtkGridAttrGet_tst_3();
-#         @test attrval == 512
+        include(JMtk15_test * "src/jMtkGridAttrGet_tst_1100.jl")
+        attrval = jMtkGridAttrGet_tst_1100();
+        @test attrval == 275
 
-#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_4.jl")
-#         attrval = jMtkGridAttrGet_tst_4();
-#         @test attrval == 275
+        include(JMtk15_test * "src/jMtkGridAttrGet_tst_1300.jl")
+        attrval = jMtkGridAttrGet_tst_1300();
+        @test attrval == 128
 
-#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_5.jl")
-#         attrval = jMtkGridAttrGet_tst_5();
-#         @test attrval == 128
+        include(JMtk15_test * "src/jMtkGridAttrGet_tst_1500.jl")
+        attrval = jMtkGridAttrGet_tst_1500();
+        @test attrval == 512
 
-#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_6.jl")
-#         attrval = jMtkGridAttrGet_tst_6();
-#         @test attrval == 1100
+        include(JMtk15_test * "src/jMtkGridAttrGet_tst_2300.jl")
+        attrval = jMtkGridAttrGet_tst_2300();
+        @test attrval == 1100
 
-#         include(JMtk15_test * "src/jMtkGridAttrGet_tst_7.jl")
-#         attrval = jMtkGridAttrGet_tst_7();
-#         @test attrval == 1100
+        include(JMtk15_test * "src/jMtkGridAttrGet_tst_2500.jl")
+        attrval = jMtkGridAttrGet_tst_2500();
+        @test attrval == 1100
         # ---------------------------------------------------------- jMtkFieldAttrList
         include(JMtk15_test * "src/jMtkFieldAttrList_tst_0100.jl")
         nattrs, attrlist = jMtkFieldAttrList_tst_0100();

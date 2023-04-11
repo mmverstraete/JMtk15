@@ -65,6 +65,7 @@ jMtkFileLGID
 jMtkFileVersion
 jMtkFillValueGet
 jMtkFileAttrList
+jMtkFileAttrGet
 jMtkGridAttrList
 jMtkFieldAttrList
 jMtkFileToPath

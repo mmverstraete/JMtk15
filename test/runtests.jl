@@ -369,33 +369,31 @@ using Test
         @test nattrs == 5
         @test attrlist == ["_FillValue", "coordinates", "units", "standard_name", "long_name"]
 # ---------------------------------------------------------- jMtkFieldAttrGet
-#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_2.jl")
-#         attrval = jMtkFieldAttrGet_tst_2();
-#         @test attrval == -555.0
+# Note: The fields of a MISR AGP file do not feature any attributes.
+        include(JMtk15_test * "src/jMtkFieldAttrGet_tst_1000.jl")
+        attrval = jMtkFieldAttrGet_tst_1000();
+        @test attrval == -555.0
 
-#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_3.jl")
-#         attrval = jMtkFieldAttrGet_tst_3();
-#         @test attrval == 255
+        include(JMtk15_test * "src/jMtkFieldAttrGet_tst_1100.jl")
+        attrval = jMtkFieldAttrGet_tst_1100();
+        @test attrval == -555.0
 
-#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_4.jl")
-#         attrval = jMtkFieldAttrGet_tst_4();
-#         @test attrval == -555.0
+        include(JMtk15_test * "src/jMtkFieldAttrGet_tst_1300.jl")
+        attrval = jMtkFieldAttrGet_tst_1300();
+        @test attrval == 65515
 
-#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_5.jl")
-#         attrval = jMtkFieldAttrGet_tst_5();
-#         @test attrval == 65515
+        include(JMtk15_test * "src/jMtkFieldAttrGet_tst_1500.jl")
+        attrval = jMtkFieldAttrGet_tst_1500();
+        @test attrval == 255
 
-#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_6.jl")
-#         attrval = jMtkFieldAttrGet_tst_6();
-#         @test attrval == -9999.0
+        include(JMtk15_test * "src/jMtkFieldAttrGet_tst_2300.jl")
+        attrval = jMtkFieldAttrGet_tst_2300();
+        @test attrval == -9999.0
 
-#         include(JMtk15_test * "src/jMtkFieldAttrGet_tst_7.jl")
-#         attrval = jMtkFieldAttrGet_tst_7();
-#         @test attrval == 0.007936508f0
-#         include(JMtk15_test * "src/jMtkFileToOrbit_tst_110.jl")
-#         orbit = jMtkFileToOrbit_tst_110();
-#         @test orbit == 68050
-        # ---------------------------------------------------------- jMtkFileToPath
+        include(JMtk15_test * "src/jMtkFieldAttrGet_tst_2500.jl")
+        attrval = jMtkFieldAttrGet_tst_2500();
+        @test attrval == 0.007936508f0
+# ---------------------------------------------------------- jMtkFileToPath
         include(JMtk15_test * "src/jMtkFileToPath_tst_0100.jl")
         path = jMtkFileToPath_tst_0100();
         @test path == 168
@@ -448,7 +446,6 @@ using Test
         include(JMtk15_test * "src/jMtkFileToOrbit_tst_2500.jl")
         orbit = jMtkFileToOrbit_tst_2500();
         @test orbit == 68050
-
 # ---------------------------------------------------------- jMtkFileToBlockRange
         include(JMtk15_test * "src/jMtkFileToBlockRange_tst_0100.jl")
         start_block, end_block = jMtkFileToBlockRange_tst_0100();
@@ -628,13 +625,11 @@ using Test
         @test dimnames == String[]
         @test dimsizes == Int32[]
 
-        # The following test causes Julia to crash with the following error message:
-        # julia(19310,0x2047052c0) malloc: *** error for object 0x6000030cb990: pointer being freed was not allocated
-        # include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_2500.jl")
-        # ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2500();
-        # @test ndims == 2
-        # @test dimnames == ["Band_Dim", "Camera_Dim"]
-        # @test dimsizes == [4, 9]
+        include(JMtk15_test * "src/jMtkFileGridFieldToDimList_tst_2500.jl")
+        ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList_tst_2500();
+        @test ndims == 2
+        @test dimnames == ["Band_Dim", "Camera_Dim"]
+        @test dimsizes == [4, 9]
 # ---------------------------------------------------------- jMtkFileGridFieldCheck
         include(JMtk15_test * "src/jMtkFileGridFieldCheck_tst_0100.jl")
         status = jMtkFileGridFieldCheck_tst_0100();
@@ -720,7 +715,7 @@ using Test
         resolution = jMtkFileGridToResolution_tst_2500();
         @test resolution == 4400
 # ---------------------------------------------------------- jMtkFileCoreMetaDataQuery
-# Note: This function crashes when applied to MISR GP_GMP data files!
+# Note: This function works for multiple file types but crashes when applied to MISR GP_GMP data files, both when called in IDL and in Julia!
 
         include(JMtk15_test * "src/jMtkFileCoreMetaDataQuery_tst_0100.jl")
         nparams, paramlist = jMtkFileCoreMetaDataQuery_tst_0100();
@@ -1292,15 +1287,15 @@ using Test
         @test mapinfo.pp.lrc[2] == 527450.0
     end
 # ==========================================================================================
-#    @testset "ReadData" begin
+#     @testset "ReadData" begin
 # ---------------------------------------------------------- jMtkReadData
         # include(JMtk15_test * "src/jMtkReadData_tst_0100.jl")
         # databuf, mapinfo = jMtkReadData_tst_0100();
         # @test Int.(transpose(databuf[461:466, 67:71])) == [
-        #         1  1  1  1  1  1
-        #         1  1  1  2  2  2
-        #         1  1  2  2  3  2
-        #         2  2  3  3  2  3
+        #         1  1  1  1  1  1;
+        #         1  1  1  2  2  2;
+        #         1  1  2  2  3  2;
+        #         2  2  3  3  2  3;
         #         3  3  3  3  2  2]
         # @test mapinfo.resfactor == 4
         # @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
@@ -1324,10 +1319,8 @@ using Test
         # include(JMtk15_test * "src/jMtkReadData_tst_1000.jl")
         # databuf, mapinfo = jMtkReadData_tst_1000();
         # @test transpose(databuf[16:19, 4:5]) == [
-        #         31.3949  31.2835  31.1723  31.0615
-        #         31.4995  31.3884  31.2777  31.1673]
-#            [31.3949458411467 31.283454456643128 31.172319983604712 31.061547430619207
-#            31.49954269576102 31.38843722293199 31.27768970248382 31.16730618391117]
+        #         31.3949458411467 31.283454456643128 31.172319983604712 31.061547430619207;
+        #         31.49954269576102 31.38843722293199 31.27768970248382 31.16730618391117]
         # @test mapinfo.resfactor == 64
         # @test (mapinfo.nline, mapinfo.nsample) == (8, 32)
         # @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.295755e7, -642950.0), MTKt_SomCoord(2.301915e7, -370150.0), MTKt_SomCoord(2.308075e7, -97350.0))
@@ -1582,5 +1575,5 @@ using Test
 #         jul_res = transpose(data[251:253, 61:68]);
 #         @test isapprox(idl_res, jul_res, atol = 0.001)
 # ----------------------------------------------------------
-#   end
+#     end
 end

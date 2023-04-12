@@ -148,7 +148,7 @@ include(JMtk15_src * "jMtkGridAttrGet.jl")
 export jMtkGridAttrGet
 include(JMtk15_src * "jMtkFieldAttrList.jl")
 export jMtkFieldAttrList
-# # include(JMtk15_src * "jMtkFieldAttrGet.jl")
+include(JMtk15_src * "jMtkFieldAttrGet.jl")
 export jMtkFieldAttrGet
 include(JMtk15_src * "jMtkFileToPath.jl")
 export jMtkFileToPath
@@ -230,8 +230,8 @@ include(JMtk15_src * "jMtkPathToProjParam.jl")
 export jMtkPathToProjParam
 include(JMtk15_src * "jMtkPathBlockRangeToBlockCorners.jl")
 export jMtkPathBlockRangeToBlockCorners
-### include(JMtk15_src * "jMtkPixelTime.jl")
-### export jMtkPixelTime
+# include(JMtk15_src * "jMtkPixelTime.jl")
+# export jMtkPixelTime
 # -----------------------------------------------------------------------------
 # MapQuery functions:
 include(JMtk15_src * "jMtkLSToLatLon.jl")
@@ -242,8 +242,8 @@ include(JMtk15_src * "jMtkLatLonToLS.jl")
 export jMtkLatLonToLS
 include(JMtk15_src * "jMtkSomXYToLS.jl")
 export jMtkSomXYToLS
-### include(JMtk15_src * "jMtkCreateLatLon.jl")
-### export jMtkCreateLatLon
+# include(JMtk15_src * "jMtkCreateLatLon.jl")
+# export jMtkCreateLatLon
 # -----------------------------------------------------------------------------
 # OrbitPath functions:
 include(JMtk15_src * "jMtkLatLonToPathList.jl")

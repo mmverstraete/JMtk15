@@ -55,15 +55,16 @@ function jMtkFileGridFieldToDimList(filename::AbstractString, gridname::Abstract
         error("jMtkFileGridFieldToDimList status = ", status,
             ", error message = ", jMtkErrorMessage(status))
     end
+    julia_ndims = ndims[]
     julia_dimnames = [unsafe_string(unsafe_load(dimnames[], i)) for i in 1:ndims[]]
     julia_dimsizes = [unsafe_load(dimsizes[], i) for i in 1:ndims[]]
     status = @ccall mtklib.MtkStringListFree(
-        ndims::Ref{Cint},
-        dimnames::Ref{Ptr{Ptr{UInt8}}},
-        dimsizes::Ref{Ptr{Cint}})::Cint
+        ndims[]::Cint,
+        dimnames::Ref{Ptr{Ptr{UInt8}}})::Cint
     if status != 0
         error("jMtkFileGridFieldToDimList: MtkStringListFree status = ", status,
             ", error message = ", jMtkErrorMessage(status))
     end
-    return ndims[], julia_dimnames, julia_dimsizes
+    Libc.free(dimsizes[])
+    return julia_ndims, julia_dimnames, julia_dimsizes
 end

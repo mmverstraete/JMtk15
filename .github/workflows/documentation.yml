@@ -10,7 +10,9 @@ on:
 jobs:
   build:
     permissions:
+      actions: write
       contents: write
+      deployments: write
     runs on: macOS-latest
     steps:
       - uses: actions/checkout@v2

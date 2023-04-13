@@ -4,7 +4,7 @@ CurrentModule = JMtk15
 
 # JMtk15 Package Documentation
 
-Welcome to [JMtk15](https://github.com/Michel%20Verstraete/JMtk15.jl), a Julia language package to leverage the NASA JPL MISR Toolkit (Mtk) C shared library [Version 1.5], a convenient and simplified programming interface to access MISR L1B2, L2, and MISR-HR, conventional and ancillary data products.
+Welcome to [JMtk15](https://github.com/mmverstraete/JMtk15.jl), a Julia language package to leverage the NASA JPL MISR Toolkit (Mtk) C shared library [Version 1.5], a convenient and simplified programming interface to access MISR L1B2, L2, and MISR-HR, conventional and ancillary data products.
 
 The Multi-angle Imaging SpectroRadiometer (MISR) instrument is one of five instruments aboard NASA's Earth Observation Terra satellite launched on 18 December 1999. MISR has been collecting data on the causes and effects of climate change in the atmosphere and at the planetary surface every day since 24 February 2000, and is expected to continue operating until early 2027. A wide range of geophysical products are available on a per-orbit basis at spatial resolutions varying between 275 m and 17.6 km, depending on the product. Higher-level (L3) products with a global coverage and at coarser spatial resolution are also available.
 

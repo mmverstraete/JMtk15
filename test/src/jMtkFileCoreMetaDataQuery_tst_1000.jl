@@ -14,6 +14,8 @@ Generate the output of `jMtkFileCoreMetaDataQuery` for testing purposes. Test 10
 * Mtk C Library: Version 1.5.
 * Julia wrapper: Version 0.1.0 (2023-02-15).
 
+# WARNING: This function works fine for multiple MISR data product file tpyes, but not when applied to a GP_GMP file. This bug has been reported to NASA JPL (see Issue #11 on https://github.com/nasa/MISR-Toolkit/issues). DO NOT USE this function on that type of file until the bug has been fixed in Mtk.
+
 # Verification:
 WARNING: The following commands cause IDL to crash and quit!
 ```idl

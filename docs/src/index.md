@@ -89,8 +89,6 @@ jMtkMakeFilename
 jMtkFindFileList
 jMtkFileBlockMetaList
 jMtkFileBlockMetaFieldList
-jMtkFileBlockMetaFieldRead
-jMtkTimeMetaRead
 ```
 
 ## UnitConv
@@ -140,7 +138,6 @@ jMtkRegionPathToBlockRange
 jMtkOrbitToPath
 jMtkTimeToOrbitPath
 jMtkTimeRangeToOrbitList
-jMtkPathTimeRangeToOrbitList
 jMtkOrbitToTimeRange
 ```
 
@@ -152,4 +149,10 @@ jMtkSetRegionByUlcLrc
 jMtkSetRegionByLatLonExtent
 jMtkSetRegionByPathSomUlcLrc
 jMtkSnapToGrid
+```
+
+## ReadData
+
+```@docs
+jMtkReadData
 ```

@@ -182,10 +182,10 @@ include(JMtk15_src * "jMtkFileBlockMetaList.jl")
 export jMtkFileBlockMetaList
 include(JMtk15_src * "jMtkFileBlockMetaFieldList.jl")
 export jMtkFileBlockMetaFieldList
-include(JMtk15_src * "jMtkFileBlockMetaFieldRead.jl")
-export jMtkFileBlockMetaFieldRead
-include(JMtk15_src * "jMtkTimeMetaRead.jl")
-export jMtkTimeMetaRead
+# include(JMtk15_src * "jMtkFileBlockMetaFieldRead.jl")
+# export jMtkFileBlockMetaFieldRead
+# include(JMtk15_src * "jMtkTimeMetaRead.jl")
+# export jMtkTimeMetaRead
 # -----------------------------------------------------------------------------
 # UnitConv functions:
 include(JMtk15_src * "jMtkDdToDegMinSec.jl")
@@ -278,8 +278,8 @@ export jMtkSnapToGrid
 # ReadData functions:
 include(JMtk15_src * "jMtkReadData.jl")
 export jMtkReadData
-include(JMtk15_src * "jMtkReadBlock.jl")
-export jMtkReadBlock
+# include(JMtk15_src * "jMtkReadBlock.jl")
+# export jMtkReadBlock
 ### jMtkReadBlockRange
 ### include(JMtk15_src * "jMtkReadRaw.jl")
 ### export jMtkReadRaw

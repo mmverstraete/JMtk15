@@ -6,7 +6,7 @@ DocMeta.setdocmeta!(JMtk15, :DocTestSetup, :(using JMtk15); recursive=true)
 makedocs(;
     modules=[JMtk15],
     authors="Michel Verstraete <MMVerstraete@gmail.com> and contributors",
-    repo="https://github.com/Michel Verstraete/JMtk15.jl/blob/{commit}{path}#{line}",
+    repo="https://github.com/mmverstraete/JMtk15.jl/blob/{commit}{path}#{line}",
     sitename="JMtk15.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",

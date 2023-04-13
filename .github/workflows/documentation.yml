@@ -13,7 +13,7 @@ jobs:
       actions: write
       contents: write
       deployments: write
-    runs on: macOS-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: julia-actions/setup-julia@v1

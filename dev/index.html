@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Home · JMtk15.jl</title><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href>JMtk15.jl</a></span></div><form class="docs-search" action="search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li class="is-active"><a class="tocitem" href>Home</a><ul class="internal"><li><a class="tocitem" href="#Package-status-and-Acknowledgments"><span>Package status and Acknowledgments</span></a></li><li><a class="tocitem" href="#Pre-requisites-and-Installation"><span>Pre-requisites and Installation</span></a></li><li><a class="tocitem" href="#Index-of-functions"><span>Index of functions</span></a></li><li><a class="tocitem" href="#Main-module"><span>Main module</span></a></li><li><a class="tocitem" href="#Util"><span>Util</span></a></li><li><a class="tocitem" href="#FileQuery"><span>FileQuery</span></a></li><li><a class="tocitem" href="#UnitConv"><span>UnitConv</span></a></li><li><a class="tocitem" href="#CoordQuery"><span>CoordQuery</span></a></li><li><a class="tocitem" href="#MapQuery"><span>MapQuery</span></a></li><li><a class="tocitem" href="#OrbitPath"><span>OrbitPath</span></a></li><li><a class="tocitem" href="#SetRegion"><span>SetRegion</span></a></li><li><a class="tocitem" href="#ReadData"><span>ReadData</span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Home</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Home</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/mmverstraete/JMtk15.jl/blob/main/docs/src/index.md#" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="JMtk15-Package-Documentation"><a class="docs-heading-anchor" href="#JMtk15-Package-Documentation">JMtk15 Package Documentation</a><a id="JMtk15-Package-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#JMtk15-Package-Documentation" title="Permalink"></a></h1><p>Welcome to <a href="https://github.com/mmverstraete/JMtk15.jl">JMtk15</a>, a Julia language package to leverage the NASA JPL MISR Toolkit (Mtk) C shared library [Version 1.5], a convenient and simplified programming interface to access MISR L1B2, L2, and MISR-HR, conventional and ancillary data products.</p><p>The Multi-angle Imaging SpectroRadiometer (MISR) instrument is one of five instruments aboard NASA&#39;s Earth Observation Terra satellite launched on 18 December 1999. MISR has been collecting data on the causes and effects of climate change in the atmosphere and at the planetary surface every day since 24 February 2000, and is expected to continue operating until early 2027. A wide range of geophysical products are available on a per-orbit basis at spatial resolutions varying between 275 m and 17.6 km, depending on the product. Higher-level (L3) products with a global coverage and at coarser spatial resolution are also available.</p><p>Detailed information on the scientific context of this project is available on-line from:</p><ul><li>the <a href="https://terra.nasa.gov/about/mission">NASA Terra mission</a>,</li><li>the <a href="https://misr.jpl.nasa.gov/">MISR instrument</a>, including a complete bibliography of thousands of published papers and reports,</li><li>the <a href="https://asdc.larc.nasa.gov/project/MISR">NASA Atmospheric Science Data Center</a>, and</li><li>the <a href="https://github.com/nasa/MISR-Toolkit">MISR Toolkit</a>.</li></ul><h2 id="Package-status-and-Acknowledgments"><a class="docs-heading-anchor" href="#Package-status-and-Acknowledgments">Package status and Acknowledgments</a><a id="Package-status-and-Acknowledgments-1"></a><a class="docs-heading-anchor-permalink" href="#Package-status-and-Acknowledgments" title="Permalink"></a></h2><p>The Julia functions located in the <code>src</code> subdirectory of this <code>JMtk15</code> package are Julia wrappers to a selection of some of the most useful C functions of <code>Mtk</code>. This is Work in Progress (WIP): there are more functions in the <code>Mtk</code> library; additional wrapper functions will be added later, time permitting.</p><p>The <code>test</code> and <code>doc</code> subdirectories contain test functions and documentation for those wrapper functions, respectively.</p><p>All functions and files published as part of this <code>JMtk15</code> package are provided under the MIT License, i.e., without any warranty about the their usability or effectiveness in your own applications. See the LICENSE file in this repository for more details.</p><p>Generating this package would not have been possible without the professional help of Sebastian Val at JPL concerning MISR Toolkit (<code>Mtk</code>) and the benevolent support of <code>@Gnimuc</code>, <code>@stevengj</code>, <code>@mkitti</code> as well as many other contributors to the <a href="https://discourse.julialang.org/">Julia Discourse Forum</a> with respect to the Julia implementation.</p><p>Please check this site regularly for updates and send bug reports or suggestions through GitHub: I will attempt to address those in future releases, time permitting.</p><h2 id="Pre-requisites-and-Installation"><a class="docs-heading-anchor" href="#Pre-requisites-and-Installation">Pre-requisites and Installation</a><a id="Pre-requisites-and-Installation-1"></a><a class="docs-heading-anchor-permalink" href="#Pre-requisites-and-Installation" title="Permalink"></a></h2><p>The effective use of this <code>JMtk15</code> package requires access to the following resources:</p><ul><li>the <code>Mtk</code> shared library <code>libMisrToolkit.so.1.5.0</code>,</li><li>a set of third party libraries supporting HDF and NetCDF file formats, as well as additional utilities, and</li><li>MISR data files, as appropriate.</li></ul><p>The <code>Mtk</code> and third party libraries can be installed on Intel <code>x86_32</code> or <code>x86_64</code> Linux, macOS, or Windows platforms as explained on the MISR Toolkit web site mentioned above. As of March 2023, the simplest approach to use this <code>JMtk15</code> package on an Apple <code>aarch_64</code> MacBook equipped with a M1 or M2 chip is to port an existing working installation from an Intel-based platform and run under the <code>Rosetta 2</code> environment: All that is required is to copy the <code>Mtk</code> and <code>/usr/local/hdfeoslibs</code> directories in exactly the same locations on the Mx platform, and to use the <code>x86_64</code> version of Julia (see the <a href="https://github.com/JuliaLang/juliaup">juliaup</a> for more details on installing multiple versions of Julia). Platform-specific libraries for the <code>aarch_64</code> architecture may be developed at a later stage.</p><p>MISR data are freely accessible from the NASA ASDC web site mentioned above.</p><p>Once those libraries and data files are set up, install this <code>JMtk15</code> package and edit the <code>Package configuration</code> section near the top of the main module file <code>JMtk15.jl</code> to point to the <code>Mtk</code> shared library and the MISR data directory.</p><h2 id="Index-of-functions"><a class="docs-heading-anchor" href="#Index-of-functions">Index of functions</a><a id="Index-of-functions-1"></a><a class="docs-heading-anchor-permalink" href="#Index-of-functions" title="Permalink"></a></h2><ul><li><a href="#JMtk15.JMtk15"><code>JMtk15.JMtk15</code></a></li><li><a href="#JMtk15.jMtkBlsToLatLon"><code>JMtk15.jMtkBlsToLatLon</code></a></li><li><a href="#JMtk15.jMtkBlsToSomXY"><code>JMtk15.jMtkBlsToSomXY</code></a></li><li><a href="#JMtk15.jMtkDateTimeToJulian"><code>JMtk15.jMtkDateTimeToJulian</code></a></li><li><a href="#JMtk15.jMtkDdToDegMinSec"><code>JMtk15.jMtkDdToDegMinSec</code></a></li><li><a href="#JMtk15.jMtkDdToDms"><code>JMtk15.jMtkDdToDms</code></a></li><li><a href="#JMtk15.jMtkDdToRad"><code>JMtk15.jMtkDdToRad</code></a></li><li><a href="#JMtk15.jMtkDegMinSecToDd"><code>JMtk15.jMtkDegMinSecToDd</code></a></li><li><a href="#JMtk15.jMtkDegMinSecToDms"><code>JMtk15.jMtkDegMinSecToDms</code></a></li><li><a href="#JMtk15.jMtkDegMinSecToRad"><code>JMtk15.jMtkDegMinSecToRad</code></a></li><li><a href="#JMtk15.jMtkDmsToDd"><code>JMtk15.jMtkDmsToDd</code></a></li><li><a href="#JMtk15.jMtkDmsToDegMinSec"><code>JMtk15.jMtkDmsToDegMinSec</code></a></li><li><a href="#JMtk15.jMtkDmsToRad"><code>JMtk15.jMtkDmsToRad</code></a></li><li><a href="#JMtk15.jMtkErrorMessage"><code>JMtk15.jMtkErrorMessage</code></a></li><li><a href="#JMtk15.jMtkFieldAttrGet"><code>JMtk15.jMtkFieldAttrGet</code></a></li><li><a href="#JMtk15.jMtkFieldAttrList"><code>JMtk15.jMtkFieldAttrList</code></a></li><li><a href="#JMtk15.jMtkFileAttrGet"><code>JMtk15.jMtkFileAttrGet</code></a></li><li><a href="#JMtk15.jMtkFileAttrList"><code>JMtk15.jMtkFileAttrList</code></a></li><li><a href="#JMtk15.jMtkFileBlockMetaFieldList"><code>JMtk15.jMtkFileBlockMetaFieldList</code></a></li><li><a href="#JMtk15.jMtkFileBlockMetaList"><code>JMtk15.jMtkFileBlockMetaList</code></a></li><li><a href="#JMtk15.jMtkFileCoreMetaDataQuery"><code>JMtk15.jMtkFileCoreMetaDataQuery</code></a></li><li><a href="#JMtk15.jMtkFileGridFieldCheck"><code>JMtk15.jMtkFileGridFieldCheck</code></a></li><li><a href="#JMtk15.jMtkFileGridFieldToDataType"><code>JMtk15.jMtkFileGridFieldToDataType</code></a></li><li><a href="#JMtk15.jMtkFileGridFieldToDimList"><code>JMtk15.jMtkFileGridFieldToDimList</code></a></li><li><a href="#JMtk15.jMtkFileGridToFieldList"><code>JMtk15.jMtkFileGridToFieldList</code></a></li><li><a href="#JMtk15.jMtkFileGridToNativeFieldList"><code>JMtk15.jMtkFileGridToNativeFieldList</code></a></li><li><a href="#JMtk15.jMtkFileGridToResolution"><code>JMtk15.jMtkFileGridToResolution</code></a></li><li><a href="#JMtk15.jMtkFileLGID"><code>JMtk15.jMtkFileLGID</code></a></li><li><a href="#JMtk15.jMtkFileToBlockRange"><code>JMtk15.jMtkFileToBlockRange</code></a></li><li><a href="#JMtk15.jMtkFileToGridList"><code>JMtk15.jMtkFileToGridList</code></a></li><li><a href="#JMtk15.jMtkFileToOrbit"><code>JMtk15.jMtkFileToOrbit</code></a></li><li><a href="#JMtk15.jMtkFileToPath"><code>JMtk15.jMtkFileToPath</code></a></li><li><a href="#JMtk15.jMtkFileType"><code>JMtk15.jMtkFileType</code></a></li><li><a href="#JMtk15.jMtkFileVersion"><code>JMtk15.jMtkFileVersion</code></a></li><li><a href="#JMtk15.jMtkFillValueGet"><code>JMtk15.jMtkFillValueGet</code></a></li><li><a href="#JMtk15.jMtkFindFileList"><code>JMtk15.jMtkFindFileList</code></a></li><li><a href="#JMtk15.jMtkGridAttrGet"><code>JMtk15.jMtkGridAttrGet</code></a></li><li><a href="#JMtk15.jMtkGridAttrList"><code>JMtk15.jMtkGridAttrList</code></a></li><li><a href="#JMtk15.jMtkJulianToDateTime"><code>JMtk15.jMtkJulianToDateTime</code></a></li><li><a href="#JMtk15.jMtkLSToLatLon"><code>JMtk15.jMtkLSToLatLon</code></a></li><li><a href="#JMtk15.jMtkLSToSomXY"><code>JMtk15.jMtkLSToSomXY</code></a></li><li><a href="#JMtk15.jMtkLatLonToBls"><code>JMtk15.jMtkLatLonToBls</code></a></li><li><a href="#JMtk15.jMtkLatLonToLS"><code>JMtk15.jMtkLatLonToLS</code></a></li><li><a href="#JMtk15.jMtkLatLonToPathList"><code>JMtk15.jMtkLatLonToPathList</code></a></li><li><a href="#JMtk15.jMtkMakeFilename"><code>JMtk15.jMtkMakeFilename</code></a></li><li><a href="#JMtk15.jMtkOrbitToPath"><code>JMtk15.jMtkOrbitToPath</code></a></li><li><a href="#JMtk15.jMtkOrbitToTimeRange"><code>JMtk15.jMtkOrbitToTimeRange</code></a></li><li><a href="#JMtk15.jMtkPathBlockRangeToBlockCorners"><code>JMtk15.jMtkPathBlockRangeToBlockCorners</code></a></li><li><a href="#JMtk15.jMtkPathToProjParam"><code>JMtk15.jMtkPathToProjParam</code></a></li><li><a href="#JMtk15.jMtkRadToDd"><code>JMtk15.jMtkRadToDd</code></a></li><li><a href="#JMtk15.jMtkRadToDegMinSec"><code>JMtk15.jMtkRadToDegMinSec</code></a></li><li><a href="#JMtk15.jMtkRadToDms"><code>JMtk15.jMtkRadToDms</code></a></li><li><a href="#JMtk15.jMtkReadData"><code>JMtk15.jMtkReadData</code></a></li><li><a href="#JMtk15.jMtkRegionPathToBlockRange"><code>JMtk15.jMtkRegionPathToBlockRange</code></a></li><li><a href="#JMtk15.jMtkRegionToPathList"><code>JMtk15.jMtkRegionToPathList</code></a></li><li><a href="#JMtk15.jMtkSetRegionByLatLonExtent"><code>JMtk15.jMtkSetRegionByLatLonExtent</code></a></li><li><a href="#JMtk15.jMtkSetRegionByPathBlockRange"><code>JMtk15.jMtkSetRegionByPathBlockRange</code></a></li><li><a href="#JMtk15.jMtkSetRegionByPathSomUlcLrc"><code>JMtk15.jMtkSetRegionByPathSomUlcLrc</code></a></li><li><a href="#JMtk15.jMtkSetRegionByUlcLrc"><code>JMtk15.jMtkSetRegionByUlcLrc</code></a></li><li><a href="#JMtk15.jMtkSnapToGrid"><code>JMtk15.jMtkSnapToGrid</code></a></li><li><a href="#JMtk15.jMtkSomXYToBls"><code>JMtk15.jMtkSomXYToBls</code></a></li><li><a href="#JMtk15.jMtkSomXYToLS"><code>JMtk15.jMtkSomXYToLS</code></a></li><li><a href="#JMtk15.jMtkSomXYToLatLon"><code>JMtk15.jMtkSomXYToLatLon</code></a></li><li><a href="#JMtk15.jMtkTimeRangeToOrbitList"><code>JMtk15.jMtkTimeRangeToOrbitList</code></a></li><li><a href="#JMtk15.jMtkTimeToOrbitPath"><code>JMtk15.jMtkTimeToOrbitPath</code></a></li><li><a href="#JMtk15.jMtkVersion"><code>JMtk15.jMtkVersion</code></a></li></ul><h2 id="Main-module"><a class="docs-heading-anchor" href="#Main-module">Main module</a><a id="Main-module-1"></a><a class="docs-heading-anchor-permalink" href="#Main-module" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.JMtk15" href="#JMtk15.JMtk15"><code>JMtk15.JMtk15</code></a> — <span class="docstring-category">Module</span></header><section><div><pre><code class="language-julia hljs">using JMtk15</code></pre><p><strong>Purpose:</strong></p><p>Provide Julia wrapper functions to the NASA JPL     <a href="https://github.com/nasa/MISR-Toolkit">MISR Toolkit</a> C functions.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Notes:</strong></p><ul><li>This module allows one to use some of the C functions defined in the MISR Toolkit (Mtk) as if they were Julia functions. Please read the README.md file and the documentation for this package to determine which functions are available and how they can be used.</li><li>The MISR Toolkit (Mtk) itself must be installed on your computer before this JMtk15 package can be used. In particular, the location of the shared library <code>libMisrToolkit.so</code> in the file system must be specified as part of the configuration of this package.</li><li>MISR data must be available on your computer, and their physical location must be specified as part of the configuration of this package.</li><li>This module must be imported before using any of the wrapper functions because it loads essential definitions and sets the location of resources (source files, test functions, documentation, data).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+[ Info: Precompiling JMtk15 [6c71635d-e68b-418f-880a-c8128ca9dc0a]</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/JMtk15.jl#L1-L29">source</a></section></article><h2 id="Util"><a class="docs-heading-anchor" href="#Util">Util</a><a id="Util-1"></a><a class="docs-heading-anchor-permalink" href="#Util" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkVersion" href="#JMtk15.jMtkVersion"><code>JMtk15.jMtkVersion</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">version = jMtkVersion()</code></pre><p><strong>Purpose:</strong></p><p>Report the version identifier of the MISR Toolkit (Mtk) library currently in use.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; version = jMtkVersion()
+&quot;1.5.0&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkVersion.jl#L1-L24">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkErrorMessage" href="#JMtk15.jMtkErrorMessage"><code>JMtk15.jMtkErrorMessage</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">errmsg = jMtkErrorMessage(status)</code></pre><p><strong>Purpose:</strong></p><p>Report the error message corresponding to the specified status code.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Examples:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; status = 0
+0
+
+julia&gt; errmsg = jMtkErrorMessage(status)
+&quot;SUCCESS&quot;
+
+julia&gt; status = 3
+3
+
+julia&gt; errmsg = jMtkErrorMessage(status)
+&quot;BAD ARGUMENT&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkErrorMessage.jl#L1-L33">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDateTimeToJulian" href="#JMtk15.jMtkDateTimeToJulian"><code>JMtk15.jMtkDateTimeToJulian</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">juldate = jMtkDateTimeToJulian(datetime)</code></pre><p><strong>Purpose:</strong></p><p>Convert a date and time (in ISO 8601 format) into a Julian date.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; datetime = &quot;2002-05-02T02:00:00Z&quot;
+&quot;2002-05-02T02:00:00Z&quot;
+
+julia&gt; juldate = jMtkDateTimeToJulian(datetime)
+2.4523965833333335e6</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDateTimeToJulian.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkJulianToDateTime" href="#JMtk15.jMtkJulianToDateTime"><code>JMtk15.jMtkJulianToDateTime</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">datetime = jMtkJulianToDateTime(juldate)</code></pre><p><strong>Purpose:</strong></p><p>Convert a Julian date into date and time (in ISO 8601 format).</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; juldate = 2.4523965833333335e6
+2.4523965833333335e6
+
+julia&gt; datetime = jMtkJulianToDateTime(juldate)
+&quot;2002-05-02T02:00:00Z&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkJulianToDateTime.jl#L1-L27">source</a></section></article><h2 id="FileQuery"><a class="docs-heading-anchor" href="#FileQuery">FileQuery</a><a id="FileQuery-1"></a><a class="docs-heading-anchor-permalink" href="#FileQuery" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileType" href="#JMtk15.jMtkFileType"><code>JMtk15.jMtkFileType</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">filetype = jMtkFileType(filename)</code></pre><p><strong>Purpose:</strong></p><p>Determine the MISR product file type.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc&quot;
+
+julia&gt; filetype = jMtkFileType(filename)
+&quot;AS_LAND&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileType.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileLGID" href="#JMtk15.jMtkFileLGID"><code>JMtk15.jMtkFileLGID</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">lgid = jMtkFileLGID(filename)</code></pre><p><strong>Purpose:</strong></p><p>Return the local granule ID of a MISR product file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_BF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_BF_F03_0024.hdf&quot;
+
+julia&gt; lgid = jMtkFileLGID(filename)
+&quot;MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_BF_F03_0024.hdf&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileLGID.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileVersion" href="#JMtk15.jMtkFileVersion"><code>JMtk15.jMtkFileVersion</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">fversion = jMtkFileVersion(filename)</code></pre><p><strong>Purpose:</strong></p><p>Return the file version identifier of a MISR product file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><p>```julia julia&gt; using JMtk15</p><p>julia&gt; filename = JMtk15<em>data * &quot;MISR/MISR</em>AM1<em>GRP</em>ELLIPSOID<em>GM</em>P168<em>O068050</em>BF<em>F03</em>0024.hdf&quot; &quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR<em>AM1</em>GRP<em>ELLIPSOID</em>GM<em>P168</em>O068050<em>BF</em>F03_0024.hdf&quot;</p><p>julia&gt; fversion = jMtkFileVersion(filename) &quot;F03_0024&quot; ````</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileVersion.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFillValueGet" href="#JMtk15.jMtkFillValueGet"><code>JMtk15.jMtkFillValueGet</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">fillval = jMtkFillValueGet(filename, gridname, fieldname)</code></pre><p><strong>Purose:</strong></p><p>Return the fill value for a given MISR product filename, gridname, and fieldname.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Notes:</strong></p><ul><li>MISR AGP files provide valid data everywhere, and thus do not feature fill data.</li><li>For all other MISR data files, the value of the first sample in the first   line is deemed to be a fill value.</li></ul><p><strong>Examples:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+&quot;/Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;RedBand&quot;
+&quot;RedBand&quot;
+
+julia&gt; fieldname = &quot;Red Radiance/RDQI&quot;
+&quot;Red Radiance/RDQI&quot;
+
+julia&gt; fillval = jMtkFillValueGet(filename, gridname, fieldname)
+65515
+
+julia&gt; 
+
+julia&gt; gridname = &quot;BRF Conversion Factors&quot;
+&quot;BRF Conversion Factors&quot;
+
+julia&gt; fieldname = &quot;BlueConversionFactor&quot;
+&quot;BlueConversionFactor&quot;
+
+julia&gt; fillval = jMtkFillValueGet(filename, gridname, fieldname)
+-555</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFillValueGet.jl#L1-L49">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileAttrList" href="#JMtk15.jMtkFileAttrList"><code>JMtk15.jMtkFileAttrList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">attrcnt, attrlist = jMtkFileAttrList(filename);</code></pre><p><strong>Purpose:</strong></p><p>List the attributes of a specified MISR product file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_BF_F03_0024.hdf&quot;
+&quot;/Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_BF_F03_0024.hdf&quot;
+
+julia&gt; attrcnt, attrlist = jMtkFileAttrList(filename);
+
+julia&gt; attrcnt
+31
+
+julia&gt; attrlist
+31-element Vector{String}:
+ &quot;HDFEOSVersion&quot;
+ &quot;StructMetadata.0&quot;
+ &quot;Path_number&quot;
+ &quot;AGP_version_id&quot;
+ &quot;DID_version_id&quot;
+ &quot;Number_blocks&quot;
+ &quot;Ocean_blocks_size&quot;
+ &quot;Ocean_blocks.count&quot;
+ &quot;Ocean_blocks.numbers&quot;
+ &quot;SOM_parameters.som_ellipsoid.a&quot;
+ &quot;SOM_parameters.som_ellipsoid.e2&quot;
+ &quot;SOM_parameters.som_orbit.aprime&quot;
+ &quot;SOM_parameters.som_orbit.eprime&quot;
+ &quot;SOM_parameters.som_orbit.gama&quot;
+ &quot;SOM_parameters.som_orbit.nrev&quot;
+ ⋮
+ &quot;SOM_parameters.som_orbit.P2P1&quot;
+ &quot;SOM_parameters.som_orbit.lambda0&quot;
+ &quot;Origin_block.ulc.x&quot;
+ &quot;Origin_block.ulc.y&quot;
+ &quot;Origin_block.lrc.x&quot;
+ &quot;Origin_block.lrc.y&quot;
+ &quot;Start_block&quot;
+ &quot;End block&quot;
+ &quot;Cam_mode&quot;
+ &quot;Num_local_modes&quot;
+ &quot;Local_mode_site_name&quot;
+ &quot;Orbit_QA&quot;
+ &quot;Camera&quot;
+ &quot;coremetadata&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileAttrList.jl#L1-L62">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileAttrGet" href="#JMtk15.jMtkFileAttrGet"><code>JMtk15.jMtkFileAttrGet</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">attrval = jMtkFileAttrGet(filename, attrname)</code></pre><p><strong>Purpose:</strong></p><p>Return the value of an attribute for a specified file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-01-21).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+
+julia&gt; attrname = &quot;Path_number&quot;
+&quot;Path_number&quot;
+
+julia&gt; attrval = jMtkFileAttrGet(filename, attrname)
+168</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileAttrGet.jl#L1-L30">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkGridAttrList" href="#JMtk15.jMtkGridAttrList"><code>JMtk15.jMtkGridAttrList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">nattrs, attrlist = jMtkGridAttrList(filename, gridname)</code></pre><p><strong>Purpose:</strong></p><p>List the attributes for a specified grid/file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;RedBand&quot;
+&quot;RedBand&quot;
+
+julia&gt; nattrs, attrlist = jMtkGridAttrList(filename, gridname);
+
+julia&gt; nattrs
+7
+
+julia&gt; attrlist
+7-element Vector{String}:
+ &quot;Block_size.resolution_x&quot;
+ &quot;Block_size.resolution_y&quot;
+ &quot;Block_size.size_x&quot;
+ &quot;Block_size.size_y&quot;
+ &quot;Scale factor&quot;
+ &quot;std_solar_wgted_height&quot;
+ &quot;SunDistanceAU&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkGridAttrList.jl#L1-L42">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkGridAttrGet" href="#JMtk15.jMtkGridAttrGet"><code>JMtk15.jMtkGridAttrGet</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">attrval = jMtkGridAttrGet(filename, gridname, attrname)</code></pre><p><strong>Purpose:</strong></p><p>Return the value of an attribute for a specified grid/file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-01-21).</li></ul><p><strong>Examples:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;NIRBand&quot;
+&quot;NIRBand&quot;
+
+julia&gt; attrname = &quot;Scale factor&quot;
+&quot;Scale factor&quot;
+
+julia&gt; attrval = jMtkGridAttrGet(filename, gridname, attrname)
+0.024670248851180077</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkGridAttrGet.jl#L1-L33">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFieldAttrList" href="#JMtk15.jMtkFieldAttrList"><code>JMtk15.jMtkFieldAttrList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">nattrs, attrlist = jMtkFieldAttrList(filename, fieldname)</code></pre><p><strong>Purpose:</strong></p><p>List the attributes for a specified field.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf&quot;
+&quot;/Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/data/MISR/MISR_AM1_TC_CLASSIFIERS_P168_O068050_F07_0012.hdf&quot;
+
+julia&gt; fieldname = &quot;StandardEstimateCloudFraction&quot;
+&quot;StandardEstimateCloudFraction&quot;
+
+julia&gt; nattrs, attrlist = jMtkFieldAttrList(filename, fieldname);
+
+julia&gt; nattrs
+1
+
+julia&gt; attrlist
+1-element Vector{String}:
+ &quot;_FillValue&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFieldAttrList.jl#L1-L36">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFieldAttrGet" href="#JMtk15.jMtkFieldAttrGet"><code>JMtk15.jMtkFieldAttrGet</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">attrval = jMtkFieldAttrGet(filename, fieldname, attrname)</code></pre><p><strong>Purpose:</strong></p><p>Return the value of an attribute for a specified file and field.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-01-21).</li></ul><p><strong>Examples:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_BA_F04_0025.hdf&quot;
+&quot;/Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/data/MISR/MISR_AM1_GRP_RCCM_GM_P168_O068050_BA_F04_0025.hdf&quot;
+
+julia&gt; fieldname = &quot;Cloud&quot;
+&quot;Cloud&quot;
+
+julia&gt; attrname = &quot;_FillValue&quot;
+&quot;_FillValue&quot;
+
+julia&gt; attrval = jMtkFieldAttrGet(filename, fieldname, attrname)
+255</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFieldAttrGet.jl#L1-L33">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileToPath" href="#JMtk15.jMtkFileToPath"><code>JMtk15.jMtkFileToPath</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">path = jMtkFileToPath(filename)</code></pre><p><strong>Purpose:</strong></p><p>Return the path number for a MISR product file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; path = jMtkFileToPath(filename)
+168</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileToPath.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileToOrbit" href="#JMtk15.jMtkFileToOrbit"><code>JMtk15.jMtkFileToOrbit</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">orbit = jMtkFileToOrbit(filename)</code></pre><p><strong>Purpose:</strong></p><p>Returns the orbit number for a MISR product file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; orbit = jMtkFileToOrbit(filename)
+68050</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileToOrbit.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileToBlockRange" href="#JMtk15.jMtkFileToBlockRange"><code>JMtk15.jMtkFileToBlockRange</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">start_block, end_block = jMtkFileToBlockRange(filename)</code></pre><p><strong>Purpose:</strong></p><p>Return the starting and ending block numbers for a MISR product file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data//MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; start_block, end_block = jMtkFileToBlockRange(filename)
+(19, 162)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileToBlockRange.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileToGridList" href="#JMtk15.jMtkFileToGridList"><code>JMtk15.jMtkFileToGridList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">gridlist = jMtkFileToGridList(filename)</code></pre><p><strong>Purpose:</strong></p><p>Return a list of grid names for a MISR product file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;./data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; ngrids, gridlist = jMtkFileToGridList(filename);
+
+julia&gt; ngrids
+6
+
+julia&gt; gridlist
+6-element Vector{String}:
+ &quot;BlueBand&quot;
+ &quot;GreenBand&quot;
+ &quot;RedBand&quot;
+ &quot;NIRBand&quot;
+ &quot;BRF Conversion Factors&quot;
+ &quot;GeometricParameters&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileToGridList.jl#L1-L38">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileGridToFieldList" href="#JMtk15.jMtkFileGridToFieldList"><code>JMtk15.jMtkFileGridToFieldList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">nfields, fieldlist = jMtkFileGridToFieldList(filename, gridname)</code></pre><p><strong>Purpose:</strong></p><p>Return a string array of fields associated with a given gridname.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AA_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AA_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;GreenBand&quot;
+&quot;GreenBand&quot;
+
+julia&gt; nfields, fieldlist = jMtkFileGridToFieldList(filename, gridname);
+
+julia&gt; nfields
+6
+
+julia&gt; fieldlist
+6-element Vector{String}:
+ &quot;Green Radiance/RDQI&quot;
+ &quot;Green Radiance&quot;
+ &quot;Green RDQI&quot;
+ &quot;Green DN&quot;
+ &quot;Green Equivalent Reflectance&quot;
+ &quot;Green Brf&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileGridToFieldList.jl#L1-L41">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileGridToNativeFieldList" href="#JMtk15.jMtkFileGridToNativeFieldList"><code>JMtk15.jMtkFileGridToNativeFieldList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">nfields, fieldlist = jMtkFileGridToNativeFieldList(filename, gridname)</code></pre><p><strong>Purpose:</strong></p><p>Return a string array of native fields associated with a given grid (excludes derived fields).</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AA_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AA_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;BlueBand&quot;
+&quot;BlueBand&quot;
+
+julia&gt; nfields, fieldlist = jMtkFileGridToNativeFieldList(filename, gridname);
+
+julia&gt; nfields
+1
+
+julia&gt; fieldlist
+1-element Vector{String}:
+ &quot;Blue Radiance/RDQI&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileGridToNativeFieldList.jl#L1-L36">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileGridFieldToDimList" href="#JMtk15.jMtkFileGridFieldToDimList"><code>JMtk15.jMtkFileGridFieldToDimList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList(filename, gridname, fieldname)</code></pre><p><strong>Purpose:</strong></p><p>Return the dimension names and sizes for a given file, grid, and field.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_AS_LAND_P168_O068050_F08_0023.nc&quot;
+
+julia&gt; gridname = &quot;1.1_KM_PRODUCTS&quot;
+&quot;1.1_KM_PRODUCTS&quot;
+
+julia&gt; fieldname = &quot;Bidirectional_Reflectance_Factor&quot;
+&quot;Bidirectional_Reflectance_Factor&quot;
+
+julia&gt; ndims, dimnames, dimsizes = jMtkFileGridFieldToDimList(filename, gridname, fieldname);
+
+julia&gt; ndims
+2
+
+julia&gt; dimnames
+2-element Vector{String}:
+ &quot;Band_Dim&quot;
+ &quot;Camera_Dim&quot;
+
+julia&gt; dimsizes
+2-element Vector{Int32}:
+ 4
+ 9</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileGridFieldToDimList.jl#L1-L45">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileGridFieldCheck" href="#JMtk15.jMtkFileGridFieldCheck"><code>JMtk15.jMtkFileGridFieldCheck</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">status = jMtkFileGridFieldCheck(filename, gridname, fieldname)</code></pre><p><strong>Purpose:</strong></p><p>Return &quot;SUCCESS&quot; (MTKt_status = 0) if the specified filename, gridname, and fieldname are valid,     or an error message otherwise.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_DA_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;NIRBand&quot;
+&quot;NIRBand&quot;
+
+julia&gt; fieldname = &quot;NIR Radiance/RDQI&quot;
+&quot;NIR Radiance/RDQI&quot;
+
+julia&gt; status = jMtkFileGridFieldCheck(filename, gridname, fieldname)
+&quot;SUCCESS&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileGridFieldCheck.jl#L1-L34">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileGridFieldToDataType" href="#JMtk15.jMtkFileGridFieldToDataType"><code>JMtk15.jMtkFileGridFieldToDataType</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">datatype = jMtkFileGridFieldToDataType(filename, gridname, fieldname)</code></pre><p><strong>Purpose:</strong></p><p>Return the data type code of the given file/grid/field combination.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Note:</strong></p><p>In line with the IDL version of this function, <code>jMtkFileGridFieldToDataType</code> returns the Julia data type of the field, rather than the C data type: for instance, <code>Int32</code> rather than <code>int</code>, or <code>Float64</code> rather than <code>double</code>.</p><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_DF_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;GreenBand&quot;
+&quot;GreenBand&quot;
+
+julia&gt; fieldname = &quot;Green Radiance/RDQI&quot;
+&quot;Green Radiance/RDQI&quot;
+
+julia&gt; datatype = jMtkFileGridFieldToDataType(filename, gridname, fieldname)
+&quot;uint16&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileGridFieldToDataType.jl#L1-L36">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileGridToResolution" href="#JMtk15.jMtkFileGridToResolution"><code>JMtk15.jMtkFileGridToResolution</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">resolution = jMtkFileGridToResolution(filename, gridname)</code></pre><p><strong>Purpose:</strong></p><p>Return the resolution in meters of a given grid.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AN_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AN_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;RedBand&quot;
+&quot;RedBand&quot;
+
+julia&gt; resolution = jMtkFileGridToResolution(filename, gridname)
+275</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileGridToResolution.jl#L1-L30">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileCoreMetaDataQuery" href="#JMtk15.jMtkFileCoreMetaDataQuery"><code>JMtk15.jMtkFileCoreMetaDataQuery</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">nparams, paramlist = jMtkFileCoreMetaDataQuery(filename)</code></pre><p><strong>Purpose:</strong></p><p>Return the number of coremetadata parameters and a list of all coremetadata     parameter names for a given file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>WARNING:</strong></p><p>This function currently crashes when applied to <code>GP_GMP</code> data files.</p><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AN_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AN_F03_0024.hdf&quot;
+
+julia&gt; nparams, paramlist = jMtkFileCoreMetaDataQuery(filename);
+
+julia&gt; nparams
+43
+
+julia&gt; paramlist
+43-element Vector{String}:
+ &quot;LOCALGRANULEID&quot;
+ &quot;PRODUCTIONDATETIME&quot;
+ &quot;LOCALVERSIONID&quot;
+ &quot;PGEVERSION&quot;
+ &quot;MEASUREDPARAMETERCONTAINER&quot;
+ &quot;AUTOMATICQUALITYFLAGEXPLANATION&quot;
+ &quot;AUTOMATICQUALITYFLAG&quot;
+ &quot;QAPERCENTMISSINGDATA&quot;
+ &quot;PARAMETERNAME&quot;
+ &quot;ORBITCALCULATEDSPATIALDOMAINCONTAINER&quot;
+ ⋮
+ &quot;PARAMETERVALUE&quot;
+ &quot;ADDITIONALATTRIBUTESCONTAINER&quot;
+ &quot;ADDITIONALATTRIBUTENAME&quot;
+ &quot;PARAMETERVALUE&quot;
+ &quot;ASSOCIATEDPLATFORMINSTRUMENTSENSORCONTAINER&quot;
+ &quot;ASSOCIATEDSENSORSHORTNAME&quot;
+ &quot;ASSOCIATEDPLATFORMSHORTNAME&quot;
+ &quot;OPERATIONMODE&quot;
+ &quot;ASSOCIATEDINSTRUMENTSHORTNAME&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileCoreMetaDataQuery.jl#L1-L56">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkMakeFilename" href="#JMtk15.jMtkMakeFilename"><code>JMtk15.jMtkMakeFilename</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">filename = jMtkMakeFilename(directory, product, camera, path, orbit, version)</code></pre><p><strong>Purpose:</strong></p><p>Return a MISR product file name given a base directory, product, camera, path, orbit,    and version.  Pass an empty string for any unwanted fields, such as camera.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>WARNING: This function generates the correct filename but not the correct file extension</strong></p><p>for NetCDF files (e.g., MISR AS_LAND or AEROSOLS products).</p><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; directory = &quot;../Mtk_testdata/in/&quot;
+&quot;../Mtk_testdata/in/&quot;
+
+julia&gt; product = &quot;GRP_ELLIPSOID_GM&quot;
+&quot;GRP_ELLIPSOID_GM&quot;
+
+julia&gt; camera = &quot;AA&quot;
+&quot;AA&quot;
+
+julia&gt; path = 37
+37
+
+julia&gt; orbit = 29058
+29058
+
+julia&gt; version = &quot;F03_0024&quot;
+&quot;F03_0024&quot;
+
+julia&gt; filename = jMtkMakeFilename(directory, product, camera, path, orbit, version)
+&quot;../Mtk_testdata/in/MISR_AM1_GRP_ELLIPSOID_GM_P037_O029058_AA_F03_0024.hdf&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkMakeFilename.jl#L1-L46">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFindFileList" href="#JMtk15.jMtkFindFileList"><code>JMtk15.jMtkFindFileList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">filecnt, filenames = jMtkFindFileList(search_dir, product, camera, path, orbit, version)</code></pre><p><strong>Purpose:</strong></p><p>Return the file names found in a directory tree, using regular expressions.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>WARNING 1: This function does not currently work to locate <code>AGP</code> files because the C code always expects an orbit number, which is absent from the filename of AGP files.</strong></p><p><strong>WARNING 2: This function does not currently work to locate <code>AS_LAND</code> files because the C code always assumes the file extension is <code>.hdf</code>, instead of <code>.nc</code> for NetCDF files.</strong></p><p><strong>Note: The C function MtkFindFileList of Mtk requires the input arguments</strong></p><pre><code class="nohighlight hljs">`path` and `orbit` to be provided as zero-padded strings (and NOT integers)
+of 3 and 6 characters, respectively, but this Julia wrapper function includes
+code to convert the usual integer inputs into the appropriate `Cstring`s.</code></pre><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; search_dir = JMtk15_data * &quot;MISR/&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/&quot;
+
+julia&gt; product = &quot;GRP_TERRAIN_GM&quot;
+&quot;GRP_TERRAIN_GM&quot;
+
+julia&gt; camera = &quot;.*&quot;
+&quot;.*&quot;
+
+julia&gt; path = 168
+168
+
+julia&gt; orbit = 68050
+68050
+
+julia&gt; version = &quot;F03_0024&quot;
+&quot;F03_0024&quot;
+
+julia&gt; filecnt, filenames = jMtkFindFileList(search_dir, product, camera, path, orbit, version);
+
+julia&gt; filecnt
+9
+
+julia&gt; filenames
+9-element Vector{String}:
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_AN_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_CF_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_CA_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_DF_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_DA_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_AF_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_AA_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_BA_F03_0024.hdf&quot;
+ &quot;/Users/michel/Codes/Julia/JMtk1&quot; ⋯ 33 bytes ⋯ &quot;GM_P168_O068050_BF_F03_0024.hdf&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFindFileList.jl#L1-L65">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileBlockMetaList" href="#JMtk15.jMtkFileBlockMetaList"><code>JMtk15.jMtkFileBlockMetaList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">nblockmeta, blockmetalist = jMtkFileBlockMetaList(filename)</code></pre><p><strong>Purpose:</strong></p><p>List block metadata of a file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AN_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AN_F03_0024.hdf&quot;
+
+julia&gt; nblockmeta, blockmetalist = jMtkFileBlockMetaList(filename);
+
+julia&gt; nblockmeta
+3
+
+julia&gt; blockmetalist
+3-element Vector{String}:
+ &quot;PerBlockMetadataCommon&quot;
+ &quot;PerBlockMetadataRad&quot;
+ &quot;PerBlockMetadataTime&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileBlockMetaList.jl#L1-L35">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkFileBlockMetaFieldList" href="#JMtk15.jMtkFileBlockMetaFieldList"><code>JMtk15.jMtkFileBlockMetaFieldList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">nfields, fieldlist = jMtkFileBlockMetaFieldList(filename, blockmeta)</code></pre><p><strong>Purpose:</strong></p><p>List block metadata fields of a file.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_AA_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_ELLIPSOID_GM_P168_O068050_AA_F03_0024.hdf&quot;
+
+julia&gt; blockmeta = &quot;PerBlockMetadataCommon&quot;
+&quot;PerBlockMetadataCommon&quot;
+
+julia&gt; nfields, fieldlist = jMtkFileBlockMetaFieldList(filename, blockmeta);
+
+julia&gt; nfields
+7
+
+julia&gt; fieldlist
+7-element Vector{String}:
+ &quot;Block_number&quot;
+ &quot;Ocean_flag&quot;
+ &quot;Block_coor_ulc_som_meter.x&quot;
+ &quot;Block_coor_ulc_som_meter.y&quot;
+ &quot;Block_coor_lrc_som_meter.x&quot;
+ &quot;Block_coor_lrc_som_meter.y&quot;
+ &quot;Data_flag&quot;</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkFileBlockMetaFieldList.jl#L1-L42">source</a></section></article><h2 id="UnitConv"><a class="docs-heading-anchor" href="#UnitConv">UnitConv</a><a id="UnitConv-1"></a><a class="docs-heading-anchor-permalink" href="#UnitConv" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDdToDegMinSec" href="#JMtk15.jMtkDdToDegMinSec"><code>JMtk15.jMtkDdToDegMinSec</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">degrees, minutes, seconds = jMtkDdToDegMinSec(decdeg)</code></pre><p><strong>Purpose:</strong></p><p>Convert decimal degrees to degrees, minutes, and seconds.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><p>```julia julia&gt; using JMtk15</p><p>julia&gt; decdeg = 65.5 65.5</p><p>julia&gt; degrees, minutes, seconds = jMtkDdToDegMinSec(decdeg);</p><p>julia&gt; degrees 65</p><p>julia&gt; minutes 30</p><p>julia&gt; seconds 0.0 ````</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDdToDegMinSec.jl#L1-L35">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDdToDms" href="#JMtk15.jMtkDdToDms"><code>JMtk15.jMtkDdToDms</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">packed_dms = jMtkDdToDms(decdeg)</code></pre><p><strong>Purpose:</strong></p><p>Convert decimal degrees to packed degrees/minutes/seconds.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; decdeg = 65.5
+65.5
+
+julia&gt; packed_dms = jMtkDdToDms(decdeg)
+6.503e7</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDdToDms.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDdToRad" href="#JMtk15.jMtkDdToRad"><code>JMtk15.jMtkDdToRad</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">radians = jMtkDdToRad(decdeg)</code></pre><p><strong>Purpose:</strong></p><p>Convert decimal degrees to radians.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><p>```julia julia&gt; using JMtk15</p><p>julia&gt; decdeg = 65.55 65.55</p><p>julia&gt; radians = jMtkDdToRad(decdeg) 1.144063324682283 ````</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDdToRad.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDegMinSecToDd" href="#JMtk15.jMtkDegMinSecToDd"><code>JMtk15.jMtkDegMinSecToDd</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">decdeg = jMtkDegMinSecToDd(deg, minutes, seconds)</code></pre><p><strong>Purpose:</strong></p><p>Convert degrees, minutes, and seconds to decimal degrees.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; degrees = 65
+65
+
+julia&gt; minutes = 33
+33
+
+julia&gt; seconds = 0.001
+0.001
+
+julia&gt; decdeg = jMtkDegMinSecToDd(degrees, minutes, seconds)
+65.55000027777777</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDegMinSecToDd.jl#L1-L33">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDegMinSecToDms" href="#JMtk15.jMtkDegMinSecToDms"><code>JMtk15.jMtkDegMinSecToDms</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">packed_dms = jMtkDegMinSecToDms(degrees, minutes, seconds)</code></pre><p><strong>Purpose:</strong></p><p>Convert degrees, minutes, and seconds to packed degrees/minutes/seconds.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; degrees = 65
+65
+
+julia&gt; minutes = 33
+33
+
+julia&gt; seconds = 0.001
+0.001
+
+julia&gt; packed_dms = jMtkDegMinSecToDms(degrees, minutes, seconds)
+6.5033000001e7</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDegMinSecToDms.jl#L1-L33">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDegMinSecToRad" href="#JMtk15.jMtkDegMinSecToRad"><code>JMtk15.jMtkDegMinSecToRad</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">radians = jMtkDegMinSecToRad(deg, minutes, seconds)</code></pre><p><strong>Purpose:</strong></p><p>Convert degrees, minutes, and seconds to radians.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><p>```julia julia&gt; using JMtk15</p><p>julia&gt; degrees = 65 65</p><p>julia&gt; minutes = 33 33</p><p>julia&gt; seconds = 0.001 0.001</p><p>julia&gt; radians = jMtkDegMinSecToRad(degrees, minutes, seconds) 1.1440633295304197 ````</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDegMinSecToRad.jl#L1-L33">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDmsToDd" href="#JMtk15.jMtkDmsToDd"><code>JMtk15.jMtkDmsToDd</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">decdeg = jMtkDmsToDd(packed_dms)</code></pre><p><strong>Purpose:</strong></p><p>Convert packed degrees/minutes/seconds to decimal degrees.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; packed_dms = 65033000.010
+6.503300001e7
+
+julia&gt; decdeg = jMtkDmsToDd(packed_dms)
+65.5500027777772</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDmsToDd.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDmsToDegMinSec" href="#JMtk15.jMtkDmsToDegMinSec"><code>JMtk15.jMtkDmsToDegMinSec</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">degrees, minutes, seconds = jMtkDmsToDegMinSec(packed_dms)</code></pre><p><strong>Purpose:</strong></p><p>Convert packed degrees/minutes/seconds to degrees, minutes, and seconds.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; packed_dms = 65033000.010
+6.503300001e7
+
+julia&gt; packed_dms = 65033011.1
+6.50330111e7
+
+julia&gt; degrees, minutes, seconds = jMtkDmsToDegMinSec(packed_dms)
+(65, 33, 11.100000001490116)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDmsToDegMinSec.jl#L1-L30">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkDmsToRad" href="#JMtk15.jMtkDmsToRad"><code>JMtk15.jMtkDmsToRad</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">radians = jMtkDmsToRad(packed_dms)</code></pre><p><strong>Purpose:</strong></p><p>Convert packed degrees/minutes/seconds to radians.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; packed_dms = 65033000.010
+6.503300001e7
+
+julia&gt; radians = jMtkDmsToRad(packed_dms)
+1.144063373163641</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkDmsToRad.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkRadToDd" href="#JMtk15.jMtkRadToDd"><code>JMtk15.jMtkRadToDd</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">decdeg = jMtkRadToDd(radians)</code></pre><p><strong>Purpose:</strong></p><p>Convert radians to decimal degrees.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><p>```julia julia&gt; using JMtk15</p><p>julia&gt; radians = 1.1440634 1.1440634</p><p>julia&gt; decdeg = jMtkRadToDd(radians) 65.55000431538731</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkRadToDd.jl#L1-L26">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkRadToDegMinSec" href="#JMtk15.jMtkRadToDegMinSec"><code>JMtk15.jMtkRadToDegMinSec</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">degrees, minutes, seconds = jMtkRadToDegMinSec(radians)</code></pre><p><strong>Purpose:</strong></p><p>Convert radians to degrees, minutes, and seconds.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><p>```julia julia&gt; using JMtk15</p><p>julia&gt; radians = 1.14406333 1.14406333</p><p>julia&gt; degrees, minutes, seconds = jMtkRadToDegMinSec(radians) (65, 33, 0.0010968595743179321)</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkRadToDegMinSec.jl#L1-L26">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkRadToDms" href="#JMtk15.jMtkRadToDms"><code>JMtk15.jMtkRadToDms</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">packed_dms = jMtkRadToDms(radians)</code></pre><p><strong>Purpose:</strong></p><p>Convert radians to packed degrees/minutes/seconds.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; radians = 1.14406332
+1.14406332
+
+julia&gt; packed_dms = jMtkRadToDms(radians)
+1.008038627952e6</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkRadToDms.jl#L1-L27">source</a></section></article><h2 id="CoordQuery"><a class="docs-heading-anchor" href="#CoordQuery">CoordQuery</a><a id="CoordQuery-1"></a><a class="docs-heading-anchor-permalink" href="#CoordQuery" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkBlsToLatLon" href="#JMtk15.jMtkBlsToLatLon"><code>JMtk15.jMtkBlsToLatLon</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">latitude, longitude = jMtkBlsToLatLon(path, resolution, block, line, sample)</code></pre><p><strong>Purpose:</strong></p><p>Convert from block, line and sample to latitude and longitude for a given MISR path    and resolution.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 189
+189
+
+julia&gt; resolution = 275
+275
+
+julia&gt; block = 47
+47
+
+julia&gt; line = 12.5
+12.5
+
+julia&gt; sample = 50.5
+50.5
+
+julia&gt; latitude, longitude = jMtkBlsToLatLon(path, resolution, block, line, sample)
+(55.16137325083296, 16.435317837222424)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkBlsToLatLon.jl#L1-L40">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkBlsToSomXY" href="#JMtk15.jMtkBlsToSomXY"><code>JMtk15.jMtkBlsToSomXY</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">somx, somy = jMtkBlsToSomXY(path, resolution, block, line, sample)</code></pre><p><strong>Purpose:</strong></p><p>Convert from block, line, and sample to Space Oblique Mercator (SOM) X and Y     coordinates for a given MISR path and resolution.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 230
+230
+
+julia&gt; resolution = 1100
+1100
+
+julia&gt; block = 69
+69
+
+julia&gt; line = 100.2
+100.2
+
+julia&gt; sample = 89.9
+89.9
+
+julia&gt; somx, somy = jMtkBlsToSomXY(path, resolution, block, line, sample)
+(1.7145919996643066e7, 222089.9932861328)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkBlsToSomXY.jl#L1-L40">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkLatLonToBls" href="#JMtk15.jMtkLatLonToBls"><code>JMtk15.jMtkLatLonToBls</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">block, line, sample = jMtkLatLonToBls(path, resolution, latitude, longitude)</code></pre><p><strong>Purpose:</strong></p><p>Convert from decimal latitude and longitude to block, line, and sample for a given     MISR path and resolution.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 160
+160
+
+julia&gt; resolution = 1100
+1100
+
+julia&gt; latitude = 57.1
+57.1
+
+julia&gt; longitude = 65.7
+65.7
+
+julia&gt; block, line, sample = jMtkLatLonToBls(path, resolution, latitude, longitude)
+(45, 19.521484f0, 207.88611f0)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkLatLonToBls.jl#L1-L37">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSomXYToBls" href="#JMtk15.jMtkSomXYToBls"><code>JMtk15.jMtkSomXYToBls</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">block, line, sample = jMtkSomXYToBls(path, resolution, somx, somy)</code></pre><p><strong>Purpose:</strong></p><p>Convert from Space Oblique Mercator (SOM) X and Y coordinates to block, line, and    sample for a given MISR path and resolution.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 230
+230
+
+julia&gt; resolution = 1100
+1100
+
+julia&gt; somx = 17145920.0
+1.714592e7
+
+julia&gt; somy = 222090.0
+222090.0
+
+julia&gt; block, line, sample = jMtkSomXYToBls(path, resolution, somx, somy)
+(69, 100.200195f0, 89.899994f0)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSomXYToBls.jl#L1-L37">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSomXYToLatLon" href="#JMtk15.jMtkSomXYToLatLon"><code>JMtk15.jMtkSomXYToLatLon</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">latitude, longitude = jMtkSomXYToLatLon(path, somx, somy)</code></pre><p><strong>Purpose:</strong></p><p>Converts from Space Oblique Mercator (SOM) X and Y coordinates to decimal latitude    and longitude or a given MISR path.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 230
+230
+
+julia&gt; somx = 17145920.0
+1.714592e7
+
+julia&gt; somy = 222090.0
+222090.0
+
+julia&gt; latitude, longitude = jMtkSomXYToLatLon(path, somx, somy)
+(26.737612422281604, -54.149627910796426)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSomXYToLatLon.jl#L1-L34">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkPathToProjParam" href="#JMtk15.jMtkPathToProjParam"><code>JMtk15.jMtkPathToProjParam</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">proj_params = jMtkPathToProjParam(path, resolution)</code></pre><p><strong>Purpose:</strong></p><p>Return the projection parameters for the given path and resolution.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 160
+160
+
+julia&gt; resolution = 275
+275
+
+julia&gt; proj_params = jMtkPathToProjParam(path, resolution)
+JMtk15.MTKt_MisrProjParam(160, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.1705401692154506e8, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 512, 2048, Float32[0.0, 64.0, 0.0, 64.0, 0.0, 0.0, 0.0, 64.0, 0.0, 0.0  …  0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0], 275)
+
+julia&gt; proj_params.path
+160
+
+julia&gt; proj_params.projcode
+22
+
+julia&gt; proj_params.zonecode
+-1
+
+julia&gt; proj_params.spherecode
+12
+
+julia&gt; proj_params.projparam
+15-element SVector{15, Float64} with indices SOneTo(15):
+   6.378137e6
+  -0.006694348
+   0.0
+   9.8018013752e7
+  -1.1705401692154506e8
+   0.0
+   0.0
+   0.0
+  98.88
+   0.0
+   0.0
+ 180.0
+   0.0
+   0.0
+   0.0
+
+julia&gt; proj_params.ulc
+2-element SVector{2, Float64} with indices SOneTo(2):
+ 7.46075e6
+ 1.09065e6
+
+julia&gt; proj_params.lrc
+2-element SVector{2, Float64} with indices SOneTo(2):
+ 7.60155e6
+ 527450.0
+
+julia&gt; proj_params.nblock
+180
+
+julia&gt; proj_params.nline
+512
+
+julia&gt; proj_params.nsample
+2048
+
+julia&gt; proj_params.reloffset
+179-element SVector{179, Float32} with indices SOneTo(179):
+  0.0
+ 64.0
+  0.0
+ 64.0
+  0.0
+  0.0
+  0.0
+ 64.0
+  0.0
+  0.0
+  ⋮
+  0.0
+ 64.0
+  0.0
+  0.0
+ 64.0
+  0.0
+  0.0
+ 64.0
+  0.0
+
+julia&gt; proj_params.resolution
+275</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkPathToProjParam.jl#L1-L105">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkPathBlockRangeToBlockCorners" href="#JMtk15.jMtkPathBlockRangeToBlockCorners"><code>JMtk15.jMtkPathBlockRangeToBlockCorners</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">block_corners = jMtkPathBlockRangeToBlockCorners(path, start_block, end_block)</code></pre><p><strong>Purpose:</strong></p><p>Return block corner coordinates in decimal degrees of latitude and longitude     for a given path and block range. Coordinates returned are with respect to     the pixel center of the upper left corner, center and lower right corner     of each block.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Notes:</strong></p><ul><li>MISR blocks are numbered from 1 (near the North pole) to 180 (near the South pole).</li><li>C and IDL arrays use 0-based array indexing, but Julia arrays use 1-based array indexing.</li><li>To store information about block <code>n</code> in a C or IDL array at the same index value, that   array must contain 181 elements (from 0 to 180), where the first one (index 0) is ignored.</li><li>When the C function returns such an array to Julia, it is stored in an array of 181   elements (from 1 to 181), where the first one (index 1) is also ignored.</li><li>Hence the information about block <code>n</code> is located in the Julia array at element <code>n + 1</code>.</li><li>When requesting information about a limited range of blocks, the coordinates for all other blocks are not computed, and therefore returned as zeros.</li></ul><p><strong>Example:</strong></p><p>Require information about the corner coordinates of blocks 50 to 53, which are to be found in elements 51 to 54 of the output variable <code>block_corners</code>:</p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 37
+37
+
+julia&gt; start_block = 50
+50
+
+julia&gt; end_block = 53
+53
+
+julia&gt; block_corners = jMtkPathBlockRangeToBlockCorners(path, start_block, end_block);
+
+julia&gt; block_corners.block[50]
+MTKt_GeoBlock(0, MTKt_GeoCoord(0.0, 0.0), MTKt_GeoCoord(0.0, 0.0), MTKt_GeoCoord(0.0, 0.0),
+    MTKt_GeoCoord(0.0, 0.0), MTKt_GeoCoord(0.0, 0.0))
+
+julia&gt; block_corners.block[51]
+MTKt_GeoBlock(50, MTKt_GeoCoord(51.50172788126263, -110.34181235426887),
+    MTKt_GeoCoord(50.55921476448539, -102.45622291180113),
+    MTKt_GeoCoord(50.47619474545069, -106.54373076847435),
+    MTKt_GeoCoord(49.33239267609881, -102.91557271102047),
+    MTKt_GeoCoord(50.25072514075242, -110.60484537214862))
+
+julia&gt; block_corners.block[53]
+MTKt_GeoBlock(52, MTKt_GeoCoord(49.014067408014164, -111.09560823489086),
+    MTKt_GeoCoord(48.133868087931134, -103.58257839548311),
+    MTKt_GeoCoord(48.012765787402664, -107.4704148885336),
+    MTKt_GeoCoord(46.90188427533023, -103.99047252579555),
+    MTKt_GeoCoord(47.76117892385338, -111.3306357462539))
+
+julia&gt; block_corners.block[54]
+MTKt_GeoBlock(53, MTKt_GeoCoord(47.77794661143779, -111.56393495460624),
+    MTKt_GeoCoord(46.93334647883273, -104.2166987821375),
+    MTKt_GeoCoord(46.79114534637805, -108.01472259273179),
+    MTKt_GeoCoord(45.69864278727337, -104.5996858571367),
+    MTKt_GeoCoord(46.52405645775748, -111.78423927666803))
+
+julia&gt; block_corners.block[55]
+MTKt_GeoBlock(0, MTKt_GeoCoord(0.0, 0.0), MTKt_GeoCoord(0.0, 0.0), MTKt_GeoCoord(0.0, 0.0),
+    MTKt_GeoCoord(0.0, 0.0), MTKt_GeoCoord(0.0, 0.0))</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkPathBlockRangeToBlockCorners.jl#L1-L76">source</a></section></article><h2 id="MapQuery"><a class="docs-heading-anchor" href="#MapQuery">MapQuery</a><a id="MapQuery-1"></a><a class="docs-heading-anchor-permalink" href="#MapQuery" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkLSToLatLon" href="#JMtk15.jMtkLSToLatLon"><code>JMtk15.jMtkLSToLatLon</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">latitude, longitude = jMtkLSToLatLon(mapinfo, line, sample)</code></pre><p><strong>Purpose:</strong></p><p>Return a decimal latitude/longitude pair given a line and sample.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; path = jMtkFileToPath(filename)
+168
+
+julia&gt; start_block = 110
+110
+
+julia&gt; end_block = 110
+110
+
+julia&gt; region = jMtkSetRegionByPathBlockRange(path, start_block, end_block)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(-24.479478582488763, 32.028724322255464)), MTKt_Extent(70262.5, 281462.5))
+
+julia&gt; gridname = &quot;GreenBand&quot;
+&quot;GreenBand&quot;
+
+julia&gt; fieldname = &quot;Green Radiance/RDQI&quot;
+&quot;Green Radiance/RDQI&quot;
+
+julia&gt; databuf, mapinfo = jMtkReadData(filename, gridname, fieldname, region)
+(UInt16[0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb; … ; 0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb], MTKt_MapInfo(168, 110, 110, 1100, 4, 128, 512, JMtk15.MTK_TRUE, MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0)), MTKt_GeoRegion(MTKt_GeoCoord(-23.58709279748763, 29.353665543180618), MTKt_GeoCoord(-24.0676258508188, 34.84437551586123), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.323930208545036, 34.740509109113106), MTKt_GeoCoord(-24.838877358123973, 29.195643744542547)), MTKt_MisrProjParam(168, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 128, 512, Float32[0.0, 16.0, 0.0, 16.0, 0.0, 0.0, 0.0, 16.0, 0.0, 0.0  …  0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0], 1100)))
+
+julia&gt; line = 50.0
+50.0
+
+julia&gt; sample = 125.0
+125.0
+
+julia&gt; latitude, longitude = jMtkLSToLatLon(mapinfo, line, sample)
+(-24.216289492769953, 30.63597054987332)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkLSToLatLon.jl#L1-L54">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkLSToSomXY" href="#JMtk15.jMtkLSToSomXY"><code>JMtk15.jMtkLSToSomXY</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">somx, somy = jMtkLSToSomXY(mapinfo, line, sample)</code></pre><p><strong>Purpose:</strong></p><p>Return the Space Oblique Mercator (SOM) X and Y given a line and sample.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Projects/MISR/MISR_Toolkit.1.5/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; path = jMtkFileToPath(filename)
+168
+
+julia&gt; start_block = 110
+110
+
+julia&gt; end_block = 110
+110
+
+julia&gt; region = jMtkSetRegionByPathBlockRange(path, start_block, end_block)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(-24.479478582488763, 32.028724322255464)), MTKt_Extent(70262.5, 281462.5))
+
+julia&gt; gridname = &quot;GreenBand&quot;
+&quot;GreenBand&quot;
+
+julia&gt; fieldname = &quot;Green Radiance/RDQI&quot;
+&quot;Green Radiance/RDQI&quot;
+
+julia&gt; databuf, mapinfo = jMtkReadData(filename, gridname, fieldname, region)
+(UInt16[0xe000 0xe000 … 0xe000 0xe000; 0xffff 0xffff … 0xffff 0xffff; … ; 0x7fee 0x7fee … 0x7fee 0x7fee; 0x0000 0x0000 … 0x0000 0x0000], MTKt_MapInfo(168, 110, 110, 1100, 4, 128, 512, JMtk15.MTK_TRUE, MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0)), MTKt_GeoRegion(MTKt_GeoCoord(-23.58709279748763, 29.353665543180618), MTKt_GeoCoord(-24.0676258508188, 34.84437551586123), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.323930208545036, 34.740509109113106), MTKt_GeoCoord(-24.838877358123973, 29.195643744542547)), MTKt_MisrProjParam(168, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 128, 512, Float32[0.0, 16.0, 0.0, 16.0, 0.0, 0.0, 0.0, 16.0, 0.0, 0.0  …  0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0], 1100)))
+
+julia&gt; line = 50.0
+50.0
+
+julia&gt; sample = 125.0
+125.0
+
+julia&gt; somx, somy = jMtkLSToSomXY(mapinfo, line, sample)
+(2.28635e7, -496100.0)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkLSToSomXY.jl#L1-L54">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkLatLonToLS" href="#JMtk15.jMtkLatLonToLS"><code>JMtk15.jMtkLatLonToLS</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">line, sample = jMtkLatLonToLS(mapinfo, latitude, longitude)</code></pre><p><strong>Purpose:</strong></p><p>Return a line and sample, given a decimal latitude/longitude pair.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; path = jMtkFileToPath(filename)
+168
+
+julia&gt; start_block = 110
+110
+
+julia&gt; end_block = 110
+110
+
+julia&gt; region = jMtkSetRegionByPathBlockRange(path, start_block, end_block)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(-24.479478582488763, 32.028724322255464)), MTKt_Extent(70262.5, 281462.5))
+
+julia&gt; gridname = &quot;GreenBand&quot;
+&quot;GreenBand&quot;
+
+julia&gt; fieldname = &quot;Green Radiance/RDQI&quot;
+&quot;Green Radiance/RDQI&quot;
+
+julia&gt; databuf, mapinfo = jMtkReadData(filename, gridname, fieldname, region)
+(UInt16[0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb; … ; 0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb], MTKt_MapInfo(168, 110, 110, 1100, 4, 128, 512, JMtk15.MTK_TRUE, MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0)), MTKt_GeoRegion(MTKt_GeoCoord(-23.58709279748763, 29.353665543180618), MTKt_GeoCoord(-24.0676258508188, 34.84437551586123), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.323930208545036, 34.740509109113106), MTKt_GeoCoord(-24.838877358123973, 29.195643744542547)), MTKt_MisrProjParam(168, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 128, 512, Float32[0.0, 16.0, 0.0, 16.0, 0.0, 0.0, 0.0, 16.0, 0.0, 0.0  …  0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0], 1100)))
+
+julia&gt; latitude = -24.216289
+-24.216289
+
+julia&gt; longitude = 30.635970
+30.63597
+
+julia&gt; line, sample = jMtkLatLonToLS(mapinfo, latitude, longitude)
+(49.999954f0, 124.99995f0)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkLatLonToLS.jl#L1-L54">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSomXYToLS" href="#JMtk15.jMtkSomXYToLS"><code>JMtk15.jMtkSomXYToLS</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">line, sample = jMtkSomXYToLS(mapinfo, somx, somy)</code></pre><p><strong>Purpose:</strong></p><p>Return a map line and sample, given Space Oblique Mercator (SOM) X and Y.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_CF_F03_0024.hdf&quot;
+
+julia&gt; path = jMtkFileToPath(filename)
+168
+
+julia&gt; start_block = 110
+110
+
+julia&gt; end_block = 110
+110
+
+julia&gt; region = jMtkSetRegionByPathBlockRange(path, start_block, end_block)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(-24.479478582488763, 32.028724322255464)), MTKt_Extent(70262.5, 281462.5))
+
+julia&gt; gridname = &quot;GreenBand&quot;
+&quot;GreenBand&quot;
+
+julia&gt; fieldname = &quot;Green Radiance/RDQI&quot;
+&quot;Green Radiance/RDQI&quot;
+
+julia&gt; databuf, mapinfo = jMtkReadData(filename, gridname, fieldname, region)
+(UInt16[0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb; … ; 0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb], MTKt_MapInfo(168, 110, 110, 1100, 4, 128, 512, JMtk15.MTK_TRUE, MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0)), MTKt_GeoRegion(MTKt_GeoCoord(-23.58709279748763, 29.353665543180618), MTKt_GeoCoord(-24.0676258508188, 34.84437551586123), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.323930208545036, 34.740509109113106), MTKt_GeoCoord(-24.838877358123973, 29.195643744542547)), MTKt_MisrProjParam(168, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 128, 512, Float32[0.0, 16.0, 0.0, 16.0, 0.0, 0.0, 0.0, 16.0, 0.0, 0.0  …  0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0, 0.0, 16.0, 0.0], 1100)))
+
+julia&gt; somx = 2.28635e7
+2.28635e7
+
+julia&gt; somy = -496100.0
+-496100.0
+
+julia&gt; line, sample = jMtkSomXYToLS(mapinfo, somx, somy)
+(50.0f0, 125.0f0)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSomXYToLS.jl#L1-L54">source</a></section></article><h2 id="OrbitPath"><a class="docs-heading-anchor" href="#OrbitPath">OrbitPath</a><a id="OrbitPath-1"></a><a class="docs-heading-anchor-permalink" href="#OrbitPath" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkLatLonToPathList" href="#JMtk15.jMtkLatLonToPathList"><code>JMtk15.jMtkLatLonToPathList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">path_cnt, path_list = jMtkLatLonToPathList(latitude, longitude)</code></pre><p><strong>Purpose:</strong></p><p>Return all paths intersecting a given latitude/longitude pair.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; latitude = 66.121646
+66.121646
+
+julia&gt; longitude = 89.263022
+89.263022
+
+julia&gt; path_cnt, path_list = jMtkLatLonToPathList(latitude, longitude);
+
+julia&gt; path_cnt
+17
+
+julia&gt; path_list
+17-element Vector{Int32}:
+   7
+   8
+   9
+  10
+  11
+  12
+  13
+  14
+ 146
+ 147
+ 148
+ 149
+ 150
+ 151
+ 152
+ 153
+ 154</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkLatLonToPathList.jl#L1-L52">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkRegionToPathList" href="#JMtk15.jMtkRegionToPathList"><code>JMtk15.jMtkRegionToPathList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">path_cnt, path_list = jMtkRegionToPathList(region)</code></pre><p><strong>Purpose:</strong></p><p>Return a list of paths intersecting a given region.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; center_lat = 40.0
+40.0
+
+julia&gt; center_lon = -120.0
+-120.0
+
+julia&gt; lat_extent = 0.1
+0.1
+
+julia&gt; lon_extent = 0.1
+0.1
+
+julia&gt; extent_units = &quot;degrees&quot;
+&quot;degrees&quot;
+
+julia&gt; region = jMtkSetRegionByLatLonExtent(center_lat, center_lon, lat_extent, lon_extent, extent_units)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(40.0, -120.0)), MTKt_Extent(5556.641805555556, 5556.641805555556))
+
+julia&gt; path_cnt, path_list = jMtkRegionToPathList(region);
+
+julia&gt; path_cnt
+5
+
+julia&gt; path_list
+5-element Vector{Int32}:
+ 41
+ 42
+ 43
+ 44
+ 45</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkRegionToPathList.jl#L1-L52">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkRegionPathToBlockRange" href="#JMtk15.jMtkRegionPathToBlockRange"><code>JMtk15.jMtkRegionPathToBlockRange</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">start_block, end_block = jMtkRegionPathToBlockRange(region, path)</code></pre><p><strong>Purpose:</strong></p><p>Return a starting and ending block for a given path and region.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 37
+37
+
+julia&gt; center_lat = 66.0
+66.0
+
+julia&gt; center_lon = -89.0
+-89.0
+
+julia&gt; lat_extent = 10.0
+10.0
+
+julia&gt; lon_extent = 10.0
+10.0
+
+julia&gt; extent_units = &quot;degrees&quot;
+&quot;degrees&quot;
+
+julia&gt; region = jMtkSetRegionByLatLonExtent(center_lat, center_lon, lat_extent, lon_extent, extent_units)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0)), MTKt_Extent(555664.1805555556, 555664.1805555556))
+
+julia&gt; start_block, end_block = jMtkRegionPathToBlockRange(region, path);
+
+julia&gt; start_block
+32
+
+julia&gt; end_block
+40</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkRegionPathToBlockRange.jl#L1-L50">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkOrbitToPath" href="#JMtk15.jMtkOrbitToPath"><code>JMtk15.jMtkOrbitToPath</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">path = jMtkOrbitToPath(orbit)</code></pre><p><strong>Purpose:</strong></p><p>Return the path corresponding to the given orbit.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; orbit = 29058
+29058
+
+julia&gt; path = jMtkOrbitToPath(orbit)
+37</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkOrbitToPath.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkTimeToOrbitPath" href="#JMtk15.jMtkTimeToOrbitPath"><code>JMtk15.jMtkTimeToOrbitPath</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">orbit, path = jMtkTimeToOrbitPath(datetime)</code></pre><p><strong>Purpose:</strong></p><p>Return an orbit and corresponding path given a time.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; datetime = &quot;2005-02-02T02:00:00Z&quot;
+&quot;2005-02-02T02:00:00Z&quot;
+
+julia&gt; orbit, path = jMtkTimeToOrbitPath(datetime)
+(27271, 104)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkTimeToOrbitPath.jl#L1-L27">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkTimeRangeToOrbitList" href="#JMtk15.jMtkTimeRangeToOrbitList"><code>JMtk15.jMtkTimeRangeToOrbitList</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">orbit_cnt, orbit_list = jMtkTimeRangeToOrbitList(start_time, end_time)</code></pre><p><strong>Purpose:</strong></p><p>Return a list of orbits given a period of time.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; start_time = &quot;2005-02-02T02:00:00Z&quot;
+&quot;2005-02-02T02:00:00Z&quot;
+
+julia&gt; end_time = &quot;2005-02-02T03:00:00Z&quot;
+&quot;2005-02-02T03:00:00Z&quot;
+
+julia&gt; orbit_cnt, orbit_list = jMtkTimeRangeToOrbitList(start_time, end_time);
+
+julia&gt; orbit_cnt
+2
+
+julia&gt; orbit_list
+2-element Vector{Int32}:
+ 27271
+ 27272</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkTimeRangeToOrbitList.jl#L1-L37">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkOrbitToTimeRange" href="#JMtk15.jMtkOrbitToTimeRange"><code>JMtk15.jMtkOrbitToTimeRange</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">start_time, end_time = jMtkOrbitToTimeRange(orbit)</code></pre><p><strong>Purpose:</strong></p><p>Return the start time and end time for a given orbit, expressed in the form yyyy-mm-ddThh:mm:ssZ.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; orbit = 32467
+32467
+
+julia&gt; start_time, end_time = jMtkOrbitToTimeRange(orbit)
+(&quot;2006-01-24T19:56:53Z&quot;, &quot;2006-01-24T21:35:46Z&quot;)</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkOrbitToTimeRange.jl#L1-L27">source</a></section></article><h2 id="SetRegion"><a class="docs-heading-anchor" href="#SetRegion">SetRegion</a><a id="SetRegion-1"></a><a class="docs-heading-anchor-permalink" href="#SetRegion" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSetRegionByPathBlockRange" href="#JMtk15.jMtkSetRegionByPathBlockRange"><code>JMtk15.jMtkSetRegionByPathBlockRange</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">region = jMtkSetRegionByPathBlockRange(path, start_block, end_block)</code></pre><p><strong>Purpose:</strong></p><p>Create a region structure that defines an approximate region of interest    given a MISR path and block range. This structure is used as input to    other MTK routines, Mtk_ReadData in particular.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 37
+37
+
+julia&gt; start_block = 32
+32
+
+julia&gt; end_block = 40
+40
+
+julia&gt; region = jMtkSetRegionByPathBlockRange(path, start_block, end_block);
+
+julia&gt; region
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(67.28628518822661, -95.22204196033839)), MTKt_Extent(633462.5, 307862.5))
+
+julia&gt; region.geo
+MTKt_GeoCenter(MTKt_GeoCoord(67.28628518822661, -95.22204196033839))
+
+julia&gt; region.geo.ctr
+MTKt_GeoCoord(67.28628518822661, -95.22204196033839)
+
+julia&gt; region.geo.ctr.lat
+67.28628518822661
+
+julia&gt; region.geo.ctr.lon
+-95.22204196033839
+
+julia&gt; region.hextent
+MTKt_Extent(633462.5, 307862.5)
+
+julia&gt; region.hextent.xlat
+633462.5
+
+julia&gt; region.hextent.ylon
+307862.5</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSetRegionByPathBlockRange.jl#L1-L58">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSetRegionByUlcLrc" href="#JMtk15.jMtkSetRegionByUlcLrc"><code>JMtk15.jMtkSetRegionByUlcLrc</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">region = jMtkSetRegionByUlcLrc(ul_lat, ul_lon, lr_lat, lr_lon)</code></pre><p><strong>Purpose:</strong></p><p>Create a region structure that defines an approximate region of interest given    upper left corner and lower right corner latitude/longitude coordinates. This    structure is used as input to other MTK routines, Mtk_ReadData in particular. </p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; ul_lat = 67.0
+67.0
+
+julia&gt; ul_lon = -90.0
+-90.0
+
+julia&gt; lr_lat = 65.0
+65.0
+
+julia&gt; lr_lon = -88.0
+-88.0
+
+julia&gt; region = jMtkSetRegionByUlcLrc(ul_lat, ul_lon, lr_lat, lr_lon);
+
+julia&gt; region
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0)), MTKt_Extent(111319.54315, 111319.54315))
+
+julia&gt; region.geo
+MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0))
+
+julia&gt; region.geo.ctr
+MTKt_GeoCoord(66.0, -89.0)
+
+julia&gt; region.geo.ctr.lat
+66.0
+
+julia&gt; region.geo.ctr.lon
+-89.0
+
+julia&gt; region.hextent
+MTKt_Extent(111319.54315, 111319.54315)
+
+julia&gt; region.hextent.xlat
+111319.54315
+
+julia&gt; region.hextent.ylon
+111319.54315</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSetRegionByUlcLrc.jl#L1-L61">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSetRegionByLatLonExtent" href="#JMtk15.jMtkSetRegionByLatLonExtent"><code>JMtk15.jMtkSetRegionByLatLonExtent</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">region = jMtkSetRegionByLatLonExtent(center_lat, center_lon, lat_extent, lon_extent, extent_units)</code></pre><p><strong>Purpose:</strong></p><p>Create a region structure that defines an approximate region of interest     given a center latitude/longitude coordinate and a latitudinal/longitudinal     full extent in specified units of degrees, meters, kilometers, or pixels.     This structure is used as input to other MTK routines, Mtk_ReadData in particular.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; center_lat = 66.0
+66.0
+
+julia&gt; center_lon = -89.0
+-89.0
+
+julia&gt; lat_extent = 111000.0
+111000.0
+
+julia&gt; lon_extent = 111000.0
+111000.0
+
+julia&gt; extent_units = &quot;meters&quot;
+&quot;meters&quot;
+
+julia&gt; region = jMtkSetRegionByLatLonExtent(center_lat, center_lon, lat_extent, lon_extent, extent_units);
+
+julia&gt; region
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0)), MTKt_Extent(55500.0, 55500.0))
+
+julia&gt; region.geo
+MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0))
+
+julia&gt; region.geo.ctr
+MTKt_GeoCoord(66.0, -89.0)
+
+julia&gt; region.geo.ctr.lat
+66.0
+
+julia&gt; region.geo.ctr.lon
+-89.0
+
+julia&gt; region.hextent
+MTKt_Extent(55500.0, 55500.0)
+
+julia&gt; region.hextent.xlat
+55500.0
+
+julia&gt; region.hextent.ylon
+55500.0</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSetRegionByLatLonExtent.jl#L1-L65">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSetRegionByPathSomUlcLrc" href="#JMtk15.jMtkSetRegionByPathSomUlcLrc"><code>JMtk15.jMtkSetRegionByPathSomUlcLrc</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">region = jMtkSetRegionByPathSomUlcLrc(path, ulc_som_x, ulc_som_y, lrc_som_x, lrc_som_y)</code></pre><p><strong>Purpose:</strong></p><p>Set a region by path and upper left and lower right SOM X/Y.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 27
+27
+
+julia&gt; ulc_som_x = 15600000.0
+1.56e7
+
+julia&gt; ulc_som_y = -300.0
+-300.0
+
+julia&gt; lrc_som_x = 16800000.0
+1.68e7
+
+julia&gt; lrc_som_y = 2000.0
+2000.0
+
+julia&gt; region = jMtkSetRegionByPathSomUlcLrc(path, ulc_som_x, ulc_som_y, lrc_som_x, lrc_som_y)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(35.38461751504492, -102.05138161671469)), MTKt_Extent(600137.5, 1287.5))
+
+julia&gt; region.geo
+MTKt_GeoCenter(MTKt_GeoCoord(35.38461751504492, -102.05138161671469))
+
+julia&gt; region.geo.ctr
+MTKt_GeoCoord(35.38461751504492, -102.05138161671469)
+
+julia&gt; region.geo.ctr.lat
+35.38461751504492
+
+julia&gt; region.geo.ctr.lon
+-102.05138161671469
+
+julia&gt; region.hextent
+MTKt_Extent(600137.5, 1287.5)
+
+julia&gt; region.hextent.xlat
+600137.5
+
+julia&gt; region.hextent.ylon
+1287.5</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSetRegionByPathSomUlcLrc.jl#L1-L60">source</a></section></article><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkSnapToGrid" href="#JMtk15.jMtkSnapToGrid"><code>JMtk15.jMtkSnapToGrid</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">mapinfo = jMtkSnapToGrid(path, resolution, region)</code></pre><p><strong>Purpose:</strong></p><p>Snap a region of interest to a MISR grid given a path, resolution and a region    structure. It is not typically called directly, instead it is used by    Mtk<em>ReadData and Mtk</em>ReadRaw to adjust the region defined by the SetRegion    routines to the grid of the MISR product file to read.    The Mtk<em>ReadData and Mtk</em>ReadRaw routines always return data on a MISR grid    approximated by the region, no spatial interpolation is performed (only block    assembly). This routines does the snap from region to grid. It may be useful    to perform region to map to coordinate computations without actually reading data.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 37
+37
+
+julia&gt; resolution = 275
+275
+
+julia&gt; center_lat = 66.0
+66.0
+
+julia&gt; center_lon = -89.0
+-89.0
+
+julia&gt; lat_extent = 1.5
+1.5
+
+julia&gt; lon_extent = 1.0
+1.0
+
+julia&gt; extent_units = &quot;degrees&quot;
+&quot;degrees&quot;
+
+julia&gt; region = jMtkSetRegionByLatLonExtent(center_lat, center_lon, lat_extent, lon_extent, extent_units)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(66.0, -89.0)), MTKt_Extent(83349.62708333334, 55566.41805555556))
+
+julia&gt; mapinfo = jMtkSnapToGrid(path, resolution, region)
+MTKt_MapInfo(37, 36, 37, 275, 1, 704, 512, JMtk15.MTK_TRUE, MTKt_SomRegion(37, MTKt_SomCoord(1.23888875e7, 1.0555875e6), MTKt_SomCoord(1.248555e7, 1.12585e6), MTKt_SomCoord(1.25822125e7, 1.1961125e6)), MTKt_GeoRegion(MTKt_GeoCoord(67.03179518448705, -89.53826724255391), MTKt_GeoCoord(66.46099499099165, -86.6996155055143), MTKt_GeoCoord(65.97799363748135, -89.06552066214442), MTKt_GeoCoord(64.92346880942577, -88.62870412735786), MTKt_GeoCoord(65.45901952920984, -91.34071802836039)), MTKt_MisrProjParam(37, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, 7.20080175848927e7, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 512, 2048, Float32[0.0, 64.0, 0.0, 64.0, 0.0, 0.0, 0.0, 64.0, 0.0, 0.0  …  0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0], 275))
+
+julia&gt; mapinfo.path
+37
+
+julia&gt; mapinfo.start_block
+36
+
+julia&gt; mapinfo.end_block
+37
+
+julia&gt; mapinfo.resolution
+275
+
+julia&gt; mapinfo.resfactor
+1
+
+julia&gt; mapinfo.nline
+704
+
+julia&gt; mapinfo.nsample
+512
+
+julia&gt; mapinfo.pixelcenter
+MTK_TRUE::MTKt_boolean = 0x00000001
+
+julia&gt; mapinfo.som
+MTKt_SomRegion(37, MTKt_SomCoord(1.23888875e7, 1.0555875e6), MTKt_SomCoord(1.248555e7, 1.12585e6), MTKt_SomCoord(1.25822125e7, 1.1961125e6))
+
+julia&gt; mapinfo.som.path
+37
+
+julia&gt; mapinfo.som.ulc
+MTKt_SomCoord(1.23888875e7, 1.0555875e6)
+
+julia&gt; mapinfo.som.ulc.x
+1.23888875e7
+
+julia&gt; mapinfo.som.ulc.y
+1.0555875e6
+
+julia&gt; mapinfo.som.ctr
+MTKt_SomCoord(1.248555e7, 1.12585e6)
+
+julia&gt; mapinfo.som.ctr.x
+1.248555e7
+
+julia&gt; mapinfo.som.ctr.y
+1.12585e6
+
+julia&gt; mapinfo.som.lrc
+MTKt_SomCoord(1.25822125e7, 1.1961125e6)
+
+julia&gt; mapinfo.som.lrc.x
+1.25822125e7
+
+julia&gt; mapinfo.som.lrc.y
+1.1961125e6
+
+julia&gt; mapinfo.geo
+MTKt_GeoRegion(MTKt_GeoCoord(67.03179518448705, -89.53826724255391), MTKt_GeoCoord(66.46099499099165, -86.6996155055143), MTKt_GeoCoord(65.97799363748135, -89.06552066214442), MTKt_GeoCoord(64.92346880942577, -88.62870412735786), MTKt_GeoCoord(65.45901952920984, -91.34071802836039))
+
+julia&gt; mapinfo.geo.ulc
+MTKt_GeoCoord(67.03179518448705, -89.53826724255391)
+
+julia&gt; mapinfo.geo.ulc.lat
+67.03179518448705
+
+julia&gt; mapinfo.geo.ulc.lon
+-89.53826724255391
+
+julia&gt; mapinfo.geo.urc
+MTKt_GeoCoord(66.46099499099165, -86.6996155055143)
+
+julia&gt; mapinfo.geo.urc.lat
+66.46099499099165
+
+julia&gt; mapinfo.geo.urc.lon
+-86.6996155055143
+
+julia&gt; mapinfo.geo.ctr
+MTKt_GeoCoord(65.97799363748135, -89.06552066214442)
+
+julia&gt; mapinfo.geo.ctr.lat
+65.97799363748135
+
+julia&gt; mapinfo.geo.ctr.lon
+-89.06552066214442
+
+julia&gt; mapinfo.geo.lrc
+MTKt_GeoCoord(64.92346880942577, -88.62870412735786)
+
+julia&gt; mapinfo.geo.lrc.lat
+64.92346880942577
+
+julia&gt; mapinfo.geo.lrc.lon
+-88.62870412735786
+
+julia&gt; mapinfo.geo.llc
+MTKt_GeoCoord(65.45901952920984, -91.34071802836039)
+
+julia&gt; mapinfo.geo.llc.lat
+65.45901952920984
+
+julia&gt; mapinfo.geo.llc.lon
+-91.34071802836039
+
+julia&gt; mapinfo.pp
+MTKt_MisrProjParam(37, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, 7.20080175848927e7, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 512, 2048, Float32[0.0, 64.0, 0.0, 64.0, 0.0, 0.0, 0.0, 64.0, 0.0, 0.0  …  0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0], 275)
+
+julia&gt; mapinfo.pp.path
+37
+
+julia&gt; mapinfo.pp.projcode
+22
+
+julia&gt; mapinfo.pp.zonecode
+-1
+
+julia&gt; mapinfo.pp.spherecode
+12
+
+julia&gt; mapinfo.pp.projparam
+15-element SVector{15, Float64} with indices SOneTo(15):
+   6.378137e6
+  -0.006694348
+   0.0
+   9.8018013752e7
+   7.20080175848927e7
+   0.0
+   0.0
+   0.0
+  98.88
+   0.0
+   0.0
+ 180.0
+   0.0
+   0.0
+   0.0
+
+julia&gt; mapinfo.pp.ulc
+2-element SVector{2, Float64} with indices SOneTo(2):
+ 7.46075e6
+ 1.09065e6
+
+julia&gt; mapinfo.pp.lrc
+2-element SVector{2, Float64} with indices SOneTo(2):
+ 7.60155e6
+ 527450.0
+
+julia&gt; mapinfo.pp.nblock
+180
+
+julia&gt; mapinfo.pp.nline
+512
+
+julia&gt; mapinfo.pp.nsample
+2048
+
+julia&gt; mapinfo.pp.nsample
+2048
+
+julia&gt; 
+
+julia&gt; mapinfo.pp.reloffset
+179-element SVector{179, Float32} with indices SOneTo(179):
+  0.0
+ 64.0
+  0.0
+ 64.0
+  0.0
+  0.0
+  0.0
+ 64.0
+  0.0
+  0.0
+  ⋮
+  0.0
+ 64.0
+  0.0
+  0.0
+ 64.0
+  0.0
+  0.0
+ 64.0
+  0.0
+
+julia&gt; mapinfo.pp.resolution
+275</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkSnapToGrid.jl#L1-L243">source</a></section></article><h2 id="ReadData"><a class="docs-heading-anchor" href="#ReadData">ReadData</a><a id="ReadData-1"></a><a class="docs-heading-anchor-permalink" href="#ReadData" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="JMtk15.jMtkReadData" href="#JMtk15.jMtkReadData"><code>JMtk15.jMtkReadData</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">databuf, mapinfo = jMtkReadData(filename, gridname, fieldname, region)</code></pre><p><strong>Purpose:</strong></p><p>Return 2-D array of MISR data given a file, grid, field, and region. The data     returned is unscaled, unpacked or interpreted.  If a field is not packed     or the fieldname parameter input string is preceded by the word “raw”,     Mtk<em>ReadRaw is called and no unpacking, unscaling or interpreting is done.     If the field has a flag associated with it the word “flag” can follow the     fieldname parameter input string and the fields flag value is returned.     Use Mtk</em>file<em>grid</em>to<em>fieldlist to get a complete list of field options     for a given MISR product file and grid. The Mtk</em>ReadData routine always     returns data on a MISR grid approximated by the region, no spatial     interpolation is performed (only block assembly).      See Particulars below regarding extra dimensions in some fields.</p><p><strong>Licensing:</strong></p><ul><li>Mtk C Library: Copyright © 2005 California Institute of Technology,   <a href="https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE">Caltech license</a>.</li><li>Julia wrapper: Copyright © 2023 Michel M. Verstraete,   <a href="https://opensource.org/licenses/MIT">MIT license</a>.</li></ul><p><strong>Versioning:</strong></p><ul><li>Mtk C Library: Version 1.5.</li><li>Julia wrapper: Version 0.1.0 (2023-02-15).</li></ul><p><strong>Note:</strong></p><ul><li>Respect the order of the variables <code>databuf.nsample</code> and <code>databuf.nline</code> when</li></ul><p>retrieving the data buffer values from the double pointer returned by the <code>ccall</code>.</p><p><strong>Example:</strong></p><pre><code class="language-julia hljs">julia&gt; using JMtk15
+
+julia&gt; path = 168
+168
+
+julia&gt; start_block = 110
+110
+
+julia&gt; end_block = 110
+110
+
+julia&gt; region = jMtkSetRegionByPathBlockRange(path, start_block, end_block)
+MTKt_Region(MTKt_GeoCenter(MTKt_GeoCoord(-24.479478582488763, 32.028724322255464)), MTKt_Extent(70262.5, 281462.5))
+
+julia&gt; filename = JMtk15_data * &quot;MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AF_F03_0024.hdf&quot;
+&quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR_AM1_GRP_TERRAIN_GM_P168_O068050_AF_F03_0024.hdf&quot;
+
+julia&gt; gridname = &quot;RedBand&quot;
+&quot;RedBand&quot;
+
+julia&gt; fieldname = &quot;Red Radiance/RDQI&quot;
+&quot;Red Radiance/RDQI&quot;
+
+julia&gt; databuf, mapinfo = jMtkReadData(filename, gridname, fieldname, region)
+(UInt16[0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb; … ; 0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb], MTKt_MapInfo(168, 110, 110, 275, 1, 512, 2048, JMtk15.MTK_TRUE, MTKt_SomRegion(168, MTKt_SomCoord(2.28080875e7, -634012.5), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29486125e7, -71087.5)), MTKt_GeoRegion(MTKt_GeoCoord(-23.58297245891216, 29.35011472257243), MTKt_GeoCoord(-24.064196594381425, 34.84872166826311), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.327919099507437, 34.744282389822025), MTKt_GeoCoord(-24.84214182375054, 29.19112051959548)), MTKt_MisrProjParam(168, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 512, 2048, Float32[0.0, 64.0, 0.0, 64.0, 0.0, 0.0, 0.0, 64.0, 0.0, 0.0  …  0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0], 275)))
+
+julia&gt; size(databuf)
+(2048, 512)
+
+julia&gt; typeof(databuf)
+Matrix{UInt16} (alias for Array{UInt16, 2})
+
+julia&gt; Int.(databuf[1000:1005, 200:201])
+6×2 Matrix{Int64}:
+ 5720  6024
+ 5844  6056
+ 5884  6004
+ 5988  6076
+ 5848  5920
+ 5724  5808
+ ```
+
+ where the function `Int` has been called to visualize decimal rather hexadecimal values,
+    (this also turned the values into Int64 by default), and where the `.` operator
+    indicates that the function can be vectorized, i.e., applied element-wise on all
+    elements of the matrix.
+
+ Note that there are two important differences between Julia and IDL:
+
+ * Julia uses 1-based array indexing, and matrix elements are stored in row-major order (or, in the MISR parlance, line-priority, which is the typical convention in mathematics).
+
+ * IDL uses 0-based array indexing, and matrix elements are stored in column-major order (or, in the MISR parlance, sample-priority, which is the &quot;natural&quot; order to generate output on a screen).
+
+ As a result, a Julia matrix needs to be transposed to match an IDL matrix, and the indices of a sub-matrix must be 1-larger than those in an IDL matrix in each dimension. Conversely, the indices of an IDL sub-matrix must be 1-smaller than those in the Julia matrix in each dimension.
+
+Compare the transposed matrix above
+</code></pre><p>julia  julia&gt; Int.(transpose(databuf[1000:1005, 200:201])) 2×6 Matrix{Int64}:  5720  5844  5884  5988  5848  5724  6024  6056  6004  6076  5920  5808</p><pre><code class="nohighlight hljs">to the IDL results for the same inputs, with the indices adjusted:
+</code></pre><p>idl IDL&gt; path = 168 IDL&gt; start<em>block = 110 IDL&gt; end</em>block = 110 IDL&gt; status = MTK<em>SETREGION</em>BY<em>PATH</em>BLOCKRANGE(path, start<em>block, end</em>block, region) IDL&gt; status            0 IDL&gt; filename = &quot;/Users/michel/Codes/Julia/JMtk15/data/MISR/MISR<em>AM1</em>GRP<em>TERRAIN</em>GM<em>P168</em>O068050<em>AF</em>F03<em>0024.hdf&quot; IDL&gt; gridname = &quot;RedBand&quot; IDL&gt; fieldname = &quot;Red Radiance/RDQI&quot; IDL&gt; status = MTK</em>READDATA( filename, gridname, fieldname, region, databuf, mapinfo ) IDL&gt; help, databuf DATABUF         UINT      = Array[2048, 512] IDL&gt; databuf[999:1004, 199:200]     5720    5844    5884    5988    5848    5724     6024    6056    6004    6076    5920    5808 ```</p></div><a class="docs-sourcelink" target="_blank" href="https://github.com/mmverstraete/JMtk15.jl/blob/17f3f1348a1e6aaee3cb6d30c79e96990f2cee64/src/jMtkReadData.jl#L1-L115">source</a></section></article></article><nav class="docs-footer"><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Saturday 15 April 2023 11:45">Saturday 15 April 2023</span>. Using Julia version 1.8.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

@@ -1218,6 +1218,10 @@ using Test
         @test orbit_cnt == 2
         @test orbit_list == [27271, 27272]
 # ---------------------------------------------------------- jMtkPathTimeRangeToOrbitList
+        include(JMtk15_test * "src/jMtkPathTimeRangeToOrbitList_tst_1.jl")
+        orbit_cnt, orbit_list = jMtkPathTimeRangeToOrbitList_tst_1();
+        @test orbit_cnt == 6
+        @test orbit_list == [11350, 11583, 11816, 12049, 12282, 12515]
 # ---------------------------------------------------------- jMtkOrbitToTimeRange
         include(JMtk15_test * "src/jMtkOrbitToTimeRange_tst_1.jl")
         start_time, end_time = jMtkOrbitToTimeRange_tst_1();

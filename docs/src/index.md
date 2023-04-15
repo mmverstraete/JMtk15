@@ -23,7 +23,7 @@ The `test` and `doc` subdirectories contain test functions and documentation for
 
 All functions and files published as part of this `JMtk15` package are provided under the MIT License, i.e., without any warranty about the their usability or effectiveness in your own applications. See the LICENSE file in this repository for more details.
 
-Generating this package would not have been possible without the professional help of Sebastian Val at JPL concerning MISR Toolkit (`Mtk`) and the benevolent support of `@Gnimuc`, `@stevengj`, `@mkitti` as well as many other contributors to the [Julia Discourse Forum](https://discourse.julialang.org/) with respect to the Julia implementation.
+Generating this package would not have been possible without the professional help of Sebastian Val at JPL concerning MISR Toolkit (`Mtk`) and the benevolent and patient support of `@Gnimuc`, `@stevengj`, `@mkitti`, `@kellertuer` as well as many other contributors to the [Julia Discourse Forum](https://discourse.julialang.org/) with respect to the Julia implementation.
 
 Please check this site regularly for updates and send bug reports or suggestions through GitHub: I will attempt to address those in future releases, time permitting.
 

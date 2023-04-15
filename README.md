@@ -6,4 +6,4 @@ Welcome to [JMtk15](https://github.com/mmverstraete/JMtk15.jl), a Julia language
 
 All functions and files published as part of this `JMtk15` package are provided under the MIT License, i.e., without any warranty about the their usability or effectiveness in your own applications. See the LICENSE file in this repository for more details.
 
-Please read the documentation and check the test files for hints and examples on the use of these functions.
+Please read the [JMtk15 Package Documentation](https://mmverstraete.github.io/JMtk15/dev/) and check the test files for hints and examples on the use of these functions.

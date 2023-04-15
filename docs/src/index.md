@@ -138,6 +138,7 @@ jMtkRegionPathToBlockRange
 jMtkOrbitToPath
 jMtkTimeToOrbitPath
 jMtkTimeRangeToOrbitList
+jMtkPathTimeRangeToOrbitList
 jMtkOrbitToTimeRange
 ```
 

@@ -258,8 +258,8 @@ include(JMtk15_src * "jMtkTimeToOrbitPath.jl")
 export jMtkTimeToOrbitPath
 include(JMtk15_src * "jMtkTimeRangeToOrbitList.jl")
 export jMtkTimeRangeToOrbitList
-# include(JMtk15_src * "jMtkPathTimeRangeToOrbitList.jl")
-# export jMtkPathTimeRangeToOrbitList
+include(JMtk15_src * "jMtkPathTimeRangeToOrbitList.jl")
+export jMtkPathTimeRangeToOrbitList
 include(JMtk15_src * "jMtkOrbitToTimeRange.jl")
 export jMtkOrbitToTimeRange
 # -----------------------------------------------------------------------------

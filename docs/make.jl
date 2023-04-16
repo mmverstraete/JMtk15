@@ -17,4 +17,4 @@ makedocs(;
         "Home" => "index.md",
     ],
 )
-deploydocs(; repo="github.com/mmverstraete/JMtk15", push_preview=true)
+deploydocs(; repo="github.com/mmverstraete/JMtk15.jl", push_preview=true)

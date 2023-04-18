@@ -40,15 +40,15 @@ export StringView
 
 # Package configuration:
 
-# Please update the following two assignment statements to match the current configuration.
+# Please update the following two assignment statements to match your current configuration.
 # 1. Set the location of the Mtk shared library:
 
 mtklib = "/Applications/Mtk-1.5.0/lib/libMisrToolkit.so.1.5.0"
 export mtklib
 
-# 2. Set the location of the MISR source and data files for this JMtk15 package. In principle, only the data subdirectory may need to be updated, if your data are located elsewhere than at the standard location identified below:
+# 2. Set the location of the MISR source and data files for this JMtk15 package. In principle, only the data subdirectory may need to be updated, if your data are located elsewhere than in the default directory identified below:
 
-# Define root directories for the project :
+# Define the default root directories for the project :
 const JMtk15_root = dirname(@__DIR__)
 export JMtk15_root
 const JMtk15_src = JMtk15_root * "/src/"

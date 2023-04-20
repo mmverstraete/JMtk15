@@ -1295,7 +1295,7 @@ using Test
 # ---------------------------------------------------------- jMtkReadData
         include(JMtk15_test * "src/jMtkReadData_tst_0100.jl")
         databuf, mapinfo = jMtkReadData_tst_0100();
-        @test Int.(transpose(databuf[461:466, 67:71])) == Int.([
+        @test UInt8.(transpose(databuf[461:466, 67:71])) == UInt8.([
                 1  1  1  1  1  1
                 1  1  1  2  2  2
                 1  1  2  2  3  2
@@ -1320,170 +1320,180 @@ using Test
         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
         @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
 
-        # include(JMtk15_test * "src/jMtkReadData_tst_1000.jl")
-        # databuf, mapinfo = jMtkReadData_tst_1000();
-        # @test transpose(databuf[16:19, 4:5]) == [
-        #         31.3949458411467 31.283454456643128 31.172319983604712 31.061547430619207;
-        #         31.49954269576102 31.38843722293199 31.27768970248382 31.16730618391117]
-        # @test mapinfo.resfactor == 64
-        # @test (mapinfo.nline, mapinfo.nsample) == (8, 32)
-        # @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.295755e7, -642950.0), MTKt_SomCoord(2.301915e7, -370150.0), MTKt_SomCoord(2.308075e7, -97350.0))
-        # @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.295755e7, -642950.0)
-        # @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.301915e7, -370150.0)
-        # @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.308075e7, -97350.0)
-        # @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-24.912833295792158, 29.09305892265543), MTKt_GeoCoord(-25.390243230498008, 34.47763492777933), MTKt_GeoCoord(-25.72932186715566, 31.72061762407402), MTKt_GeoCoord(-26.497900285059888, 34.383017256768206), MTKt_GeoCoord(-26.0162837384446, 28.948916592857373))
-        # @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-24.912833295792158, 29.09305892265543)
-        # @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-25.390243230498008, 34.47763492777933)
-        # @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-25.72932186715566, 31.72061762407402)
-        # @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-26.497900285059888, 34.383017256768206)
-        # @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-26.0162837384446, 28.948916592857373)
-        # @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
-        # @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
-        # @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
-        # @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
-        # @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 8, 32)
-        # @test mapinfo.pp.reloffset[1:4] == [0.0, 1.0, 0.0, 1.0]
+        include(JMtk15_test * "src/jMtkReadData_tst_1000.jl")
+        databuf, mapinfo = jMtkReadData_tst_1000();
+        @test transpose(databuf[16:19, 4:5]) == [
+                31.3949458411467 31.283454456643128 31.172319983604712 31.061547430619207;
+                31.49954269576102 31.38843722293199 31.27768970248382 31.16730618391117]
+        @test mapinfo.resfactor == 64
+        @test (mapinfo.nline, mapinfo.nsample) == (8, 32)
+        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.295755e7, -642950.0), MTKt_SomCoord(2.301915e7, -370150.0), MTKt_SomCoord(2.308075e7, -97350.0))
+        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.295755e7, -642950.0)
+        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.301915e7, -370150.0)
+        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.308075e7, -97350.0)
+        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-24.912833295792158, 29.09305892265543), MTKt_GeoCoord(-25.390243230498008, 34.47763492777933), MTKt_GeoCoord(-25.72932186715566, 31.72061762407402), MTKt_GeoCoord(-26.497900285059888, 34.383017256768206), MTKt_GeoCoord(-26.0162837384446, 28.948916592857373))
+        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-24.912833295792158, 29.09305892265543)
+        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-25.390243230498008, 34.47763492777933)
+        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-25.72932186715566, 31.72061762407402)
+        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-26.497900285059888, 34.383017256768206)
+        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-26.0162837384446, 28.948916592857373)
+        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 8, 32)
+        @test mapinfo.pp.reloffset[1:4] == [0.0, 1.0, 0.0, 1.0]
 
-        # include(JMtk15_test * "src/jMtkReadData_tst_1500.jl")
-        # databuf, mapinfo = jMtkReadData_tst_1500();
-        # @test Int.(transpose(databuf[388:392, 22:27])) == [
-        # 4  2  3  4  4
-        # 4  4  3  4  4
-        # 4  4  2  4  2
-        # 4  3  1  4  4
-        # 4  2  1  4  4
-        # 4  2  2  4  4]
-        # @test mapinfo.resfactor == 4
-        # @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
-        # @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.30901e7, -668800.0), MTKt_SomCoord(2.315995e7, -387750.0), MTKt_SomCoord(2.32298e7, -106700.0))
-        # @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.30901e7, -668800.0)
-        # @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.315995e7, -387750.0)
-        # @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.32298e7, -106700.0)
-        # @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-26.0721209058142, 28.681521176903196), MTKt_GeoCoord(-26.575431877271235, 34.28232743548915), MTKt_GeoCoord(-26.978298006176956, 31.40606162364945), MTKt_GeoCoord(-27.83108760787897, 34.173044569161036), MTKt_GeoCoord(-27.3224387040438, 28.51053243188757))
-        # @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-26.0721209058142, 28.681521176903196)
-        # @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-26.575431877271235, 34.28232743548915)
-        # @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-26.978298006176956, 31.40606162364945)
-        # @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-27.83108760787897, 34.173044569161036)
-        # @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-27.3224387040438, 28.51053243188757)
-        # @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
-        # @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
-        # @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
-        # @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
-        # @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
-        # @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+       include(JMtk15_test * "src/jMtkReadData_tst_1100.jl")
+       databuf, mapinfo = jMtkReadData_tst_1100();
+       @test Int.(transpose(databuf[252:256, 5:10])) == [
+       9968  10720  10488   9420   7828
+       9936  10816  11192  11000  10764
+       9212   9552   9996  10176  10448
+       8664   8668   8588   8364   9104
+       8568   8576   8324   8212   8116
+       8928   8972   8728   8732   8688]
+       @test mapinfo.resfactor == 4
+       @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+       @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.25269e7, -598400.0), MTKt_SomCoord(2.259675e7, -317350.0), MTKt_SomCoord(2.26666e7, -36300.0))
+       @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.25269e7, -598400.0)
+       @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.259675e7, -317350.0)
+       @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.26666e7, -36300.0)
+       @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-21.097325373532644, 29.99582427938279), MTKt_GeoCoord(-21.55799831374879, 35.39028205545153), MTKt_GeoCoord(-21.97741330429874, 32.627475397777744), MTKt_GeoCoord(-22.814872931137558, 35.29073891830416), MTKt_GeoCoord(-22.350387571641914, 29.84908666726994))
+       @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-21.097325373532644, 29.99582427938279)
+       @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-21.55799831374879, 35.39028205545153)
+       @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-21.97741330429874, 32.627475397777744)
+       @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-22.814872931137558, 35.29073891830416)
+       @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-22.350387571641914, 29.84908666726994)
+       @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+       @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+       @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+       @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+       @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+       @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
 
-#        include(JMtk15_test * "src/jMtkReadData_tst_140.jl")
-#        databuf, mapinfo = jMtkReadData_tst_140();
-#        @test Int.(transpose(databuf[252:256, 5:10])) == [
-#        9968  10720  10488   9420   7828
-#        9936  10816  11192  11000  10764
-#        9212   9552   9996  10176  10448
-#        8664   8668   8588   8364   9104
-#        8568   8576   8324   8212   8116
-#        8928   8972   8728   8732   8688]
-#        @test mapinfo.resfactor == 4
-#        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
-#        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.25269e7, -598400.0), MTKt_SomCoord(2.259675e7, -317350.0), MTKt_SomCoord(2.26666e7, -36300.0))
-#        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.25269e7, -598400.0)
-#        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.259675e7, -317350.0)
-#        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.26666e7, -36300.0)
-#        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-21.097325373532644, 29.99582427938279), MTKt_GeoCoord(-21.55799831374879, 35.39028205545153), MTKt_GeoCoord(-21.97741330429874, 32.627475397777744), MTKt_GeoCoord(-22.814872931137558, 35.29073891830416), MTKt_GeoCoord(-22.350387571641914, 29.84908666726994))
-#        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-21.097325373532644, 29.99582427938279)
-#        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-21.55799831374879, 35.39028205545153)
-#        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-21.97741330429874, 32.627475397777744)
-#        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-22.814872931137558, 35.29073891830416)
-#        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-22.350387571641914, 29.84908666726994)
-#        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
-#        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
-#        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
-#        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
-#        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
-#        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+       include(JMtk15_test * "src/jMtkReadData_tst_1300.jl")
+       databuf, mapinfo = jMtkReadData_tst_1300();
+       @test Int.(transpose(databuf[1011:1015, 201:205])) == [
+       4656  4704  4372  4512  4744
+       4236  4256  4436  4480  4472
+       4468  4624  4200  3764  3764
+       4792  4736  4208  3720  3624
+       4948  4808  4380  4140  4152]
+       @test mapinfo.resfactor == 1
+       @test (mapinfo.nline, mapinfo.nsample) == (512, 2048)
+       @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.26672875e7, -616412.5), MTKt_SomCoord(2.273755e7, -334950.0), MTKt_SomCoord(2.28078125e7, -53487.5))
+       @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.26672875e7, -616412.5)
+       @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.273755e7, -334950.0)
+       @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.28078125e7, -53487.5)
+       @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-22.338655196971448, 29.67470803381622), MTKt_GeoCoord(-22.809586710229873, 35.123460533247695), MTKt_GeoCoord(-23.22882451114302, 32.33086052347723), MTKt_GeoCoord(-24.07360545797157, 35.02132140431515), MTKt_GeoCoord(-23.59848983222742, 29.521588205306525))
+       @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-22.338655196971448, 29.67470803381622)
+       @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-22.809586710229873, 35.123460533247695)
+       @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-23.22882451114302, 32.33086052347723)
+       @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-24.07360545797157, 35.02132140431515)
+       @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-23.59848983222742, 29.521588205306525)
+       @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+       @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+       @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+       @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+       @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 512, 2048)
+       @test mapinfo.pp.reloffset[1:4] == [0.0, 64.0, 0.0, 64.0]
 
-#        include(JMtk15_test * "src/jMtkReadData_tst_150.jl")
-#        databuf, mapinfo = jMtkReadData_tst_150();
-#        @test Int.(transpose(databuf[1011:1015, 201:205])) == [
-#        4656  4704  4372  4512  4744
-#        4236  4256  4436  4480  4472
-#        4468  4624  4200  3764  3764
-#        4792  4736  4208  3720  3624
-#        4948  4808  4380  4140  4152]
-#        @test mapinfo.resfactor == 1
-#        @test (mapinfo.nline, mapinfo.nsample) == (512, 2048)
-#        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.26672875e7, -616412.5), MTKt_SomCoord(2.273755e7, -334950.0), MTKt_SomCoord(2.28078125e7, -53487.5))
-#        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.26672875e7, -616412.5)
-#        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.273755e7, -334950.0)
-#        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.28078125e7, -53487.5)
-#        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-22.338655196971448, 29.67470803381622), MTKt_GeoCoord(-22.809586710229873, 35.123460533247695), MTKt_GeoCoord(-23.22882451114302, 32.33086052347723), MTKt_GeoCoord(-24.07360545797157, 35.02132140431515), MTKt_GeoCoord(-23.59848983222742, 29.521588205306525))
-#        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-22.338655196971448, 29.67470803381622)
-#        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-22.809586710229873, 35.123460533247695)
-#        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-23.22882451114302, 32.33086052347723)
-#        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-24.07360545797157, 35.02132140431515)
-#        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-23.59848983222742, 29.521588205306525)
-#        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
-#        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
-#        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
-#        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
-#        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 512, 2048)
-#        @test mapinfo.pp.reloffset[1:4] == [0.0, 64.0, 0.0, 64.0]
+        include(JMtk15_test * "src/jMtkReadData_tst_1500.jl")
+        databuf, mapinfo = jMtkReadData_tst_1500();
+        @test Int.(transpose(databuf[388:392, 22:27])) == [
+        4  2  3  4  4
+        4  4  3  4  4
+        4  4  2  4  2
+        4  3  1  4  4
+        4  2  1  4  4
+        4  2  2  4  4]
+        @test mapinfo.resfactor == 4
+        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.30901e7, -668800.0), MTKt_SomCoord(2.315995e7, -387750.0), MTKt_SomCoord(2.32298e7, -106700.0))
+        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.30901e7, -668800.0)
+        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.315995e7, -387750.0)
+        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.32298e7, -106700.0)
+        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-26.0721209058142, 28.681521176903196), MTKt_GeoCoord(-26.575431877271235, 34.28232743548915), MTKt_GeoCoord(-26.978298006176956, 31.40606162364945), MTKt_GeoCoord(-27.83108760787897, 34.173044569161036), MTKt_GeoCoord(-27.3224387040438, 28.51053243188757))
+        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-26.0721209058142, 28.681521176903196)
+        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-26.575431877271235, 34.28232743548915)
+        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-26.978298006176956, 31.40606162364945)
+        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-27.83108760787897, 34.173044569161036)
+        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-27.3224387040438, 28.51053243188757)
+        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
 
-#        include(JMtk15_test * "src/jMtkReadData_tst_160.jl")
-#        databuf, mapinfo = jMtkReadData_tst_160();
-#        @test Int.(transpose(databuf[244:248, 61:66])) == [
-#        277  524  286  292  284
-#        281  536  303  299   33
-#          4  551  298  314   -4
-#        284  305  299  285  290
-#        283  292  527  565  291
-#        546  550  539  557  561]
-#        @test mapinfo.resfactor == 4
-#        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
-#        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.23861e7, -580800.0), MTKt_SomCoord(2.245595e7, -299750.0), MTKt_SomCoord(2.25258e7, -18700.0))
-#        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.23861e7, -580800.0)
-#        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.245595e7, -299750.0)
-#        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.25258e7, -18700.0)
-#        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-19.85083825300675, 30.30688322418754), MTKt_GeoCoord(-20.302597970112007, 35.65809597736565), MTKt_GeoCoord(-20.725296200820143, 32.91899135913688), MTKt_GeoCoord(-21.559729345920385, 35.56034690307178), MTKt_GeoCoord(-21.104475164861434, 30.165228506422512))
-#        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-19.85083825300675, 30.30688322418754)
-#        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-20.302597970112007, 35.65809597736565)
-#        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-20.725296200820143, 32.91899135913688)
-#        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-21.559729345920385, 35.56034690307178)
-#        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-21.104475164861434, 30.165228506422512)
-#        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
-#        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
-#        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
-#        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
-#        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
-#        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+       include(JMtk15_test * "src/jMtkReadData_tst_2300.jl")
+       databuf, mapinfo = jMtkReadData_tst_2300();
+       @test Int.(transpose(databuf[244:248, 61:66])) == [
+       277  524  286  292  284
+       281  536  303  299   33
+         4  551  298  314   -4
+       284  305  299  285  290
+       283  292  527  565  291
+       546  550  539  557  561]
+       @test mapinfo.resfactor == 4
+       @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+       @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.23861e7, -580800.0), MTKt_SomCoord(2.245595e7, -299750.0), MTKt_SomCoord(2.25258e7, -18700.0))
+       @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.23861e7, -580800.0)
+       @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.245595e7, -299750.0)
+       @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.25258e7, -18700.0)
+       @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-19.85083825300675, 30.30688322418754), MTKt_GeoCoord(-20.302597970112007, 35.65809597736565), MTKt_GeoCoord(-20.725296200820143, 32.91899135913688), MTKt_GeoCoord(-21.559729345920385, 35.56034690307178), MTKt_GeoCoord(-21.104475164861434, 30.165228506422512))
+       @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-19.85083825300675, 30.30688322418754)
+       @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-20.302597970112007, 35.65809597736565)
+       @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-20.725296200820143, 32.91899135913688)
+       @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-21.559729345920385, 35.56034690307178)
+       @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-21.104475164861434, 30.165228506422512)
+       @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+       @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+       @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+       @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+       @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+       @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
 
-#        include(JMtk15_test * "src/jMtkReadData_tst_170.jl")
-#        databuf, mapinfo = jMtkReadData_tst_170();
-#        idl_res = [
-#             0.100000     -9999.00     0.850000     -9999.00     -9999.00
-#             0.100000     0.811538     -9999.00     -9999.00     -9999.00
-#             0.100000     0.100000     0.961111     0.350000     0.950000
-#             0.100000     0.645455     0.350000     0.350000     0.350000
-#             0.350000     0.350000     0.350000     0.350000     0.350000];
-#         jul_res = transpose(databuf[251:255, 65:68]);
-#         @test isapprox(idl_res, jul_res, atol = 0.001)
-#         @test mapinfo.resfactor == 4
-#         @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
-#         @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.23861e7, -580800.0), MTKt_SomCoord(2.245595e7, -299750.0), MTKt_SomCoord(2.25258e7, -18700.0))
-#         @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.23861e7, -580800.0)
-#         @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.245595e7, -299750.0)
-#         @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.25258e7, -18700.0)
-#         @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-19.85083825300675, 30.30688322418754), MTKt_GeoCoord(-20.302597970112007, 35.65809597736565), MTKt_GeoCoord(-20.725296200820143, 32.91899135913688), MTKt_GeoCoord(-21.559729345920385, 35.56034690307178), MTKt_GeoCoord(-21.104475164861434, 30.165228506422512))
-#         @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-19.85083825300675, 30.30688322418754)
-#         @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-20.302597970112007, 35.65809597736565)
-#         @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-20.725296200820143, 32.91899135913688)
-#         @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-21.559729345920385, 35.56034690307178)
-#         @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-21.104475164861434, 30.165228506422512)
-#         @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
-#         @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
-#         @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
-#         @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
-#         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
-#         @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
-# # ---------------------------------------------------------- jMtkReadBlock
+       include(JMtk15_test * "src/jMtkReadData_tst_2500.jl")
+       databuf, mapinfo = jMtkReadData_tst_2500();
+       idl_res = [
+            0.100000     -9999.00     0.850000     -9999.00     -9999.00
+            0.100000     0.811538     -9999.00     -9999.00     -9999.00
+            0.100000     0.100000     0.961111     0.350000     0.950000
+            0.100000     0.645455     0.350000     0.350000     0.350000
+            0.350000     0.350000     0.350000     0.350000     0.350000];
+        jul_res = transpose(databuf[251:255, 65:69]);
+        @test isapprox(idl_res, jul_res, atol = 0.001)
+        @test mapinfo.resfactor == 4
+        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0))
+        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.28085e7, -633600.0)
+        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.287835e7, -352550.0)
+        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.29482e7, -71500.0)
+        @test mapinfo.geo == MTKt_GeoRegion(
+                MTKt_GeoCoord(-23.58709279748763, 29.353665543180618),
+                MTKt_GeoCoord(-24.0676258508188, 34.84437551586123),
+                MTKt_GeoCoord(-24.479478582488763, 32.028724322255464),
+                MTKt_GeoCoord(-25.323930208545036, 34.740509109113106),
+                MTKt_GeoCoord(-24.838877358123973, 29.195643744542547))
+        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) ==
+                (-23.58709279748763, 29.353665543180618)
+        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) ==
+                (-24.0676258508188, 34.84437551586123)
+        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) ==
+                (-24.479478582488763, 32.028724322255464)
+        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) ==
+                (-25.323930208545036, 34.740509109113106)
+        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) ==
+                (-24.838877358123973, 29.195643744542547)
+        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+# ---------------------------------------------------------- jMtkReadBlock
 #         include(JMtk15_test * "src/jMtkReadBlock_tst_110.jl")
 #         data = jMtkReadBlock_tst_110();
 #         @test typeof(data) == Matrix{UInt8}

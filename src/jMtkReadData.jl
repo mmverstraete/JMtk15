@@ -159,14 +159,8 @@ function jMtkReadData(filename, gridname, fieldname, region)
         error("jMtkReadData: Type not supported in translation.")
     end
 
-    GC.@preserve r begin
-        julia_databuf = unsafe_wrap(Array, Ptr{ct}(r), (ns, nl); own = false)
-    end
-    status = @ccall mtklib.MtkDataBufferFree(
-        databuf[]::Ref{MTKt_DataBuffer})::Cint
-    if status != 0
-        error("jMtkReadData: MtkDataBufferFree status = ", status,
-            ", error message = ", jMtkErrorMessage(status))
+    GC.@preserve databuf begin
+        julia_databuf = unsafe_wrap(Array, Ptr{ct}(r), (ns, nl); own = true)
     end
     return julia_databuf, mapinfo[]
 end

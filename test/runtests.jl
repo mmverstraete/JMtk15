@@ -1291,34 +1291,34 @@ using Test
         @test mapinfo.pp.lrc[2] == 527450.0
     end
 # ==========================================================================================
-#     @testset "ReadData" begin
+    @testset "ReadData" begin
 # ---------------------------------------------------------- jMtkReadData
-        # include(JMtk15_test * "src/jMtkReadData_tst_0100.jl")
-        # databuf, mapinfo = jMtkReadData_tst_0100();
-        # @test Int.(transpose(databuf[461:466, 67:71])) == [
-        #         1  1  1  1  1  1;
-        #         1  1  1  2  2  2;
-        #         1  1  2  2  3  2;
-        #         2  2  3  3  2  3;
-        #         3  3  3  3  2  2]
-        # @test mapinfo.resfactor == 4
-        # @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
-        # @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0))
-        # @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.28085e7, -633600.0)
-        # @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.287835e7, -352550.0)
-        # @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.29482e7, -71500.0)
-        # @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-23.58709279748763, 29.353665543180618), MTKt_GeoCoord(-24.0676258508188, 34.84437551586123), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.323930208545036, 34.740509109113106), MTKt_GeoCoord(-24.838877358123973, 29.195643744542547))
-        # @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-23.58709279748763, 29.353665543180618)
-        # @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-24.0676258508188, 34.84437551586123)
-        # @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-24.479478582488763, 32.028724322255464)
-        # @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-25.323930208545036, 34.740509109113106)
-        # @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-24.838877358123973, 29.195643744542547)
-        # @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
-        # @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
-        # @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
-        # @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
-        # @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
-        # @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
+        include(JMtk15_test * "src/jMtkReadData_tst_0100.jl")
+        databuf, mapinfo = jMtkReadData_tst_0100();
+        @test Int.(transpose(databuf[461:466, 67:71])) == Int.([
+                1  1  1  1  1  1
+                1  1  1  2  2  2
+                1  1  2  2  3  2
+                2  2  3  3  2  3
+                3  3  3  3  2  2])
+        @test mapinfo.resfactor == 4
+        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
+        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.28085e7, -633600.0), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29482e7, -71500.0))
+        @test (mapinfo.som.ulc.x, mapinfo.som.ulc.y) == (2.28085e7, -633600.0)
+        @test (mapinfo.som.ctr.x, mapinfo.som.ctr.y) == (2.287835e7, -352550.0)
+        @test (mapinfo.som.lrc.x, mapinfo.som.lrc.y) == (2.29482e7, -71500.0)
+        @test mapinfo.geo == MTKt_GeoRegion(MTKt_GeoCoord(-23.58709279748763, 29.353665543180618), MTKt_GeoCoord(-24.0676258508188, 34.84437551586123), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.323930208545036, 34.740509109113106), MTKt_GeoCoord(-24.838877358123973, 29.195643744542547))
+        @test (mapinfo.geo.ulc.lat, mapinfo.geo.ulc.lon) == (-23.58709279748763, 29.353665543180618)
+        @test (mapinfo.geo.urc.lat, mapinfo.geo.urc.lon) == (-24.0676258508188, 34.84437551586123)
+        @test (mapinfo.geo.ctr.lat, mapinfo.geo.ctr.lon) == (-24.479478582488763, 32.028724322255464)
+        @test (mapinfo.geo.lrc.lat, mapinfo.geo.lrc.lon) == (-25.323930208545036, 34.740509109113106)
+        @test (mapinfo.geo.llc.lat, mapinfo.geo.llc.lon) == (-24.838877358123973, 29.195643744542547)
+        @test mapinfo.pp.projparam[1:5] == [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8]
+        @test (mapinfo.pp.projparam[9], mapinfo.pp.projparam[12]) == (98.88, 180.0)
+        @test mapinfo.pp.ulc == [7.46075e6, 1.09065e6]
+        @test mapinfo.pp.lrc == [7.60155e6, 527450.0]
+        @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
+        @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
 
         # include(JMtk15_test * "src/jMtkReadData_tst_1000.jl")
         # databuf, mapinfo = jMtkReadData_tst_1000();
@@ -1346,7 +1346,8 @@ using Test
 
         # include(JMtk15_test * "src/jMtkReadData_tst_1500.jl")
         # databuf, mapinfo = jMtkReadData_tst_1500();
-        # @test Int.(transpose(databuf[388:392, 22:27])) == [4  2  3  4  4
+        # @test Int.(transpose(databuf[388:392, 22:27])) == [
+        # 4  2  3  4  4
         # 4  4  3  4  4
         # 4  4  2  4  2
         # 4  3  1  4  4
@@ -1373,7 +1374,8 @@ using Test
 
 #        include(JMtk15_test * "src/jMtkReadData_tst_140.jl")
 #        databuf, mapinfo = jMtkReadData_tst_140();
-#        @test Int.(transpose(databuf[252:256, 5:10])) == [9968  10720  10488   9420   7828
+#        @test Int.(transpose(databuf[252:256, 5:10])) == [
+#        9968  10720  10488   9420   7828
 #        9936  10816  11192  11000  10764
 #        9212   9552   9996  10176  10448
 #        8664   8668   8588   8364   9104
@@ -1400,7 +1402,8 @@ using Test
 
 #        include(JMtk15_test * "src/jMtkReadData_tst_150.jl")
 #        databuf, mapinfo = jMtkReadData_tst_150();
-#        @test Int.(transpose(databuf[1011:1015, 201:205])) == [4656  4704  4372  4512  4744
+#        @test Int.(transpose(databuf[1011:1015, 201:205])) == [
+#        4656  4704  4372  4512  4744
 #        4236  4256  4436  4480  4472
 #        4468  4624  4200  3764  3764
 #        4792  4736  4208  3720  3624
@@ -1426,7 +1429,8 @@ using Test
 
 #        include(JMtk15_test * "src/jMtkReadData_tst_160.jl")
 #        databuf, mapinfo = jMtkReadData_tst_160();
-#        @test Int.(transpose(databuf[244:248, 61:66])) == [277  524  286  292  284
+#        @test Int.(transpose(databuf[244:248, 61:66])) == [
+#        277  524  286  292  284
 #        281  536  303  299   33
 #          4  551  298  314   -4
 #        284  305  299  285  290
@@ -1453,7 +1457,8 @@ using Test
 
 #        include(JMtk15_test * "src/jMtkReadData_tst_170.jl")
 #        databuf, mapinfo = jMtkReadData_tst_170();
-#        idl_res = [0.100000     -9999.00     0.850000     -9999.00     -9999.00
+#        idl_res = [
+#             0.100000     -9999.00     0.850000     -9999.00     -9999.00
 #             0.100000     0.811538     -9999.00     -9999.00     -9999.00
 #             0.100000     0.100000     0.961111     0.350000     0.950000
 #             0.100000     0.645455     0.350000     0.350000     0.350000
@@ -1579,5 +1584,5 @@ using Test
 #         jul_res = transpose(data[251:253, 61:68]);
 #         @test isapprox(idl_res, jul_res, atol = 0.001)
 # ----------------------------------------------------------
-#     end
+    end
 end

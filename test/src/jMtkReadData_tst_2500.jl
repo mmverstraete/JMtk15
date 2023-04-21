@@ -24,6 +24,8 @@ IDL> status = MTK_SETREGION_BY_PATH_BLOCKRANGE(path, start_block, end_block, reg
 IDL> gridname = '1.1_KM_PRODUCTS'
 IDL> fieldname = 'Leaf_Area_Index_Best_Estimate'
 IDL> status = MTK_READDATA(filename, gridname, fieldname, region, databuf, mapinfo)
+IDL> SIZE(databuf)
+           2         512         128           4       65536
 IDL> PRINT, databuf[250:254, 64:68]
      0.100000     -9999.00     0.850000     -9999.00     -9999.00
      0.100000     0.811538     -9999.00     -9999.00     -9999.00
@@ -58,6 +60,12 @@ julia> include(JMtk15_test * "src/jMtkReadData_tst_2500.jl")
 jMtkReadData_tst_2500
 
 julia> databuf, mapinfo = jMtkReadData_tst_2500();
+
+julia> @test typeof(databuf) == Matrix{Float32}
+Test Passed
+
+julia> @test size(databuf) == (512, 128)
+Test Passed
 
 julia> idl_res = [
        0.100000     -9999.00     0.850000     -9999.00     -9999.00

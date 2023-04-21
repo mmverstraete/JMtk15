@@ -278,8 +278,8 @@ export jMtkSnapToGrid
 # ReadData functions:
 include(JMtk15_src * "jMtkReadData.jl")
 export jMtkReadData
-# include(JMtk15_src * "jMtkReadBlock.jl")
-# export jMtkReadBlock
+include(JMtk15_src * "jMtkReadBlock.jl")
+export jMtkReadBlock
 ### jMtkReadBlockRange
 ### include(JMtk15_src * "jMtkReadRaw.jl")
 ### export jMtkReadRaw

@@ -59,6 +59,12 @@ jMtkReadData_tst_1300
 
 julia> databuf, mapinfo = jMtkReadData_tst_1300();
 
+julia> @test typeof(databuf) == Matrix{UInt16}
+Test Passed
+
+julia> @test size(databuf) == (2048, 512)
+Test Passed
+
 julia> @test Int.(transpose(databuf[1011:1015, 201:205])) == [
        4656  4704  4372  4512  4744
        4236  4256  4436  4480  4472

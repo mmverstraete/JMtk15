@@ -1295,6 +1295,8 @@ using Test
 # ---------------------------------------------------------- jMtkReadData
         include(JMtk15_test * "src/jMtkReadData_tst_0100.jl")
         databuf, mapinfo = jMtkReadData_tst_0100();
+        @test typeof(databuf) == Matrix{UInt8}
+        @test size(databuf) == (512, 128)
         @test UInt8.(transpose(databuf[461:466, 67:71])) == UInt8.([
                 1  1  1  1  1  1
                 1  1  1  2  2  2
@@ -1322,6 +1324,8 @@ using Test
 
         include(JMtk15_test * "src/jMtkReadData_tst_1000.jl")
         databuf, mapinfo = jMtkReadData_tst_1000();
+        @test typeof(databuf) == Matrix{Float64}
+        @test size(databuf) == (32, 8)
         @test transpose(databuf[16:19, 4:5]) == [
                 31.3949458411467 31.283454456643128 31.172319983604712 31.061547430619207;
                 31.49954269576102 31.38843722293199 31.27768970248382 31.16730618391117]
@@ -1344,15 +1348,17 @@ using Test
         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 8, 32)
         @test mapinfo.pp.reloffset[1:4] == [0.0, 1.0, 0.0, 1.0]
 
-       include(JMtk15_test * "src/jMtkReadData_tst_1100.jl")
-       databuf, mapinfo = jMtkReadData_tst_1100();
-       @test Int.(transpose(databuf[252:256, 5:10])) == [
-       9968  10720  10488   9420   7828
-       9936  10816  11192  11000  10764
-       9212   9552   9996  10176  10448
-       8664   8668   8588   8364   9104
-       8568   8576   8324   8212   8116
-       8928   8972   8728   8732   8688]
+        include(JMtk15_test * "src/jMtkReadData_tst_1100.jl")
+        databuf, mapinfo = jMtkReadData_tst_1100();
+        @test typeof(databuf) == Matrix{UInt16}
+        @test size(databuf) == (512, 128)
+        @test Int.(transpose(databuf[252:256, 5:10])) == [
+                9968  10720  10488   9420   7828
+                9936  10816  11192  11000  10764
+                9212   9552   9996  10176  10448
+                8664   8668   8588   8364   9104
+                8568   8576   8324   8212   8116
+                8928   8972   8728   8732   8688]
        @test mapinfo.resfactor == 4
        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.25269e7, -598400.0), MTKt_SomCoord(2.259675e7, -317350.0), MTKt_SomCoord(2.26666e7, -36300.0))
@@ -1374,12 +1380,14 @@ using Test
 
        include(JMtk15_test * "src/jMtkReadData_tst_1300.jl")
        databuf, mapinfo = jMtkReadData_tst_1300();
+       @test typeof(databuf) == Matrix{UInt16}
+       @test size(databuf) == (2048, 512)
        @test Int.(transpose(databuf[1011:1015, 201:205])) == [
-       4656  4704  4372  4512  4744
-       4236  4256  4436  4480  4472
-       4468  4624  4200  3764  3764
-       4792  4736  4208  3720  3624
-       4948  4808  4380  4140  4152]
+                4656  4704  4372  4512  4744
+                4236  4256  4436  4480  4472
+                4468  4624  4200  3764  3764
+                4792  4736  4208  3720  3624
+                4948  4808  4380  4140  4152]
        @test mapinfo.resfactor == 1
        @test (mapinfo.nline, mapinfo.nsample) == (512, 2048)
        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.26672875e7, -616412.5), MTKt_SomCoord(2.273755e7, -334950.0), MTKt_SomCoord(2.28078125e7, -53487.5))
@@ -1401,13 +1409,15 @@ using Test
 
         include(JMtk15_test * "src/jMtkReadData_tst_1500.jl")
         databuf, mapinfo = jMtkReadData_tst_1500();
+        @test typeof(databuf) == Matrix{UInt8}
+        @test size(databuf) == (512, 128)
         @test Int.(transpose(databuf[388:392, 22:27])) == [
-        4  2  3  4  4
-        4  4  3  4  4
-        4  4  2  4  2
-        4  3  1  4  4
-        4  2  1  4  4
-        4  2  2  4  4]
+                4  2  3  4  4
+                4  4  3  4  4
+                4  4  2  4  2
+                4  3  1  4  4
+                4  2  1  4  4
+                4  2  2  4  4]
         @test mapinfo.resfactor == 4
         @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
         @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.30901e7, -668800.0), MTKt_SomCoord(2.315995e7, -387750.0), MTKt_SomCoord(2.32298e7, -106700.0))
@@ -1427,15 +1437,17 @@ using Test
         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
         @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
 
-       include(JMtk15_test * "src/jMtkReadData_tst_2300.jl")
-       databuf, mapinfo = jMtkReadData_tst_2300();
-       @test Int.(transpose(databuf[244:248, 61:66])) == [
-       277  524  286  292  284
-       281  536  303  299   33
-         4  551  298  314   -4
-       284  305  299  285  290
-       283  292  527  565  291
-       546  550  539  557  561]
+        include(JMtk15_test * "src/jMtkReadData_tst_2300.jl")
+        databuf, mapinfo = jMtkReadData_tst_2300();
+        @test typeof(databuf) == Matrix{Int16}
+        @test size(databuf) == (512, 128)
+        @test Int.(transpose(databuf[244:248, 61:66])) == [
+                277  524  286  292  284
+                281  536  303  299   33
+                  4  551  298  314   -4
+                284  305  299  285  290
+                283  292  527  565  291
+                546  550  539  557  561]
        @test mapinfo.resfactor == 4
        @test (mapinfo.nline, mapinfo.nsample) == (128, 512)
        @test mapinfo.som == MTKt_SomRegion(168, MTKt_SomCoord(2.23861e7, -580800.0), MTKt_SomCoord(2.245595e7, -299750.0), MTKt_SomCoord(2.25258e7, -18700.0))
@@ -1457,6 +1469,8 @@ using Test
 
        include(JMtk15_test * "src/jMtkReadData_tst_2500.jl")
        databuf, mapinfo = jMtkReadData_tst_2500();
+       @test typeof(databuf) == Matrix{Float32}
+       @test size(databuf) == (512, 128)
        idl_res = [
             0.100000     -9999.00     0.850000     -9999.00     -9999.00
             0.100000     0.811538     -9999.00     -9999.00     -9999.00
@@ -1494,105 +1508,102 @@ using Test
         @test (mapinfo.pp.nblock, mapinfo.pp.nline, mapinfo.pp.nsample) == (180, 128, 512)
         @test mapinfo.pp.reloffset[1:4] == [0.0, 16.0, 0.0, 16.0]
 # ---------------------------------------------------------- jMtkReadBlock
-#         include(JMtk15_test * "src/jMtkReadBlock_tst_110.jl")
-#         data = jMtkReadBlock_tst_110();
-#         @test typeof(data) == Matrix{UInt8}
-#         @test size(data) == (512, 128)
-#         idl_res = UInt8.([1   1   2   2
-#             2   2   2   2
-#             2   3   2   2
-#             3   2   2   1
-#             2   2   1   1
-#             1   1   1   1
-#             1   1   1   1]);
-#         jul_res = transpose(data[471:474, 65:71]);
-#         @test idl_res == jul_res
+        include(JMtk15_test * "src/jMtkReadBlock_tst_0100.jl")
+        databuf = jMtkReadBlock_tst_0100();
+        @test typeof(databuf) == Matrix{UInt8}
+        @test size(databuf) == (512, 128)
+        @test transpose(databuf[471:474, 65:71]) == UInt8.([
+                 1   1   2   2
+                 2   2   2   2
+                 2   3   2   2
+                 3   2   2   1
+                 2   2   1   1
+                 1   1   1   1
+                 1   1   1   1])
 
-#         include(JMtk15_test * "src/jMtkReadBlock_tst_120.jl")
-#         data = jMtkReadBlock_tst_120();
-#         @test typeof(data) == Matrix{Float64}
-#         @test size(data) == (32, 8)
-#         idl_res = Float64.([230.08959       229.82531       229.55951       229.29219
-#             229.89184       229.62716       229.36099       229.09329
-#             229.69559       229.43054       229.16399       228.89594
-#             229.50085       229.23543       228.96852       228.70011
-#             229.30761       229.04182       228.77456       228.50581
-#             229.11584       228.84970       228.58210       228.31302
-#             228.92556       228.65907       228.39113       228.12173
-#             228.73674       228.46992       228.20165       227.93194]);
-#         jul_res = transpose(data[21:24, 1:8]);
-#         @test isapprox(idl_res, jul_res, atol = 0.001)
+        include(JMtk15_test * "src/jMtkReadBlock_tst_1000.jl")
+        databuf = jMtkReadBlock_tst_1000();
+        @test typeof(databuf) == Matrix{Float64}
+        @test size(databuf) == (32, 8)
+        idl_res = Float64.([
+                230.08959       229.82531       229.55951       229.29219
+                229.89184       229.62716       229.36099       229.09329
+                229.69559       229.43054       229.16399       228.89594
+                229.50085       229.23543       228.96852       228.70011
+                229.30761       229.04182       228.77456       228.50581
+                229.11584       228.84970       228.58210       228.31302
+                228.92556       228.65907       228.39113       228.12173
+                228.73674       228.46992       228.20165       227.93194]);
+        jul_res = transpose(databuf[21:24, 1:8]);
+        @test isapprox(idl_res, jul_res, atol = 0.001)
 
-#         include(JMtk15_test * "src/jMtkReadBlock_tst_130.jl")
-#         data = jMtkReadBlock_tst_130();
-#         @test typeof(data) == Matrix{UInt8}
-#         @test size(data) == (512, 128)
-#         idl_res = UInt8.([4   2   4   2   3
-#             4   3   4   2   2
-#             4   4   4   2   2
-#             4   3   3   2   4
-#             4   3   3   3   4
-#             4   3   3   0   4
-#             4   4   3   4   0
-#             4   0   3   4   4]);
-#         jul_res = transpose(data[187:191, 27:34]);
-#         @test idl_res == jul_res
+        include(JMtk15_test * "src/jMtkReadBlock_tst_1100.jl")
+        databuf = jMtkReadBlock_tst_1100();
+        @test typeof(databuf) == Matrix{UInt16}
+        @test size(databuf) == (512, 128)
+        @test transpose(databuf[291:294, 51:56]) == UInt16.([
+                3576    3504    3416    3432
+                3552    3604    3532    3424
+                3528    3580    3576    3592
+                3648    3612    3504    3556
+                3708    3672    3612    3612
+                3748    3652    3560    3592])
 
-#         include(JMtk15_test * "src/jMtkReadBlock_tst_140.jl")
-#         data = jMtkReadBlock_tst_140();
-#         @test typeof(data) == Matrix{UInt16}
-#         @test size(data) == (512, 128)
-#         idl_res = UInt16.([3576    3504    3416    3432
-#             3552    3604    3532    3424
-#             3528    3580    3576    3592
-#             3648    3612    3504    3556
-#             3708    3672    3612    3612
-#             3748    3652    3560    3592]);
-#         jul_res = transpose(data[291:294, 51:56]);
-#         @test idl_res == jul_res
+        include(JMtk15_test * "src/jMtkReadBlock_tst_1300.jl")
+        databuf = jMtkReadBlock_tst_1300();
+        @test typeof(databuf) == Matrix{UInt16}
+        @test size(databuf) == (2048, 512)
+        @test transpose(databuf[1261:1264, 214:220]) == UInt16.([
+                3176    2900    2872    3176
+                3112    2864    2908    3120
+                2908    2856    2916    2988
+                2964    2852    2964    2964
+                2972    2924    3092    3004
+                2976    2992    3192    3180
+                3004    2936    3168    3596])
 
-#         include(JMtk15_test * "src/jMtkReadBlock_tst_150.jl")
-#         data = jMtkReadBlock_tst_150();
-#         @test typeof(data) == Matrix{UInt16}
-#         @test size(data) == (2048, 512)
-#         idl_res = UInt16.([3176    2900    2872    3176
-#             3112    2864    2908    3120
-#             2908    2856    2916    2988
-#             2964    2852    2964    2964
-#             2972    2924    3092    3004
-#             2976    2992    3192    3180
-#             3004    2936    3168    3596]);
-#         jul_res = transpose(data[1261:1264, 214:220]);
-#         @test idl_res == jul_res
+        include(JMtk15_test * "src/jMtkReadBlock_tst_1500.jl")
+        databuf = jMtkReadBlock_tst_1500();
+        @test typeof(databuf) == Matrix{UInt8}
+        @test size(databuf) == (512, 128)
+        @test transpose(databuf[187:191, 27:34]) == UInt8.([
+                4   2   4   2   3
+                4   3   4   2   2
+                4   4   4   2   2
+                4   3   3   2   4
+                4   3   3   3   4
+                4   3   3   0   4
+                4   4   3   4   0
+                4   0   3   4   4])
 
-#         include(JMtk15_test * "src/jMtkReadBlock_tst_160.jl")
-#         data = jMtkReadBlock_tst_160();
-#         @test typeof(data) == Matrix{Int8}
-#         @test size(data) == (512, 128)
-#         idl_res = Int8.([0   1   1   1   4
-#             1   4   0   4   4
-#             4   4   4   4   4
-#             3   3   4   0   4
-#             4   4   4   0   0
-#             1   1   4   2   1
-#             1   1   1   1   1]);
-#         jul_res = transpose(data[296:300, 91:97]);
-#         @test idl_res == jul_res
+        include(JMtk15_test * "src/jMtkReadBlock_tst_2300.jl")
+        databuf = jMtkReadBlock_tst_2300();
+        @test typeof(databuf) == Matrix{Int8}
+        @test size(databuf) == (512, 128)
+        @test transpose(databuf[296:300, 91:97]) == Int8.([
+                0   1   1   1   4
+                1   4   0   4   4
+                4   4   4   4   4
+                3   3   4   0   4
+                4   4   4   0   0
+                1   1   4   2   1
+                1   1   1   1   1])
 
-#         include(JMtk15_test * "src/jMtkReadBlock_tst_170.jl")
-#         data = jMtkReadBlock_tst_170();
-#         @test typeof(data) == Matrix{Float32}
-#         @test size(data) == (512, 128)
-#         idl_res = Float32.([1.16250     0.850000     0.850000
-#             1.10000      1.26667     0.850000
-#             1.10000      1.35000     0.850000
-#             1.10000     0.600000     0.850000
-#             1.25000      1.15000      1.20000
-#             0.850000      1.18333      1.10000
-#             1.35000     0.850000      1.10000
-#             -9999.00     -9999.00     0.850000]);
-#         jul_res = transpose(data[251:253, 61:68]);
-#         @test isapprox(idl_res, jul_res, atol = 0.001)
+        include(JMtk15_test * "src/jMtkReadBlock_tst_2500.jl")
+        databuf = jMtkReadBlock_tst_2500();
+        @test typeof(databuf) == Matrix{Float32}
+        @test size(databuf) == (512, 128)
+        idl_res = Float32.([
+                1.16250     0.850000     0.850000
+                1.10000      1.26667     0.850000
+                1.10000      1.35000     0.850000
+                1.10000     0.600000     0.850000
+                1.25000      1.15000      1.20000
+                0.850000      1.18333      1.10000
+                1.35000     0.850000      1.10000
+                -9999.00     -9999.00     0.850000]);
+        jul_res = transpose(databuf[251:253, 61:68]);
+        @test isapprox(idl_res, jul_res, atol = 0.001)
 # ----------------------------------------------------------
     end
 end

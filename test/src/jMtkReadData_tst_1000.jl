@@ -56,6 +56,12 @@ jMtkReadData_tst_1000
 
 julia> databuf, mapinfo = jMtkReadData_tst_1000();
 
+julia> @test typeof(databuf) == Matrix{Float64}
+Test Passed
+
+julia> @test size(databuf) == (32, 8)
+Test Passed
+
 julia> @test transpose(databuf[16:19, 4:5]) == [
        31.3949458411467 31.283454456643128 31.172319983604712 31.061547430619207;
        31.49954269576102 31.38843722293199 31.27768970248382 31.16730618391117]

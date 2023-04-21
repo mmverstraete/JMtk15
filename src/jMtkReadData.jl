@@ -56,11 +56,11 @@ julia> fieldname = "Red Radiance/RDQI"
 julia> databuf, mapinfo = jMtkReadData(filename, gridname, fieldname, region)
 (UInt16[0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb; … ; 0xffeb 0xffeb … 0xffeb 0xffeb; 0xffeb 0xffeb … 0xffeb 0xffeb], MTKt_MapInfo(168, 110, 110, 275, 1, 512, 2048, JMtk15.MTK_TRUE, MTKt_SomRegion(168, MTKt_SomCoord(2.28080875e7, -634012.5), MTKt_SomCoord(2.287835e7, -352550.0), MTKt_SomCoord(2.29486125e7, -71087.5)), MTKt_GeoRegion(MTKt_GeoCoord(-23.58297245891216, 29.35011472257243), MTKt_GeoCoord(-24.064196594381425, 34.84872166826311), MTKt_GeoCoord(-24.479478582488763, 32.028724322255464), MTKt_GeoCoord(-25.327919099507437, 34.744282389822025), MTKt_GeoCoord(-24.84214182375054, 29.19112051959548)), MTKt_MisrProjParam(168, 22, -1, 12, [6.378137e6, -0.006694348, 0.0, 9.8018013752e7, -1.3001505477562232e8, 0.0, 0.0, 0.0, 98.88, 0.0, 0.0, 180.0, 0.0, 0.0, 0.0], [7.46075e6, 1.09065e6], [7.60155e6, 527450.0], 180, 512, 2048, Float32[0.0, 64.0, 0.0, 64.0, 0.0, 0.0, 0.0, 64.0, 0.0, 0.0  …  0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0, 0.0, 64.0, 0.0], 275)))
 
-julia> size(databuf)
-(2048, 512)
-
 julia> typeof(databuf)
 Matrix{UInt16} (alias for Array{UInt16, 2})
+
+julia> size(databuf)
+(2048, 512)
 
 julia> Int.(databuf[1000:1005, 200:201])
 6×2 Matrix{Int64}:

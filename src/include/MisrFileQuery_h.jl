@@ -11,7 +11,7 @@ Partial translation of the symbols defined in the C file "MisrFileQuery.h" of Mt
 
 # Versioning:
 * Mtk C Library: Version 1.5.
-* Julia wrapper: Version 0.1.0 (2023-01-16)
+* Julia wrapper: Version 0.1.0 (2023-02-15)
 
 # Note:
 * See the original file for additional details and in-line comments.
@@ -93,6 +93,8 @@ end
 
 mutable struct MtkCoreMetaData
     data::NTuple{24, UInt8}
+#     data::Vector{UInt8, 24}
+#     data::StaticVector{24, UInt8}
 end
 
 function Base.getproperty(x::Ptr{MtkCoreMetaData}, f::Symbol)
@@ -116,12 +118,21 @@ end
 
 # Code suggested by Clang:
 # const MTK_CORE_METADATA_INIT = {{NULL}, 0, MTKMETA_CHAR, NULL}
-# but the syntax {} is not acceptable, and the identifier MTKMETA_CHAR is undefined
+# but the syntax {} is not acceptable, and the identifier MTKMETA_CHAR is not explicitly defined; in fact the C statement `enum {MTKMETA_CHAR, MTKMETA_INT, MTKMETA_DOUBLE} datatype` sets MTKMETA_CHAR to 0, MTKMETA_INT to 1 and MTKMETA_DOUBLE to 2.
+# const MTK_CORE_METADATA_INIT = ((C_NULL), 0x0, 0x0, C_NULL)
 # Code attempt, based on similarities with earlier experiences (it compiles but is not working at run time):
 #const MTK_CORE_METADATA_INIT = ([C_NULL], 0, (Cchar('\0')), C_NULL)
 #const MTK_CORE_METADATA_INIT = ([""], [Int32(0)], 0.0, Int32(0), "", C_NULL)
-const MTK_CORE_METADATA_INIT = ([C_NULL], 0, UInt8('\0'), C_NULL)
-export MTK_CORE_METADATA_INIT
+#const MTK_CORE_METADATA_INIT = ([C_NULL], 0, UInt8('\0'), C_NULL)
+#MTK_CORE_METADATA_INIT = Array{UInt8}(0, 24)
+# MTK_CORE_METADATA_INIT = NTuple{24, UInt8}, 0
+# MTK_CORE_METADATA_INIT =
+#     (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+# MTK_CORE_METADATA_INIT = StaticVector{24, UInt8}(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+#     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+# MTK_CORE_METADATA_INIT =
+#     (0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+# export MTK_CORE_METADATA_INIT
 
 const NGRIDCELL = 2
 export NGRIDCELL

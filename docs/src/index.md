@@ -89,6 +89,7 @@ jMtkMakeFilename
 jMtkFindFileList
 jMtkFileBlockMetaList
 jMtkFileBlockMetaFieldList
+jMtkFileBlockMetaFieldRead
 ```
 
 ## UnitConv
@@ -115,6 +116,7 @@ jMtkBlsToLatLon
 jMtkBlsToSomXY
 jMtkLatLonToBls
 jMtkSomXYToBls
+jMtkLatLonToSomXY
 jMtkSomXYToLatLon
 jMtkPathToProjParam
 jMtkPathBlockRangeToBlockCorners
@@ -156,4 +158,5 @@ jMtkSnapToGrid
 
 ```@docs
 jMtkReadData
+jMtkReadBlock
 ```

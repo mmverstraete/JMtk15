@@ -11,7 +11,7 @@ Partial translation of the symbols defined in the C file "MisrSetRegion.h" of Mt
 
 # Versioning:
 * Mtk C Library: Version 1.5.
-* Julia wrapper: Version 0.1.0 (2023-01-16)
+* Julia wrapper: Version 0.1.0 (2023-02-15)
 
 # Note:
 * See the original file for additional details and in-line comments.

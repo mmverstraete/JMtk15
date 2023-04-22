@@ -182,8 +182,8 @@ include(JMtk15_src * "jMtkFileBlockMetaList.jl")
 export jMtkFileBlockMetaList
 include(JMtk15_src * "jMtkFileBlockMetaFieldList.jl")
 export jMtkFileBlockMetaFieldList
-# include(JMtk15_src * "jMtkFileBlockMetaFieldRead.jl")
-# export jMtkFileBlockMetaFieldRead
+include(JMtk15_src * "jMtkFileBlockMetaFieldRead.jl")
+export jMtkFileBlockMetaFieldRead
 # include(JMtk15_src * "jMtkTimeMetaRead.jl")
 # export jMtkTimeMetaRead
 # -----------------------------------------------------------------------------

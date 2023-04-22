@@ -950,20 +950,39 @@ using Test
 #         include(JMtk15_test * "src/jMtkFileBlockMetaFieldList_tst_2500.jl")
 #         nfields, fieldlist = jMtkFileBlockMetaFieldList_tst_2500();
 # ---------------------------------------------------------- jMtkFileBlockMetaFieldRead
-#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_1.jl")
-#         buffer = jMtkFileBlockMetaFieldRead_tst_1();
+        include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_0100.jl")
+        metafield = jMtkFileBlockMetaFieldRead_tst_0100();
+        @test typeof(metafield) == Vector{Int8}
+        @test length(metafield) == 180
+        @test metafield[1:10] == [0; 0; 0; 0; 0; 1; 1; 1; 1; 1]
 
-#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_2.jl")
-#         buffer = jMtkFileBlockMetaFieldRead_tst_2();
+        include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_1000.jl")
+        metafield = jMtkFileBlockMetaFieldRead_tst_1000();
+        @test typeof(metafield) == Vector{Float64}
+        @test length(metafield) == 164
+        @test metafield[51:60] == [1.450075e7; 1.464155e7; 1.478235e7; 1.492315e7;
+           1.506395e7; 1.520475e7; 1.534555e7; 1.548635e7; 1.562715e7; 1.576795e7]
 
-#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_3.jl")
-#         buffer = jMtkFileBlockMetaFieldRead_tst_3();
+        include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_1100.jl")
+        metafield = jMtkFileBlockMetaFieldRead_tst_1100();
+        @test typeof(metafield) == Vector{Float64}
+        @test length(metafield) == 162
+        @test metafield[51:60] == [1.464155e7; 1.478235e7; 1.492315e7; 1.506395e7;
+           1.520475e7; 1.534555e7; 1.548635e7; 1.562715e7; 1.576795e7; 1.590875e7]
 
-#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_4.jl")
-#         buffer = jMtkFileBlockMetaFieldRead_tst_4();
+        include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_1300.jl")
+        metafield = jMtkFileBlockMetaFieldRead_tst_1300();
+        @test typeof(metafield) == Vector{Float64}
+        @test length(metafield) == 162
+        @test metafield[51:60] == [967450.0; 949850.0; 932250.0; 914650.0;
+           914650.0; 897050.0; 879450.0; 861850.0; 844250.0; 844250.0]
 
-#         include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_5.jl")
-#         buffer = jMtkFileBlockMetaFieldRead_tst_5();
+        include(JMtk15_test * "src/jMtkFileBlockMetaFieldRead_tst_1500.jl")
+        metafield = jMtkFileBlockMetaFieldRead_tst_1500();
+        @test typeof(metafield) == Vector{Float64}
+        @test length(metafield) == 162
+        @test metafield[51:60] == [404250.0; 386650.0; 369050.0; 351450.0;
+           351450.0; 333850.0; 316250.0; 298650.0; 281050.0; 281050.0]
 # ---------------------------------------------------------- jMtkTimeMetaRead
 #         include(JMtk15_test * "src/jMtkTimeMetaRead_tst_4.jl")
 #         timedata = jMtkTimeMetaRead_tst_4();

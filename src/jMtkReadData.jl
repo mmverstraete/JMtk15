@@ -162,5 +162,6 @@ function jMtkReadData(filename, gridname, fieldname, region)
     GC.@preserve databuf begin
         julia_databuf = unsafe_wrap(Array, Ptr{ct}(r), (ns, nl); own = true)
     end
+
     return julia_databuf, mapinfo[]
 end

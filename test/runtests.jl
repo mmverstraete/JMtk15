@@ -984,8 +984,29 @@ using Test
         @test metafield[51:60] == [404250.0; 386650.0; 369050.0; 351450.0;
            351450.0; 333850.0; 316250.0; 298650.0; 281050.0; 281050.0]
 # ---------------------------------------------------------- jMtkTimeMetaRead
-#         include(JMtk15_test * "src/jMtkTimeMetaRead_tst_4.jl")
-#         timedata = jMtkTimeMetaRead_tst_4();
+        include(JMtk15_test * "src/jMtkTimeMetaRead_tst_1105.jl")
+        timedata = jMtkTimeMetaRead_tst_1105();
+        @test timedata.path == 168
+        @test timedata.start_block == 19
+        @test timedata.end_block == 162
+        @test String(timedata.camera) == "AN\0"
+        @test timedata.number_transform[21] == 2
+        @test String(timedata.ref_time[21][1]) == "2012-10-03T07:35:06.093760Z\0"
+        @test String(timedata.ref_time[21][2]) == "2012-10-03T07:35:06.093760Z\0"
+        @test timedata.start_line[21] == Int32[9728, 9984]
+        @test timedata.number_line[21] == Int32[256, 256]
+        @test timedata.coeff_line[21][1][1] == 343.63912818600835
+        @test timedata.coeff_line[21][1][2] == 596.8625892179571
+        @test timedata.coeff_line[21][2][1] == 0.9891433525445832
+        @test timedata.coeff_line[21][2][2] == 0.9891625570665201
+        @test timedata.coeff_line[21][3][1] == -0.0004884364332011053
+        @test timedata.coeff_line[21][3][2] == -0.0012594304174612728
+        @test timedata.coeff_line[21][4][1] == -3.1505301908925205e-8
+        @test timedata.coeff_line[21][4][2] == 8.304457205878514e-9
+        @test timedata.coeff_line[21][5][1] == -2.8275584372222565e-6
+        @test timedata.coeff_line[21][5][2] == -2.9153112097163063e-6
+        @test timedata.coeff_line[21][6][1] == -3.644407914887632e-11
+        @test timedata.coeff_line[21][6][2] == 3.756058009214872e-11
     end
 # ==========================================================================================
     @testset "UnitConv" begin

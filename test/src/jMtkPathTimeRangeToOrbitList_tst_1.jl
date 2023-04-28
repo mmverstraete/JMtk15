@@ -43,6 +43,7 @@ Test Passed
 ```
 """
 function jMtkPathTimeRangeToOrbitList_tst_1()
+    path = 37
     start_time = "2002-02-02T02:00:00Z"
     end_time = "2002-05-02T02:00:00Z"
     orbit_cnt, orbit_list = jMtkPathTimeRangeToOrbitList(path, start_time, end_time)

@@ -2,7 +2,7 @@
     using JMtk15
 
 # Purpose:
-Provide Julia wrapper functions to the NASA JPL
+Provide access to the Julia wrapper functions to the NASA JPL
     [MISR Toolkit](https://github.com/nasa/MISR-Toolkit) C functions.
 
 # Licensing:
@@ -40,15 +40,11 @@ export StringView
 
 # Package configuration:
 
-# Please update the following two assignment statements to match your current configuration.
 # 1. Set the location of the Mtk shared library:
-
 mtklib = "/Applications/Mtk-1.5.0/lib/libMisrToolkit.so.1.5.0"
 export mtklib
 
-# 2. Set the location of the MISR source and data files for this JMtk15 package. In principle, only the data subdirectory may need to be updated, if your data are located elsewhere than in the default directory identified below:
-
-# Define the default root directories for the project :
+# 2. Set the location of the MISR source files for this JMtk15 package:
 const JMtk15_root = dirname(@__DIR__)
 export JMtk15_root
 const JMtk15_src = JMtk15_root * "/src/"
@@ -57,14 +53,19 @@ const JMtk15_test = JMtk15_root * "/test/"
 export JMtk15_test
 const JMtk15_docs = JMtk15_root * "/docs/"
 export JMtk15_docs
+
+# 3. Set the location of the MISR data files for this JMtk15 package:
 const JMtk15_data = JMtk15_root * "/data/"
 export JMtk15_data
 
-
-# Note 1: The order in which the following files are included is critical,
+# Note 1: The order in which the following files are included may be critical,
 #   because subsequent files depend on previous files.
 # Note 2: All available include files are currently loaded at the start of the
 #   module JMtk15 to avoid conditional includes.
+# Note 3: The MISR data directory specified above contains only a set of files
+#   relative to Path 168 and Orbit 68050, suitable for testing these functions.
+#   Applications to operationally process MISR data should obtain data files
+#   from an appropriate data repository.
 # =============================================================================
 # Generic .h C files (require no other include files):
 include(JMtk15_src * "include/MisrError_h.jl")
@@ -184,8 +185,8 @@ include(JMtk15_src * "jMtkFileBlockMetaFieldList.jl")
 export jMtkFileBlockMetaFieldList
 include(JMtk15_src * "jMtkFileBlockMetaFieldRead.jl")
 export jMtkFileBlockMetaFieldRead
-# include(JMtk15_src * "jMtkTimeMetaRead.jl")
-# export jMtkTimeMetaRead
+include(JMtk15_src * "jMtkTimeMetaRead.jl")
+export jMtkTimeMetaRead
 # -----------------------------------------------------------------------------
 # UnitConv functions:
 include(JMtk15_src * "jMtkDdToDegMinSec.jl")

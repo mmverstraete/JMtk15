@@ -21,11 +21,15 @@ The Julia functions located in the `src` subdirectory of this `JMtk15` package a
 
 The `test` and `doc` subdirectories contain test functions and documentation for those wrapper functions, respectively.
 
-All functions and files published as part of this `JMtk15` package are provided under the MIT License, i.e., without any warranty about the their usability or effectiveness in your own applications. See the LICENSE file in this repository for more details.
-
 Generating this package would not have been possible without the professional help of Sebastian Val at JPL concerning MISR Toolkit (`Mtk`) and the benevolent and patient support of `@Gnimuc`, `@stevengj`, `@mkitti`, `@kellertuer` as well as many other contributors to the [Julia Discourse Forum](https://discourse.julialang.org/) with respect to the Julia implementation.
 
 Please check this site regularly for updates and send bug reports or suggestions through GitHub: I will attempt to address those in future releases, time permitting.
+
+## License
+
+All functions and files published as part of this `JMtk15` package are provided under the MIT License, i.e., without any warranty about their usability or effectiveness in your own applications. See the LICENSE file in this repository for more details.
+
+The C shared library `Mtk` itself is available under an [open source license](https://github.com/nasa/MISR-Toolkit/blob/master/LICENSE), and so are the following public libraries required by `Mtk`: HDF-EOS2.18v1.00, HDF4.2.10, hdf5-1.8.16, netcdf-4.4.0, jpegsrc.v6b, zlib-1.2.5, and NumPy 1.15 or later, as described in the `Mtk` [README](https://github.com/nasa/MISR-Toolkit/blob/master/README) file.
 
 ## Pre-requisites and Installation
 

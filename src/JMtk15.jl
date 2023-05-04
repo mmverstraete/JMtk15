@@ -45,7 +45,7 @@ mtklib = "/Applications/Mtk-1.5.0/lib/libMisrToolkit.so.1.5.0"
 export mtklib
 
 # 2. Set the location of the MISR source files for this JMtk15 package:
-const JMtk15_root = dirname(@__DIR__)
+const JMtk15_root = pkgdir(JMtk15)
 export JMtk15_root
 const JMtk15_src = JMtk15_root * "/src/"
 export JMtk15_src
